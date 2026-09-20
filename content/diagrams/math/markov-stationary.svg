@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" role="img" aria-label="A three state Markov chain with transition probabilities and its stationary distribution" font-family="system-ui, sans-serif">
+<g fill="currentColor" font-size="13"><text x="24" y="28">Wherever you start, the long-run share of days settles on the same three numbers.</text></g>
+<g fill="none" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.75">
+<path d="M183.9 117.3 Q277.1 135.9 366.1 102.7" marker-end="url(#ar)"/>
+<path d="M366.1 102.7 Q272.9 84.1 183.9 117.3" marker-end="url(#ar)"/>
+<path d="M379.5 127.1 Q324.3 156.8 310.5 217.9" marker-end="url(#ar)"/>
+<path d="M310.5 217.9 Q365.7 188.2 379.5 127.1" marker-end="url(#ar)"/>
+<path d="M264.6 222.4 Q237.3 163.1 175.4 142.6" marker-end="url(#ar)"/>
+<path d="M175.4 142.6 Q202.7 201.9 264.6 222.4" marker-end="url(#ar)"/>
+</g>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
+<g fill="currentColor" font-size="12" text-anchor="middle" fill-opacity="0.85">
+<text x="276.0" y="127.0">0.4</text>
+<text x="274.0" y="101.0">0.3</text>
+<text x="334.6" y="168.6">0.4</text>
+<text x="355.4" y="184.4">0.4</text>
+<text x="228.7" y="176.8">0.3</text>
+<text x="211.3" y="196.2">0.2</text>
+</g>
+<g fill="none" stroke="currentColor" stroke-width="1.6">
+<circle cx="150" cy="120" r="34"/>
+<circle cx="400" cy="100" r="34"/>
+<circle cx="290" cy="245" r="34"/>
+</g>
+<g fill="currentColor" font-size="13" text-anchor="middle">
+<text x="150" y="124">sunny</text>
+<text x="400" y="104">cloudy</text>
+<text x="290" y="249">rain</text>
+</g>
+<g fill="currentColor" font-size="13"><text x="470" y="200">stationary</text><text x="470" y="220">share:</text><text x="470" y="244" fill-opacity="0.85">sunny 0.33</text><text x="470" y="264" fill-opacity="0.85">cloudy 0.36</text><text x="470" y="284" fill-opacity="0.85">rain 0.30</text></g>
+<g fill="currentColor" font-size="12" fill-opacity="0.75"><text x="24" y="308">Each state also keeps some probability on itself; only the between-state moves are drawn.</text></g>
+</svg>

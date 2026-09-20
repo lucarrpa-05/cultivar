@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" role="img" aria-label="A number line from 0 to 100 with the level-k predictions marked and the observed choices piling up at 33 and 22" font-family="system-ui, sans-serif">
+  <g fill="currentColor" font-size="13">
+    <text x="70" y="36">Each step of "what will they do" multiplies by two thirds.</text>
+  </g>
+  <g>
+<rect x="65.0" y="232" width="10" height="18" fill="currentColor" fill-opacity="0.35"/>
+<rect x="124.2" y="204" width="10" height="46" fill="currentColor" fill-opacity="0.45"/>
+<rect x="153.8" y="154" width="10" height="96" fill="currentColor" fill-opacity="0.8"/>
+<rect x="198.2" y="140" width="10" height="110" fill="currentColor" fill-opacity="0.8"/>
+<rect x="265.0" y="198" width="10" height="52" fill="currentColor" fill-opacity="0.45"/>
+<rect x="329.0" y="230" width="10" height="20" fill="currentColor" fill-opacity="0.3"/>
+<rect x="385.0" y="238" width="10" height="12" fill="currentColor" fill-opacity="0.25"/>
+  </g>
+  <path d="M60 250 H480" stroke="currentColor" stroke-width="2"/>
+  <g>
+<path d="M70.0 250 V258" stroke="currentColor" stroke-width="1.4"/><text x="70.0" y="274" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.8">0</text>
+<path d="M129.2 250 V258" stroke="currentColor" stroke-width="1.4"/><text x="129.2" y="274" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.8">14.8</text>
+<path d="M158.8 250 V258" stroke="currentColor" stroke-width="1.4"/><text x="158.8" y="274" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.8">22.2</text>
+<path d="M203.2 250 V258" stroke="currentColor" stroke-width="1.4"/><text x="203.2" y="274" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.8">33.3</text>
+<path d="M270.0 250 V258" stroke="currentColor" stroke-width="1.4"/><text x="270.0" y="274" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.8">50</text>
+<path d="M470.0 250 V258" stroke="currentColor" stroke-width="1.4"/><text x="470.0" y="274" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.8">100</text>
+  </g>
+  <g fill="currentColor" font-size="12" fill-opacity="0.85">
+    <text x="70.0" y="224" text-anchor="middle">Nash</text>
+    <text x="129.2" y="196" text-anchor="middle">level 3</text>
+    <text x="158.8" y="146" text-anchor="middle">level 2</text>
+    <text x="203.2" y="132" text-anchor="middle">level 1</text>
+    <text x="270.0" y="190" text-anchor="middle">level 0</text>
+  </g>
+  <g fill="currentColor" font-size="12" fill-opacity="0.75">
+    <text x="70" y="302">Bar height is roughly how often each number is chosen. The equilibrium is nearly empty.</text>
+  </g>
+</svg>

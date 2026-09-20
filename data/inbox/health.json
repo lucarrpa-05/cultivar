@@ -1,0 +1,520 @@
+{
+  "updatedAt": "2026-09-20T04:04:37.438Z",
+  "flagged": [
+    "daily-nous"
+  ],
+  "sources": {
+    "nature-news": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 10,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "phys-org": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 8,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-stat-ap-football": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 8,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "quanta": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 5,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "aps-physics": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "ars-science": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "nature-human-behaviour": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 8,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "openai-news": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 8,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "anthropic-news": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 8,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "elife": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "hf-blog": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "import-ai": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "google-research": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "interconnects": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "deepmind-blog": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 8,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "simon-willison": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "physics-world": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "epoch-ai": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "terry-tao": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "hn-ai": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "n-category-cafe": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "ams-feature": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "the-gradient": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "alignment-forum": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "nber": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 10,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "soccermatics": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "behavioral-scientist": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 5,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-cs-lg": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 12,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "conversable-economist": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "the-analyst": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "daily-nous": {
+      "consecutiveFailures": 6,
+      "lastOk": null,
+      "lastKept": 0,
+      "lastError": "not a rss feed (got an HTML page)",
+      "lastErrorAt": "2026-09-20T04:04:37.438Z",
+      "flagged": true
+    },
+    "aeon": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "marginal-revolution": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-q-generative-agents": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 10,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "sep-new": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 5,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "3-quarks": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 5,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "wiki-onthisday-en": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "history-today": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 5,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "public-domain-review": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "atlas-obscura": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 5,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "futility-closet": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 5,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "nautilus": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "damn-interesting": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 3,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "kottke": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "elpais-ciencia": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 5,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "bbc-mundo": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-cs-cl": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 10,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "la-silla-vacia": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "wiki-onthisday-es": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "xataka": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 3,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-q-generalization": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 10,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "razon-publica": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 4,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "sinc": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "wiki-featured-en": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 3,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-stat-ml": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 10,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-q-scaling": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 8,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-q-elections": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 8,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-cs-ma": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 8,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-cs-si": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 8,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-physics-soc": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 8,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-econ-em": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-econ-gn": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-math-ho": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 6,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    },
+    "arxiv-q-bio-pe": {
+      "consecutiveFailures": 0,
+      "lastOk": "2026-09-20T04:04:37.438Z",
+      "lastKept": 5,
+      "lastError": null,
+      "lastErrorAt": null,
+      "flagged": false
+    }
+  }
+}

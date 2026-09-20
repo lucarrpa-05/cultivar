@@ -1,0 +1,98 @@
+{
+ "exhaustive": {
+  "nbHits": false,
+  "typo": false
+ },
+ "exhaustiveNbHits": false,
+ "exhaustiveTypo": false,
+ "hits": [
+  {
+   "title": "I think you should almost never use AI to write",
+   "url": "https://erichgrunewald.substack.com/p/why-you-should-almost-never-use-ai",
+   "points": 262,
+   "num_comments": 132,
+   "created_at": "2026-09-19T16:35:24Z",
+   "objectID": "49767937",
+   "author": "erwald",
+   "_tags": [
+    "story",
+    "author_erwald",
+    "story_49767937",
+    "front_page"
+   ]
+  },
+  {
+   "title": "How OpenAI Used Its Own LLMs to Design Its Jalapeño Chip",
+   "url": "https://spectrum.ieee.org/llms-for-chip-design",
+   "points": 199,
+   "num_comments": 135,
+   "created_at": "2026-09-18T23:04:17Z",
+   "objectID": "49761432",
+   "author": "maxall4",
+   "_tags": [
+    "story",
+    "author_maxall4",
+    "story_49761432"
+   ]
+  },
+  {
+   "title": "Cache-to-Cache: Direct Semantic Communication Between LLMs (2025)",
+   "url": "https://arxiv.org/abs/2510.03215",
+   "points": 102,
+   "num_comments": 18,
+   "created_at": "2026-09-18T18:55:35Z",
+   "objectID": "49758615",
+   "author": "rochansinha",
+   "_tags": [
+    "story",
+    "author_rochansinha",
+    "story_49758615"
+   ]
+  },
+  {
+   "title": "A low-scoring story that must be dropped",
+   "url": "https://example.com/low",
+   "points": 12,
+   "num_comments": 3,
+   "created_at": "2026-09-10T10:00:00.000Z",
+   "objectID": "111",
+   "author": "nobody",
+   "_tags": [
+    "story"
+   ]
+  },
+  {
+   "title": "An Ask HN with no url",
+   "url": null,
+   "story_url": null,
+   "points": 240,
+   "num_comments": 90,
+   "created_at": "2026-09-11T10:00:00.000Z",
+   "objectID": "222",
+   "author": "someone",
+   "_tags": [
+    "story",
+    "ask_hn"
+   ]
+  }
+ ],
+ "hitsPerPage": 3,
+ "nbHits": 2255,
+ "nbPages": 334,
+ "page": 0,
+ "params": "query=LLM&tags=story&numericFilters=points%3E100&hitsPerPage=3&advancedSyntax=true&analyticsTags=backend",
+ "processingTimeMS": 27,
+ "processingTimingsMS": {
+  "_request": {
+   "roundTrip": 15
+  },
+  "fetch": {
+   "query": 1,
+   "scanning": 24,
+   "total": 26
+  },
+  "total": 27
+ },
+ "query": "LLM",
+ "serverTimeMS": 27
+}

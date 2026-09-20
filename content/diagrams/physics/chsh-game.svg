@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 400" role="img" aria-label="The CHSH game: a referee sends one random bit to each of two separated players, who answer without communicating" font-family="system-ui, sans-serif">
+  <g fill="none" stroke="currentColor" stroke-width="1.8">
+    <rect x="262" y="24" width="136" height="60" rx="10"/>
+    <rect x="30" y="172" width="156" height="66" rx="10"/>
+    <rect x="474" y="172" width="156" height="66" rx="10"/>
+  </g>
+  <g fill="none" stroke="currentColor" stroke-width="1.6">
+    <path d="M278.0 86.0 L152.0 172.0"/>
+    <path d="M176.0 172.0 L300.0 88.0"/>
+    <path d="M382.0 86.0 L508.0 172.0"/>
+    <path d="M484.0 172.0 L360.0 88.0"/>
+  </g>
+  <g fill="currentColor" stroke="none">
+    <path d="M152.0 172.0 L162.7 169.3 L158.4 163.1 Z"/>
+    <path d="M300.0 88.0 L289.3 90.7 L293.6 96.9 Z"/>
+    <path d="M508.0 172.0 L501.6 163.1 L497.3 169.3 Z"/>
+    <path d="M360.0 88.0 L366.4 96.9 L370.7 90.7 Z"/>
+  </g>
+  <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="7 6" stroke-opacity="0.55">
+    <path d="M330 150 V330"/>
+  </g>
+  <g fill="currentColor" font-size="15">
+    <text x="330" y="50" text-anchor="middle">referee</text>
+    <text x="330" y="72" text-anchor="middle">flips two coins</text>
+    <text x="108" y="200" text-anchor="middle">Alice</text>
+    <text x="108" y="222" text-anchor="middle">gets x, answers a</text>
+    <text x="552" y="200" text-anchor="middle">Bob</text>
+    <text x="552" y="222" text-anchor="middle">gets y, answers b</text>
+    <text x="330" y="288" text-anchor="middle">they win when a XOR b equals x AND y</text>
+  </g>
+  <g fill="currentColor" font-size="13" fill-opacity="0.8">
+    <text x="196" y="118">x</text>
+    <text x="246" y="140">a</text>
+    <text x="452" y="118">y</text>
+    <text x="404" y="140">b</text>
+    <text x="330" y="344" text-anchor="middle">no communication once the coins are flipped</text>
+  </g>
+  <g fill="currentColor" font-size="14">
+    <text x="30" y="380">best classical strategy: 75% of rounds</text>
+    <text x="398" y="380">sharing entangled pairs: 85.4%</text>
+  </g>
+</svg>

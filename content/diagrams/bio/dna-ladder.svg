@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" role="img" aria-label="DNA drawn flat as a ladder: two antiparallel sugar-phosphate backbones joined by base pairs, A always with T and G always with C" font-family="system-ui, sans-serif">
+  <defs>
+    <marker id="tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+
+  <g stroke="currentColor" fill="none">
+    <!-- the two backbones -->
+    <g stroke-width="3">
+      <path d="M170 56 V286"/>
+      <path d="M350 56 V286"/>
+    </g>
+    <!-- direction arrows, antiparallel -->
+    <g stroke-width="1.8" stroke-opacity="0.75">
+      <path d="M140 66 V276" marker-end="url(#tip)"/>
+      <path d="M380 276 V66" marker-end="url(#tip)"/>
+    </g>
+    <!-- rungs: double bar for A-T, triple for G-C -->
+    <g stroke-width="1.9" stroke-opacity="0.8">
+      <path d="M200 74 H320"/><path d="M200 80 H320"/>
+      <path d="M200 116 H320"/><path d="M200 122 H320"/>
+      <path d="M200 155 H320"/><path d="M200 161 H320"/><path d="M200 167 H320"/>
+      <path d="M200 197 H320"/><path d="M200 203 H320"/><path d="M200 209 H320"/>
+      <path d="M200 242 H320"/><path d="M200 248 H320"/>
+    </g>
+  </g>
+
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="186" y="83">A</text><text x="334" y="83">T</text>
+    <text x="186" y="125">T</text><text x="334" y="125">A</text>
+    <text x="186" y="167">G</text><text x="334" y="167">C</text>
+    <text x="186" y="209">C</text><text x="334" y="209">G</text>
+    <text x="186" y="251">A</text><text x="334" y="251">T</text>
+  </g>
+
+  <g fill="currentColor" font-size="13" fill-opacity="0.8">
+    <text x="112" y="50">5&#8242;</text>
+    <text x="112" y="300">3&#8242;</text>
+    <text x="374" y="50">3&#8242;</text>
+    <text x="374" y="300">5&#8242;</text>
+    <text x="400" y="122">two bonds hold A to T</text>
+    <text x="400" y="185">three hold G to C</text>
+    <text x="16" y="170">the backbone is</text>
+    <text x="16" y="188">the same unit,</text>
+    <text x="16" y="206">over and over</text>
+  </g>
+
+  <g fill="currentColor" font-size="14">
+    <text x="260" y="28" text-anchor="middle">Know one side and you know the other</text>
+    <text x="260" y="322" text-anchor="middle">(drawn flat; in the cell the whole ladder is twisted)</text>
+  </g>
+</svg>

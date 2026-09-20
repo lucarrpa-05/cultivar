@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 340" role="img" aria-label="A rooted tree of life with three domains: Bacteria branching first, then Archaea and Eukarya as sisters" font-family="system-ui, sans-serif">
+  <g stroke="currentColor" fill="none" stroke-width="2.4" stroke-linecap="round">
+    <!-- root -->
+    <path d="M40 200 H110"/>
+    <!-- first split: bacteria vs the rest -->
+    <path d="M110 200 V96"/>
+    <path d="M110 200 V286"/>
+    <!-- bacteria branch (down) -->
+    <path d="M110 286 H236"/>
+    <path d="M236 286 V252"/><path d="M236 286 V318"/>
+    <path d="M236 252 H340"/><path d="M236 318 H340"/>
+    <path d="M340 252 V236"/><path d="M340 252 V268"/>
+    <path d="M340 236 H420"/><path d="M340 268 H420"/>
+    <!-- the archaea + eukarya clade (up) -->
+    <path d="M110 96 H200"/>
+    <path d="M200 96 V48"/><path d="M200 96 V150"/>
+    <path d="M200 48 H360"/>
+    <path d="M360 48 V30"/><path d="M360 48 V66"/>
+    <path d="M360 30 H420"/><path d="M360 66 H420"/>
+    <path d="M200 150 H330"/>
+    <path d="M330 150 V124"/><path d="M330 150 V176"/>
+    <path d="M330 124 H420"/><path d="M330 176 H420"/>
+  </g>
+
+  <g fill="currentColor" font-size="14">
+    <text x="430" y="35">animals, plants, fungi</text>
+    <text x="430" y="71">amoebae, algae</text>
+    <text x="430" y="129">methane-makers</text>
+    <text x="430" y="181">heat- and salt-lovers</text>
+    <text x="430" y="241">E. coli, cyanobacteria</text>
+    <text x="430" y="323">all the other bacterial groups</text>
+  </g>
+
+  <g fill="currentColor" font-size="15" font-weight="600">
+    <text x="204" y="24">Eukarya</text>
+    <text x="204" y="196">Archaea</text>
+    <text x="118" y="340">Bacteria</text>
+  </g>
+
+  <g fill="currentColor" font-size="13" fill-opacity="0.75">
+    <text x="34" y="186">last common ancestor</text>
+    <text x="126" y="226">one molecule, the small ribosomal RNA, drew this</text>
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" role="img" aria-label="Difference-in-differences: two groups, one policy, and the counterfactual line" font-family="system-ui, sans-serif">
+  <g stroke="currentColor" fill="none">
+    <!-- axes -->
+    <path d="M70 280 H590" stroke-width="2"/>
+    <path d="M70 40 V280" stroke-width="2"/>
+    <!-- policy date -->
+    <path d="M330 45 V285" stroke-width="1.5" stroke-dasharray="5 5" stroke-opacity="0.6"/>
+    <!-- control group: falls steadily -->
+    <path d="M110 150 L330 190 L550 230" stroke-width="3"/>
+    <!-- treated group observed: same pre-trend, flat after -->
+    <path d="M110 100 L330 140" stroke-width="3"/>
+    <path d="M330 140 L550 135" stroke-width="3"/>
+    <!-- treated counterfactual: parallel to control -->
+    <path d="M330 140 L550 180" stroke-width="2" stroke-dasharray="6 5" stroke-opacity="0.7"/>
+    <!-- the effect bracket -->
+    <path d="M566 135 V180" stroke-width="2"/>
+    <path d="M561 135 H571" stroke-width="2"/>
+    <path d="M561 180 H571" stroke-width="2"/>
+  </g>
+  <g fill="currentColor" font-size="14">
+    <text x="118" y="88">New Jersey (raises the minimum wage)</text>
+    <text x="118" y="168">Pennsylvania (does not)</text>
+    <text x="356" y="205" fill-opacity="0.8">what New Jersey would have done</text>
+    <text x="356" y="222" fill-opacity="0.8">if trends had stayed parallel</text>
+    <text x="500" y="120">estimate</text>
+    <text x="264" y="34">policy</text>
+  </g>
+  <g fill="currentColor" font-size="13" fill-opacity="0.75">
+    <text x="70" y="302">before</text>
+    <text x="520" y="302">after</text>
+    <text x="24" y="60">jobs</text>
+  </g>
+</svg>

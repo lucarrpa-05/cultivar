@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" role="img" aria-label="Training accuracy reaches 100 percent early while validation accuracy stays at chance and jumps much later" font-family="system-ui, sans-serif">
+  <g stroke="currentColor" fill="none" stroke-width="1.6" stroke-opacity="0.7">
+    <path d="M80 270 H605"/>
+    <path d="M80 40 V270"/>
+  </g>
+
+  <!-- training accuracy: up early, flat at 100% -->
+  <path d="M90 258 C120 240 140 90 175 62 L605 58" fill="none" stroke="currentColor" stroke-width="2.4"/>
+  <!-- validation accuracy: chance for a long time, then jumps -->
+  <path d="M90 262 C160 258 300 256 400 252 C440 250 455 200 478 110 C492 70 520 60 605 58" fill="none" stroke="currentColor" stroke-width="2.4" stroke-dasharray="8 4" stroke-opacity="0.85"/>
+
+  <g stroke="currentColor" fill="none" stroke-width="1.3" stroke-opacity="0.45" stroke-dasharray="4 5">
+    <path d="M175 45 V270"/>
+    <path d="M478 45 V270"/>
+  </g>
+
+  <g fill="currentColor" font-size="13">
+    <text x="196" y="82">training accuracy: 100%</text>
+    <text x="196" y="246">validation accuracy: chance</text>
+    <text x="360" y="100">then, suddenly, it generalises</text>
+  </g>
+  <g fill="currentColor" font-size="12" fill-opacity="0.8">
+    <text x="120" y="292">memorised here</text>
+    <text x="410" y="292">grokked here</text>
+  </g>
+  <g fill="currentColor" font-size="13">
+    <text x="80" y="30">accuracy</text>
+    <text x="400" y="318">optimisation steps (log scale)</text>
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 310" role="img" aria-label="Three points can be split in every way by a line; four points cannot" font-family="system-ui, sans-serif">
+  <g fill="currentColor" font-size="14">
+    <text x="30" y="30">Three points: every one of the 8 colourings has a line.</text>
+    <text x="350" y="30">Four points: this one has none.</text>
+  </g>
+
+  <!-- left: three points, three separating lines -->
+  <g stroke="currentColor" fill="none" stroke-width="1.5" stroke-opacity="0.55" stroke-dasharray="6 4">
+    <path d="M60 95 L300 155"/>
+    <path d="M118 250 L240 60"/>
+    <path d="M70 205 L295 100"/>
+  </g>
+  <g stroke="currentColor" stroke-width="2">
+    <circle cx="110" cy="130" r="9" fill="currentColor"/>
+    <circle cx="215" cy="105" r="9" fill="none"/>
+    <circle cx="165" cy="215" r="9" fill="none"/>
+  </g>
+  <g fill="currentColor" font-size="13" fill-opacity="0.8">
+    <text x="45" y="285">one line per colouring — the class shatters them</text>
+  </g>
+
+  <!-- right: four points in a square, diagonal colouring -->
+  <g stroke="currentColor" fill="none" stroke-width="1.5" stroke-opacity="0.35" stroke-dasharray="6 4">
+    <path d="M370 180 L560 180"/>
+    <path d="M465 85 L465 255"/>
+    <path d="M375 100 L560 250"/>
+  </g>
+  <g stroke="currentColor" stroke-width="2">
+    <circle cx="410" cy="125" r="9" fill="currentColor"/>
+    <circle cx="520" cy="125" r="9" fill="none"/>
+    <circle cx="410" cy="235" r="9" fill="none"/>
+    <circle cx="520" cy="235" r="9" fill="currentColor"/>
+  </g>
+  <g fill="currentColor" font-size="13" fill-opacity="0.8">
+    <text x="352" y="285">filled and hollow alternate — no straight cut separates them</text>
+  </g>
+</svg>

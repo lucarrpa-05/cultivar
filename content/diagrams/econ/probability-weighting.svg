@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 340" role="img" aria-label="The probability weighting function: an inverse-S curve that lies above the diagonal for small probabilities and below it for large ones" font-family="system-ui, sans-serif">
+  <g stroke="currentColor" fill="none">
+    <path d="M90 290 H310 M90 290 V70" stroke-width="1.4"/>
+    <path d="M90 290 L310 70" stroke-width="1.2" stroke-opacity="0.45" stroke-dasharray="5 5"/>
+    <path d="M90.0 290.0 L95.5 269.9 L101.0 261.0 L106.5 254.5 L112.0 249.0 L117.5 244.3 L123.0 240.1 L128.5 236.2 L134.0 232.6 L139.5 229.3 L145.0 226.0 L150.5 222.9 L156.0 220.0 L161.5 217.0 L167.0 214.2 L172.5 211.4 L178.0 208.6 L183.5 205.8 L189.0 203.0 L194.5 200.3 L200.0 197.5 L205.5 194.6 L211.0 191.7 L216.5 188.8 L222.0 185.8 L227.5 182.6 L233.0 179.4 L238.5 176.1 L244.0 172.6 L249.5 168.9 L255.0 165.0 L260.5 160.8 L266.0 156.4 L271.5 151.5 L277.0 146.2 L282.5 140.2 L288.0 133.4 L293.5 125.4 L299.0 115.5 L304.5 101.9 L310.0 70.0" stroke-width="2.6"/>
+    <path d="M92.2 277.8 L92.2 290" stroke-width="2" stroke-opacity="0.6"/>
+  </g>
+  <g fill="currentColor" font-size="13">
+    <text x="322" y="96">weight w(p)</text>
+    <text x="322" y="114" font-size="12" fill-opacity="0.75">the dashed line is w(p) = p</text>
+    <text x="322" y="176">a 99% chance is treated as 91%</text>
+    <text x="322" y="250">a 1% chance is treated as 5.5%</text>
+  </g>
+  <g fill="currentColor" font-size="12" fill-opacity="0.75">
+    <text x="86" y="308">0</text>
+    <text x="304" y="308">1</text>
+    <text x="150" y="308">stated probability p</text>
+    <text x="90" y="330">The curve crosses the diagonal near p = 0.34 and is steepest at both ends.</text>
+  </g>
+</svg>

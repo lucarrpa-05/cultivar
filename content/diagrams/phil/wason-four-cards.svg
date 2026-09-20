@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 210" role="img" font-family="system-ui, sans-serif" font-size="13">
+  <text x="200" y="22" text-anchor="middle" fill="currentColor" font-size="13">If a card shows an even number, its other face is blue.</text>
+
+  <g stroke="currentColor" stroke-width="1.8">
+    <rect x="24" y="46" width="72" height="104" rx="8" fill="none"/>
+    <rect x="120" y="46" width="72" height="104" rx="8" fill="none"/>
+    <rect x="216" y="46" width="72" height="104" rx="8" fill="currentColor" fill-opacity="0.12"/>
+    <rect x="312" y="46" width="72" height="104" rx="8" fill="currentColor" fill-opacity="0.3"/>
+  </g>
+
+  <g fill="currentColor" text-anchor="middle" font-size="30">
+    <text x="60" y="110">3</text>
+    <text x="156" y="110">8</text>
+  </g>
+  <g fill="currentColor" text-anchor="middle" font-size="14">
+    <text x="252" y="104">blue</text>
+    <text x="348" y="104">red</text>
+    <text x="252" y="122" font-size="11" fill-opacity="0.75">side up</text>
+    <text x="348" y="122" font-size="11" fill-opacity="0.75">side up</text>
+  </g>
+
+  <g fill="currentColor" text-anchor="middle" font-size="11" fill-opacity="0.85">
+    <text x="60" y="172">rule says</text>
+    <text x="60" y="186">nothing</text>
+    <text x="156" y="172">could hide</text>
+    <text x="156" y="186">a non-blue back</text>
+    <text x="252" y="172">cannot refute</text>
+    <text x="252" y="186">anything</text>
+    <text x="348" y="172">could hide</text>
+    <text x="348" y="186">an even number</text>
+  </g>
+</svg>

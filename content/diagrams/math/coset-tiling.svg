@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" role="img" aria-label="A group of twelve elements cut into four blocks of three by a subgroup and its cosets" font-family="system-ui, sans-serif">
+  <g fill="currentColor" font-size="14">
+    <text x="40" y="38">Twelve moves. One subgroup of three. Nothing overlaps, nothing is left over.</text>
+  </g>
+
+  <g stroke="currentColor" fill="none">
+    <rect x="40" y="70" width="128" height="150" rx="10" stroke-width="3"/>
+    <rect x="188" y="70" width="128" height="150" rx="10" stroke-width="1.4" stroke-opacity="0.6"/>
+    <rect x="336" y="70" width="128" height="150" rx="10" stroke-width="1.4" stroke-opacity="0.6"/>
+    <rect x="484" y="70" width="128" height="150" rx="10" stroke-width="1.4" stroke-opacity="0.6"/>
+  </g>
+
+  <g fill="currentColor">
+    <g fill-opacity="0.85">
+      <circle cx="104" cy="110" r="9"/><circle cx="104" cy="145" r="9"/><circle cx="104" cy="180" r="9"/>
+    </g>
+    <g fill-opacity="0.35">
+      <circle cx="252" cy="110" r="9"/><circle cx="252" cy="145" r="9"/><circle cx="252" cy="180" r="9"/>
+      <circle cx="400" cy="110" r="9"/><circle cx="400" cy="145" r="9"/><circle cx="400" cy="180" r="9"/>
+      <circle cx="548" cy="110" r="9"/><circle cx="548" cy="145" r="9"/><circle cx="548" cy="180" r="9"/>
+    </g>
+  </g>
+
+  <g fill="currentColor" font-size="14" text-anchor="middle">
+    <text x="104" y="245">the subgroup</text>
+    <text x="252" y="245">one shift of it</text>
+    <text x="400" y="245">another</text>
+    <text x="548" y="245">and the last</text>
+  </g>
+  <g fill="currentColor" font-size="13" fill-opacity="0.75" text-anchor="middle">
+    <text x="320" y="282">4 blocks x 3 elements = 12, so the size of the subgroup divides the size of the group.</text>
+  </g>
+</svg>

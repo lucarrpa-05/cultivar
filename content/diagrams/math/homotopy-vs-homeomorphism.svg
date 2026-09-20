@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" role="img" aria-label="An annulus squashing onto a circle and a disk squashing onto a point" font-family="system-ui, sans-serif">
+  <g stroke="currentColor" stroke-width="2.2" fill="none">
+    <circle cx="110" cy="120" r="58"/>
+    <circle cx="110" cy="120" r="26"/>
+    <circle cx="300" cy="120" r="44" stroke-width="3.4"/>
+    <circle cx="110" cy="250" r="50"/>
+  </g>
+  <g fill="currentColor" fill-opacity="0.14">
+    <path d="M110 62 a58 58 0 1 0 0.1 0 Z M110 94 a26 26 0 1 1 -0.1 0 Z" fill-rule="evenodd"/>
+    <circle cx="110" cy="250" r="50"/>
+  </g>
+  <g fill="currentColor">
+    <circle cx="300" cy="250" r="6"/>
+  </g>
+
+  <g stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M190 120 H252"/>
+    <path d="M242 112 L252 120 L242 128"/>
+    <path d="M190 250 H252"/>
+    <path d="M242 242 L252 250 L242 258"/>
+  </g>
+
+  <g fill="currentColor" font-size="14">
+    <text x="60" y="198">an annulus</text>
+    <text x="264" y="198">a circle</text>
+    <text x="78" y="322">a disk</text>
+    <text x="272" y="322">a point</text>
+    <text x="380" y="112">Squash the width away and the</text>
+    <text x="380" y="132">annulus becomes a circle.</text>
+    <text x="380" y="242">Squash everything inward and</text>
+    <text x="380" y="262">the disk becomes a point.</text>
+  </g>
+  <g fill="currentColor" font-size="14">
+    <text x="40" y="34">Homotopy equivalence lets you squash. Homeomorphism does not.</text>
+  </g>
+</svg>

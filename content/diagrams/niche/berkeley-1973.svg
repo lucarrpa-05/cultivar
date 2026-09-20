@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" role="img" aria-label="Bar chart of Berkeley 1973 admission rates for men and women, in aggregate and by department">
+  <g fill="none" stroke="currentColor" stroke-opacity="0.35" stroke-width="1">
+    <line x1="36" y1="250" x2="404" y2="250"/>
+    <line x1="36" y1="60" x2="36" y2="250"/>
+    <line x1="106" y1="56" x2="106" y2="258" stroke-dasharray="4 3"/>
+  </g>
+  <g fill="currentColor" fill-opacity="0.22" stroke="currentColor" stroke-width="1.2">
+    <rect x="46" y="166" width="12" height="84"/>
+    <rect x="120" y="132" width="12" height="118"/>
+    <rect x="165" y="130" width="12" height="120"/>
+    <rect x="210" y="180" width="12" height="70"/>
+    <rect x="255" y="187" width="12" height="63"/>
+    <rect x="300" y="197" width="12" height="53"/>
+    <rect x="345" y="239" width="12" height="11"/>
+  </g>
+  <g fill="currentColor" fill-opacity="0.72" stroke="currentColor" stroke-width="1.2">
+    <rect x="62" y="184" width="12" height="66"/>
+    <rect x="136" y="94" width="12" height="156"/>
+    <rect x="181" y="121" width="12" height="129"/>
+    <rect x="226" y="185" width="12" height="65"/>
+    <rect x="271" y="184" width="12" height="66"/>
+    <rect x="316" y="204" width="12" height="46"/>
+    <rect x="361" y="237" width="12" height="13"/>
+  </g>
+  <g font-family="system-ui, sans-serif" font-size="12" fill="currentColor">
+    <text x="40" y="265">everyone</text>
+    <text x="123" y="265">A</text>
+    <text x="168" y="265">B</text>
+    <text x="213" y="265">C</text>
+    <text x="258" y="265">D</text>
+    <text x="303" y="265">E</text>
+    <text x="348" y="265">F</text>
+    <text x="38" y="160">44%</text>
+    <text x="56" y="178">35%</text>
+  </g>
+  <g font-family="system-ui, sans-serif" font-size="11" fill="currentColor" fill-opacity="0.8">
+    <text x="36" y="30">Admission rate, Berkeley graduate departments, 1973</text>
+    <text x="36" y="46">light bars: men. solid bars: women</text>
+    <text x="112" y="288">A admits 82% of its 108 women; F admits 7% of its 341</text>
+  </g>
+  <text x="8" y="64" font-family="system-ui, sans-serif" font-size="11" fill="currentColor" fill-opacity="0.7">100%</text>
+</svg>

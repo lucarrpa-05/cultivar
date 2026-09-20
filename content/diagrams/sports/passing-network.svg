@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" role="img" aria-label="A football passing network: eleven vertices in formation joined by weighted edges, with the holding midfielder ringed">
+  <g fill="none" stroke="currentColor" stroke-opacity="0.25" stroke-width="1.5">
+    <rect x="12" y="20" width="396" height="260" rx="4"/>
+    <line x1="210" y1="20" x2="210" y2="280"/>
+  </g>
+  <g stroke="currentColor" stroke-opacity="0.55" stroke-linecap="round" fill="none">
+    <line x1="40" y1="150" x2="95" y2="95" stroke-width="3"/>
+    <line x1="40" y1="150" x2="95" y2="205" stroke-width="3"/>
+    <line x1="95" y1="95" x2="95" y2="205" stroke-width="2"/>
+    <line x1="95" y1="95" x2="100" y2="45" stroke-width="4"/>
+    <line x1="95" y1="205" x2="100" y2="255" stroke-width="4"/>
+    <line x1="95" y1="95" x2="180" y2="150" stroke-width="7"/>
+    <line x1="95" y1="205" x2="180" y2="150" stroke-width="7"/>
+    <line x1="180" y1="150" x2="190" y2="85" stroke-width="6"/>
+    <line x1="180" y1="150" x2="190" y2="215" stroke-width="6"/>
+    <line x1="190" y1="85" x2="285" y2="55" stroke-width="4"/>
+    <line x1="190" y1="215" x2="285" y2="245" stroke-width="4"/>
+    <line x1="190" y1="85" x2="300" y2="150" stroke-width="3"/>
+    <line x1="190" y1="215" x2="300" y2="150" stroke-width="3"/>
+    <line x1="100" y1="45" x2="285" y2="55" stroke-width="2"/>
+    <line x1="100" y1="255" x2="285" y2="245" stroke-width="2"/>
+    <line x1="285" y1="55" x2="300" y2="150" stroke-width="2"/>
+    <line x1="285" y1="245" x2="300" y2="150" stroke-width="2"/>
+  </g>
+  <g fill="currentColor" fill-opacity="0.9" stroke="none">
+    <circle cx="40" cy="150" r="8"/>
+    <circle cx="100" cy="45" r="8"/>
+    <circle cx="95" cy="95" r="8"/>
+    <circle cx="95" cy="205" r="8"/>
+    <circle cx="100" cy="255" r="8"/>
+    <circle cx="190" cy="85" r="8"/>
+    <circle cx="190" cy="215" r="8"/>
+    <circle cx="285" cy="55" r="8"/>
+    <circle cx="285" cy="245" r="8"/>
+    <circle cx="300" cy="150" r="8"/>
+    <circle cx="180" cy="150" r="11"/>
+  </g>
+  <circle cx="180" cy="150" r="18" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/>
+  <g font-family="system-ui, sans-serif" font-size="12" fill="currentColor">
+    <text x="204" y="146">highest betweenness:</text>
+    <text x="204" y="161">press here and the graph falls apart</text>
+    <text x="24" y="176" font-size="11" fill-opacity="0.75">keeper</text>
+    <text x="316" y="154" font-size="11" fill-opacity="0.75">striker</text>
+  </g>
+  <g font-family="system-ui, sans-serif" font-size="11" fill="currentColor" fill-opacity="0.7">
+    <text x="16" y="292">edge thickness = passes played along that lane</text>
+  </g>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100">
+  <script>alert(1)</script>
+  <image href="https://example.com/photo.png" x="0" y="0" width="50" height="50"/>
+  <rect x="1" y="1" width="10" height="10" fill="#ff0000" onclick="boom()"/>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 190" font-family="system-ui, sans-serif">
+  <g fill="currentColor" font-size="14" font-weight="600">
+    <text x="12" y="26">Frente Nacional: alternación pactada, 1958-1974</text>
+  </g>
+  <g stroke="currentColor" stroke-width="1.2">
+    <rect x="12" y="46" width="106" height="44" fill="currentColor" fill-opacity="0.18"/>
+    <rect x="124" y="46" width="106" height="44" fill="currentColor" fill-opacity="0.05"/>
+    <rect x="236" y="46" width="106" height="44" fill="currentColor" fill-opacity="0.18"/>
+    <rect x="348" y="46" width="100" height="44" fill="currentColor" fill-opacity="0.05"/>
+  </g>
+  <g fill="currentColor" font-size="11" text-anchor="middle">
+    <text x="65" y="66">Lleras Camargo</text>
+    <text x="65" y="82" font-weight="600">Liberal</text>
+    <text x="177" y="66">León Valencia</text>
+    <text x="177" y="82" font-weight="600">Conservador</text>
+    <text x="289" y="66">Lleras Restrepo</text>
+    <text x="289" y="82" font-weight="600">Liberal</text>
+    <text x="398" y="66">Pastrana B.</text>
+    <text x="398" y="82" font-weight="600">Conservador</text>
+  </g>
+  <g fill="currentColor" font-size="11" text-anchor="middle" fill-opacity="0.85">
+    <text x="65" y="106">1958-1962</text>
+    <text x="177" y="106">1962-1966</text>
+    <text x="289" y="106">1966-1970</text>
+    <text x="398" y="106">1970-1974</text>
+  </g>
+  <line x1="12" y1="126" x2="448" y2="126" stroke="currentColor" stroke-width="1.4"/>
+  <g fill="currentColor" font-size="12">
+    <text x="12" y="150">Paridad: la mitad de ministerios, gobernaciones, alcaldías</text>
+    <text x="12" y="168">y curules para cada partido. Los demás, por fuera.</text>
+  </g>
+</svg>

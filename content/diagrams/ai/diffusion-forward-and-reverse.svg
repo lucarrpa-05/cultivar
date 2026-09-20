@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" role="img" aria-label="A shape dissolving into noise going right, and a learned process rebuilding it going left" font-family="system-ui, sans-serif">
+  <g fill="currentColor" font-size="14">
+    <text x="24" y="26">One direction is free. The other is the entire model.</text>
+  </g>
+
+  <!-- four frames -->
+  <g stroke="currentColor" fill="none" stroke-width="1.6" stroke-opacity="0.8">
+    <rect x="40" y="52" width="104" height="104" rx="6"/>
+    <rect x="196" y="52" width="104" height="104" rx="6"/>
+    <rect x="352" y="52" width="104" height="104" rx="6"/>
+    <rect x="508" y="52" width="104" height="104" rx="6"/>
+  </g>
+
+  <!-- frame 1: a clean shape -->
+  <g stroke="currentColor" fill="none" stroke-width="2.6">
+    <circle cx="92" cy="104" r="30"/>
+    <path d="M92 74 V 134"/>
+  </g>
+
+  <!-- frame 2: shape with some noise -->
+  <g stroke="currentColor" fill="none" stroke-width="2.2" stroke-opacity="0.75">
+    <circle cx="248" cy="104" r="30" stroke-dasharray="7 4"/>
+    <path d="M248 76 V 132" stroke-dasharray="6 5"/>
+  </g>
+  <g fill="currentColor" fill-opacity="0.5">
+    <circle cx="214" cy="80" r="2"/><circle cx="286" cy="128" r="2"/><circle cx="230" cy="136" r="2"/>
+    <circle cx="276" cy="72" r="2"/><circle cx="262" cy="118" r="2"/><circle cx="222" cy="112" r="2"/>
+  </g>
+
+  <!-- frame 3: barely a shape -->
+  <g stroke="currentColor" fill="none" stroke-width="1.8" stroke-opacity="0.35">
+    <circle cx="404" cy="104" r="30" stroke-dasharray="3 9"/>
+  </g>
+  <g fill="currentColor" fill-opacity="0.6">
+    <circle cx="370" cy="76" r="2"/><circle cx="392" cy="90" r="2"/><circle cx="430" cy="70" r="2"/>
+    <circle cx="376" cy="126" r="2"/><circle cx="418" cy="132" r="2"/><circle cx="440" cy="110" r="2"/>
+    <circle cx="398" cy="140" r="2"/><circle cx="362" cy="104" r="2"/><circle cx="412" cy="104" r="2"/>
+    <circle cx="386" cy="62" r="2"/><circle cx="434" cy="92" r="2"/><circle cx="366" cy="92" r="2"/>
+  </g>
+
+  <!-- frame 4: pure noise -->
+  <g fill="currentColor" fill-opacity="0.65">
+    <circle cx="524" cy="66" r="2"/><circle cx="548" cy="78" r="2"/><circle cx="572" cy="62" r="2"/>
+    <circle cx="596" cy="74" r="2"/><circle cx="530" cy="94" r="2"/><circle cx="558" cy="104" r="2"/>
+    <circle cx="584" cy="96" r="2"/><circle cx="604" cy="112" r="2"/><circle cx="520" cy="120" r="2"/>
+    <circle cx="546" cy="132" r="2"/><circle cx="574" cy="126" r="2"/><circle cx="598" cy="142" r="2"/>
+    <circle cx="538" cy="146" r="2"/><circle cx="566" cy="86" r="2"/><circle cx="590" cy="120" r="2"/>
+    <circle cx="516" cy="78" r="2"/><circle cx="608" cy="88" r="2"/><circle cx="552" cy="60" r="2"/>
+  </g>
+
+  <g fill="currentColor" font-size="13" text-anchor="middle">
+    <text x="92" y="176">an image</text>
+    <text x="248" y="176">a bit noisy</text>
+    <text x="404" y="176">mostly noise</text>
+    <text x="560" y="176">pure noise</text>
+  </g>
+
+  <!-- forward arrows (right) -->
+  <g stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round">
+    <path d="M150 96 H 186"/><path d="M178 90 L 188 96 L 178 102"/>
+    <path d="M306 96 H 342"/><path d="M334 90 L 344 96 L 334 102"/>
+    <path d="M462 96 H 498"/><path d="M490 90 L 500 96 L 490 102"/>
+  </g>
+  <g fill="currentColor" font-size="13">
+    <text x="24" y="212">Forward: add a little Gaussian noise, a thousand times. Fixed recipe, nothing to learn.</text>
+  </g>
+
+  <!-- reverse arrows (left) -->
+  <g stroke="currentColor" fill="none" stroke-width="2.6" stroke-linecap="round">
+    <path d="M186 124 H 150"/><path d="M158 118 L 148 124 L 158 130"/>
+    <path d="M342 124 H 306"/><path d="M314 118 L 304 124 L 314 130"/>
+    <path d="M498 124 H 462"/><path d="M470 118 L 460 124 L 470 130"/>
+  </g>
+  <g fill="currentColor" font-size="13">
+    <text x="24" y="238">Reverse: guess what noise was added and subtract it. This is the only learned part.</text>
+  </g>
+
+  <!-- the closed-form jump -->
+  <g stroke="currentColor" fill="none" stroke-width="1.5" stroke-dasharray="5 4" stroke-opacity="0.7">
+    <path d="M92 266 C 200 296, 420 296, 556 266"/>
+    <path d="M548 260 L 560 266 L 549 273"/>
+  </g>
+  <g fill="currentColor" font-size="12" fill-opacity="0.8" text-anchor="middle">
+    <text x="324" y="310">training never walks the chain: you can jump to any noise level in one formula</text>
+  </g>
+</svg>

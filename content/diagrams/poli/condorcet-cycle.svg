@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 220" font-family="system-ui, sans-serif">
+  <defs>
+    <marker id="cc-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="currentColor" font-size="14">
+    <text x="12" y="28" font-weight="600">Three voters</text>
+    <text x="12" y="60">Ana:  A &gt; B &gt; C</text>
+    <text x="12" y="86">Beto: B &gt; C &gt; A</text>
+    <text x="12" y="112">Caro: C &gt; A &gt; B</text>
+    <text x="12" y="158" font-size="13">Every pair is decided 2 to 1,</text>
+    <text x="12" y="178" font-size="13">and the winners close a loop:</text>
+    <text x="12" y="198" font-size="13">nobody is the majority's choice.</text>
+  </g>
+  <g stroke="currentColor" stroke-width="1.8" fill="none" marker-end="url(#cc-arrow)">
+    <path d="M 341 60 L 386 133"/>
+    <path d="M 374 156 L 296 156"/>
+    <path d="M 284 133 L 329 60"/>
+  </g>
+  <g fill="currentColor" font-size="16" font-weight="600" text-anchor="middle">
+    <text x="335" y="50">A</text>
+    <text x="398" y="162">B</text>
+    <text x="272" y="162">C</text>
+  </g>
+  <g fill="currentColor" font-size="12" text-anchor="middle" fill-opacity="0.85">
+    <text x="392" y="100">beats 2-1</text>
+    <text x="335" y="186">beats 2-1</text>
+    <text x="278" y="100">beats 2-1</text>
+  </g>
+</svg>

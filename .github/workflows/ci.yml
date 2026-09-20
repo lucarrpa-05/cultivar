@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    # The daily inbox commit doesn't change any code.
+    paths-ignore:
+      - 'data/inbox/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Validate content
+        run: npm run validate
+
+      - name: Test
+        run: npm test
+
+      - name: Build (dry)
+        # Same build the deploy runs; the artifact is thrown away.
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/
+        run: npm run build

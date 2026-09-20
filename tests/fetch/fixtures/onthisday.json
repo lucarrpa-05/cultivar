@@ -1,0 +1,121 @@
+{
+ "events": [
+  {
+   "text": "Azerbaijan launches a military offensive against the Republic of Artsakh in the Nagorno-Karabakh region; this leads to the flight of the Armenian population.",
+   "year": 2023,
+   "pages": [
+    {
+     "titles": {
+      "canonical": "Azerbaijan",
+      "normalized": "Azerbaijan",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Azerbaijan</span></span>"
+     },
+     "extract": "Azerbaijan, officially the Republic of Azerbaijan, is a landlocked country at the boundary of Western Asia and Eastern Europe. It is a part of the South Caucasus region and is bounded by the Caspian Sea to the east, Russia's republic of Dagestan to the north, Georgia to the northwest, Turkey and Armenia to the west, and Iran to the south. Baku is the capital and largest city.",
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Azerbaijan",
+       "revisions": "https://en.wikipedia.org/wiki/Azerbaijan?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Azerbaijan?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Azerbaijan"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Azerbaijan",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Azerbaijan",
+       "edit": "https://en.wikipedia.org/wiki/Azerbaijan?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Azerbaijan"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "text": "The Guelb El-Kebir massacre in Algeria kills 53 people.",
+   "year": 1997,
+   "pages": [
+    {
+     "titles": {
+      "canonical": "Guelb_El-Kebir_massacre",
+      "normalized": "Guelb El-Kebir massacre",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Guelb El-Kebir massacre</span></span>"
+     },
+     "extract": "The Guelb El-Kebir massacre took place in the village of Guelb el-Kebir, near Beni Slimane, in the Algerian province of Medea, on 20 September 1997. 53 people were killed by attackers that were not immediately identified, though the attack was similar to others carried out by Islamic groups opposed to the Algerian government.",
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Guelb_El-Kebir_massacre",
+       "revisions": "https://en.wikipedia.org/wiki/Guelb_El-Kebir_massacre?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Guelb_El-Kebir_massacre?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Guelb_El-Kebir_massacre"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Guelb_El-Kebir_massacre",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Guelb_El-Kebir_massacre",
+       "edit": "https://en.wikipedia.org/wiki/Guelb_El-Kebir_massacre?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Guelb_El-Kebir_massacre"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "text": "The Washington Post and The New York Times publish the Unabomber Manifesto.",
+   "year": 1995,
+   "pages": [
+    {
+     "titles": {
+      "canonical": "Industrial_Society_and_Its_Future",
+      "normalized": "Industrial Society and Its Future",
+      "display": "<i>Industrial Society and Its Future</i>"
+     },
+     "extract": "Industrial Society and Its Future, also known as the Unabomber Manifesto, is a 1995 essay by Ted Kaczynski arguing that the Industrial Revolution began a harmful process of natural destruction brought about by technology. Furthermore it states that forcing humans to adapt to machinery creates a sociopolitical order that suppresses human potential and freedom.",
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Industrial_Society_and_Its_Future",
+       "revisions": "https://en.wikipedia.org/wiki/Industrial_Society_and_Its_Future?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Industrial_Society_and_Its_Future?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Industrial_Society_and_Its_Future"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Industrial_Society_and_Its_Future",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Industrial_Society_and_Its_Future",
+       "edit": "https://en.wikipedia.org/wiki/Industrial_Society_and_Its_Future?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Industrial_Society_and_Its_Future"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "text": "Ötzi the Iceman is discovered in the Alps on the border between Italy and Austria.",
+   "year": 1991,
+   "pages": [
+    {
+     "titles": {
+      "canonical": "Ötzi",
+      "normalized": "Ötzi",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Ötzi</span></span>"
+     },
+     "extract": "Ötzi (German: [œtsi]; c. 3275 BC – c. 3230 BC, also called The Iceman, Similaun man, or Tyrolean Iceman, is the natural mummy of a man who lived during the 4th millennium BC. Ötzi's remains were discovered on 19 September 1991 in the Ötztal Alps at the Austria–Italy border. He is Europe's oldest known natural human mummy, showing an unprecedented view of Chalcolithic Europeans.",
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/%C3%96tzi",
+       "revisions": "https://en.wikipedia.org/wiki/%C3%96tzi?action=history",
+       "edit": "https://en.wikipedia.org/wiki/%C3%96tzi?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:%C3%96tzi"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/%C3%96tzi",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/%C3%96tzi",
+       "edit": "https://en.wikipedia.org/wiki/%C3%96tzi?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:%C3%96tzi"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "text": "An old event with no linked article.",
+   "year": 1810,
+   "pages": []
+  }
+ ]
+}

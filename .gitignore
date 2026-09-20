@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.data/
+.vite/
+*.log
+.DS_Store
+Thumbs.db
+.env
+.link-cache.json
+coverage/
+playwright-report/
+test-results/

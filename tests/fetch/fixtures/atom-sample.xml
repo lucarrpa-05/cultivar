@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Test Lab Notes</title>
+  <link href="https://lab.example.com/" rel="alternate" type="text/html"/>
+  <link href="https://lab.example.com/atom.xml" rel="self" type="application/atom+xml"/>
+  <updated>2026-09-18T12:00:00Z</updated>
+  <id>tag:lab.example.com,2026:/atom</id>
+
+  <entry>
+    <title>Scaling laws hold for sparse autoencoders, too</title>
+    <link href="https://lab.example.com/2026/09/sparse-scaling" rel="alternate" type="text/html"/>
+    <link href="https://lab.example.com/2026/09/sparse-scaling.pdf" rel="enclosure" type="application/pdf"/>
+    <id>tag:lab.example.com,2026:sparse-scaling</id>
+    <published>2026-09-18T10:15:00Z</published>
+    <updated>2026-09-18T11:00:00Z</updated>
+    <category term="interpretability"/>
+    <category term="llm"/>
+    <author><name>Lab Team</name></author>
+    <content type="html">&lt;p&gt;We trained 40 sparse autoencoders on a &lt;em&gt;transformer&lt;/em&gt; and found the
+    reconstruction loss follows a clean power law in dictionary size.&lt;/p&gt;</content>
+  </entry>
+
+  <entry>
+    <title>Neurons &amp;amp; genes: a CRISPR map of the mouse brain</title>
+    <link href="https://lab.example.com/2026/09/crispr-brain-map-repost" rel="alternate"/>
+    <id>tag:lab.example.com,2026:crispr-repost</id>
+    <updated>2026-09-17T18:00:00Z</updated>
+    <summary>A repost of the same story under a different URL — the title dedupe must collapse it.</summary>
+  </entry>
+
+  <entry>
+    <title>An entry with no date at all</title>
+    <link href="https://lab.example.com/2026/09/undated" rel="alternate"/>
+    <id>tag:lab.example.com,2026:undated</id>
+    <summary type="text">Feeds in the wild forget the timestamp more often than you would think.</summary>
+  </entry>
+</feed>

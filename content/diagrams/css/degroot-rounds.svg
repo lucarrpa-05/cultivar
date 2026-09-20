@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 300" role="img" aria-label="Three people update their opinion by averaging, over three rounds, converging on one number" font-family="system-ui, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 1L9 5L0 9z" fill="currentColor" fill-opacity="0.75"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.55"><path d="M119.0 88.0L200.0 88.0" marker-end="url(#a)"/><path d="M116.4 98.8L203.2 142.5" marker-end="url(#a)"/><path d="M116.4 145.2L203.2 101.5" marker-end="url(#a)"/><path d="M119.0 156.0L200.0 156.0" marker-end="url(#a)"/><path d="M116.4 166.8L203.2 210.5" marker-end="url(#a)"/><path d="M116.4 213.2L203.2 169.5" marker-end="url(#a)"/><path d="M119.0 224.0L200.0 224.0" marker-end="url(#a)"/><path d="M254.0 88.0L335.0 88.0" marker-end="url(#a)"/><path d="M251.4 98.8L338.2 142.5" marker-end="url(#a)"/><path d="M251.4 145.2L338.2 101.5" marker-end="url(#a)"/><path d="M254.0 156.0L335.0 156.0" marker-end="url(#a)"/><path d="M251.4 166.8L338.2 210.5" marker-end="url(#a)"/><path d="M251.4 213.2L338.2 169.5" marker-end="url(#a)"/><path d="M254.0 224.0L335.0 224.0" marker-end="url(#a)"/><path d="M389.0 88.0L470.0 88.0" marker-end="url(#a)"/><path d="M386.4 98.8L473.2 142.5" marker-end="url(#a)"/><path d="M386.4 145.2L473.2 101.5" marker-end="url(#a)"/><path d="M389.0 156.0L470.0 156.0" marker-end="url(#a)"/><path d="M386.4 166.8L473.2 210.5" marker-end="url(#a)"/><path d="M386.4 213.2L473.2 169.5" marker-end="url(#a)"/><path d="M389.0 224.0L470.0 224.0" marker-end="url(#a)"/></g>
+  <g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="95" cy="88" r="22"/><circle cx="95" cy="156" r="22"/><circle cx="95" cy="224" r="22"/><circle cx="230" cy="88" r="22"/><circle cx="230" cy="156" r="22"/><circle cx="230" cy="224" r="22"/><circle cx="365" cy="88" r="22"/><circle cx="365" cy="156" r="22"/><circle cx="365" cy="224" r="22"/><circle cx="500" cy="88" r="22"/><circle cx="500" cy="156" r="22"/><circle cx="500" cy="224" r="22"/></g>
+  <g fill="currentColor" font-size="14"><text x="95" y="93" text-anchor="middle">90</text><text x="95" y="161" text-anchor="middle">20</text><text x="95" y="229" text-anchor="middle">50</text><text x="230" y="93" text-anchor="middle">55</text><text x="230" y="161" text-anchor="middle">53</text><text x="230" y="229" text-anchor="middle">35</text><text x="365" y="93" text-anchor="middle">54</text><text x="365" y="161" text-anchor="middle">48</text><text x="365" y="229" text-anchor="middle">44</text><text x="500" y="93" text-anchor="middle">51</text><text x="500" y="161" text-anchor="middle">49</text><text x="500" y="229" text-anchor="middle">46</text></g>
+  <g fill="currentColor" font-size="13" fill-opacity="0.8">
+    <text x="16" y="93">Ana</text>
+    <text x="16" y="161">Beto</text>
+    <text x="16" y="229">Caro</text>
+  </g>
+  <g fill="currentColor" font-size="13" fill-opacity="0.75" text-anchor="middle">
+    <text x="95" y="48">start</text>
+    <text x="230" y="48">round 1</text>
+    <text x="365" y="48">round 2</text>
+    <text x="500" y="48">round 3</text>
+    <text x="566" y="161">→ 48.6</text>
+  </g>
+  <g fill="currentColor" font-size="13">
+    <text x="16" y="24">Nobody argues. Everyone averages the people they listen to.</text>
+    <text x="16" y="277" fill-opacity="0.75">Beto listens to all three and is heard by all three, so he ends up worth 3/7 of the answer.</text>
+  </g>
+</svg>

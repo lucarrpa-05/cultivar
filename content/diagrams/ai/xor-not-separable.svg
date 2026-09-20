@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 250" role="img" font-family="system-ui, sans-serif" font-size="13">
+  <g stroke="currentColor" fill="none">
+    <!-- axes -->
+    <path d="M70 200 H280" stroke-width="1.2" stroke-opacity="0.5"/>
+    <path d="M70 200 V30" stroke-width="1.2" stroke-opacity="0.5"/>
+    <!-- three candidate dividing lines, all failing -->
+    <g stroke-width="1.4" stroke-dasharray="6 4" stroke-opacity="0.75">
+      <path d="M165 22 V208"/>
+      <path d="M58 118 H272"/>
+      <path d="M58 212 L272 26"/>
+    </g>
+  </g>
+  <!-- the four points -->
+  <g stroke="currentColor" stroke-width="2">
+    <circle cx="90" cy="180" r="9" fill="none"/>
+    <circle cx="250" cy="50" r="9" fill="none"/>
+    <circle cx="90" cy="50" r="9" fill="currentColor" fill-opacity="0.85"/>
+    <circle cx="250" cy="180" r="9" fill="currentColor" fill-opacity="0.85"/>
+  </g>
+  <g fill="currentColor">
+    <text x="90" y="222" text-anchor="middle">0, 0</text>
+    <text x="250" y="222" text-anchor="middle">1, 0</text>
+    <text x="48" y="54" text-anchor="middle">0, 1</text>
+    <text x="284" y="54" text-anchor="start">1, 1</text>
+    <text x="70" y="24" text-anchor="start" font-size="12" fill-opacity="0.75">second input</text>
+    <text x="284" y="204" text-anchor="start" font-size="12" fill-opacity="0.75">first input</text>
+  </g>
+  <g fill="currentColor" font-size="12">
+    <circle cx="86" cy="240" r="6" stroke="currentColor" stroke-width="2" fill="none"/>
+    <text x="98" y="244">answer 0</text>
+    <circle cx="196" cy="240" r="6" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.85"/>
+    <text x="208" y="244">answer 1</text>
+  </g>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" role="img" aria-label="A confounder fork compared with a collider" font-family="system-ui, sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+
+  <g fill="currentColor" font-size="15">
+    <text x="40" y="36">A fork: control for it</text>
+    <text x="370" y="36">A collider: do not</text>
+  </g>
+
+  <!-- fork: U -> X, U -> Y -->
+  <g stroke="currentColor" fill="none" stroke-width="2" marker-end="url(#ar)">
+    <path d="M150 90 L90 150"/>
+    <path d="M180 90 L240 150"/>
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="165" y="80">wealth</text>
+    <text x="72" y="178">water</text>
+    <text x="256" y="178">cholera</text>
+  </g>
+  <g fill="currentColor" font-size="13" fill-opacity="0.8">
+    <text x="40" y="232">Wealth feeds both, so the two look linked.</text>
+    <text x="40" y="252">Hold wealth fixed and the spurious link dies.</text>
+  </g>
+
+  <!-- collider: X -> C <- Y, with selection box -->
+  <g stroke="currentColor" fill="none" stroke-width="2" marker-end="url(#ar)">
+    <path d="M430 100 L487 145"/>
+    <path d="M580 100 L523 145"/>
+  </g>
+  <g stroke="currentColor" fill="none" stroke-width="2" stroke-dasharray="5 4" stroke-opacity="0.75">
+    <path d="M450 84 L560 84"/>
+  </g>
+  <g stroke="currentColor" fill="none" stroke-width="1.6" stroke-opacity="0.8">
+    <rect x="468" y="150" width="76" height="30" rx="6"/>
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="418" y="92">looks</text>
+    <text x="596" y="92">talent</text>
+    <text x="506" y="170">cast</text>
+  </g>
+  <g fill="currentColor" font-size="13" fill-opacity="0.8">
+    <text x="370" y="232">Either one gets you the part. Look only at</text>
+    <text x="370" y="252">the cast and the dashed link appears.</text>
+  </g>
+</svg>

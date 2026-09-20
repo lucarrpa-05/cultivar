@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 250" role="img" font-family="system-ui, sans-serif" font-size="12">
+  <defs>
+    <marker id="up" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+
+  <!-- thin edges (rarely visited) -->
+  <g stroke="currentColor" fill="none" stroke-width="1" stroke-opacity="0.45">
+    <path d="M180 42 L92 86"/>
+    <path d="M180 42 L268 86"/>
+    <path d="M92 86 L60 130"/>
+    <path d="M268 86 L300 130"/>
+    <path d="M136 130 L118 174"/>
+  </g>
+  <!-- the selected path (thick) -->
+  <g stroke="currentColor" fill="none" stroke-width="2.6">
+    <path d="M180 42 L136 86"/>
+    <path d="M136 86 L136 130"/>
+    <path d="M136 130 L168 174"/>
+  </g>
+
+  <!-- nodes -->
+  <g stroke="currentColor" stroke-width="1.6" fill="currentColor" fill-opacity="0.08">
+    <circle cx="180" cy="42" r="11"/>
+    <circle cx="92" cy="86" r="9"/>
+    <circle cx="136" cy="86" r="10"/>
+    <circle cx="268" cy="86" r="9"/>
+    <circle cx="60" cy="130" r="8"/>
+    <circle cx="136" cy="130" r="10"/>
+    <circle cx="300" cy="130" r="8"/>
+    <circle cx="118" cy="174" r="8"/>
+  </g>
+  <!-- the new leaf -->
+  <circle cx="168" cy="174" r="10" stroke="currentColor" stroke-width="2.2" stroke-dasharray="4 3" fill="none"/>
+
+  <!-- backup arrow -->
+  <g stroke="currentColor" fill="none" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#up)" stroke-opacity="0.85">
+    <path d="M196 170 C 236 140, 232 70, 196 46"/>
+  </g>
+
+  <g fill="currentColor" font-size="12">
+    <text x="206" y="40">root: this position</text>
+    <text x="186" y="196">new node</text>
+    <text x="244" y="120">carry the score</text>
+    <text x="244" y="136">back up the path</text>
+    <text x="22" y="216" font-size="11" fill-opacity="0.85">1. select by the bandit rule  ·  2. expand one node  ·  3. evaluate it  ·  4. back up</text>
+    <text x="22" y="236" font-size="11" fill-opacity="0.85">The tree ends up deep where it matters and one node thick everywhere else.</text>
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 200" font-family="system-ui, sans-serif">
+  <defs>
+    <marker id="mv-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <line x1="30" y1="120" x2="410" y2="120" stroke="currentColor" stroke-width="1.6"/>
+  <g fill="currentColor" font-size="12">
+    <text x="30" y="145">less spending</text>
+    <text x="326" y="145">more spending</text>
+  </g>
+  <g fill="currentColor">
+    <circle cx="60" cy="120" r="6" fill-opacity="0.45"/>
+    <circle cx="130" cy="120" r="6" fill-opacity="0.45"/>
+    <circle cx="220" cy="120" r="8"/>
+    <circle cx="300" cy="120" r="6" fill-opacity="0.45"/>
+    <circle cx="390" cy="120" r="6" fill-opacity="0.45"/>
+  </g>
+  <g fill="currentColor" font-size="13" text-anchor="middle">
+    <text x="220" y="100" font-weight="600">voter 3 (median)</text>
+    <text x="60" y="100" fill-opacity="0.7">1</text>
+    <text x="130" y="100" fill-opacity="0.7">2</text>
+    <text x="300" y="100" fill-opacity="0.7">4</text>
+    <text x="390" y="100" fill-opacity="0.7">5</text>
+  </g>
+  <g stroke="currentColor" stroke-width="1.6" fill="none" marker-end="url(#mv-arrow)">
+    <path d="M 95 172 L 200 172"/>
+    <path d="M 350 172 L 242 172"/>
+  </g>
+  <g fill="currentColor" font-size="13">
+    <text x="30" y="176" text-anchor="end">A</text>
+    <text x="386" y="176">B</text>
+    <text x="220" y="30" font-size="14" text-anchor="middle" font-weight="600">Two candidates, one dimension</text>
+    <text x="220" y="52" font-size="12" text-anchor="middle">Whoever is closer to voter 3 wins a majority,</text>
+    <text x="220" y="70" font-size="12" text-anchor="middle">so both candidates walk toward voter 3.</text>
+  </g>
+</svg>

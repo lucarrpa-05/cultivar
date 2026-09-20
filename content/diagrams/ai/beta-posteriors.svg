@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img" font-family="system-ui, sans-serif" font-size="12">
+  <!-- axis -->
+  <g stroke="currentColor" fill="none" stroke-width="1.2" stroke-opacity="0.55">
+    <path d="M40 190 H370"/>
+    <path d="M40 190 V26"/>
+  </g>
+  <g fill="currentColor" font-size="11" fill-opacity="0.8">
+    <text x="40" y="208" text-anchor="middle">never</text>
+    <text x="205" y="208" text-anchor="middle">how much you like this topic</text>
+    <text x="370" y="208" text-anchor="middle">always</text>
+  </g>
+
+  <!-- Beta(2,2)-ish: broad, low -->
+  <path d="M40 190 C 95 120, 150 108, 205 108 C 260 108, 315 120, 370 190" fill="currentColor" fill-opacity="0.07" stroke="currentColor" stroke-width="2" stroke-dasharray="6 4"/>
+  <!-- Beta(7,4)-ish: medium -->
+  <path d="M40 190 C 130 186, 175 82, 238 78 C 292 76, 330 140, 370 190" fill="currentColor" fill-opacity="0.07" stroke="currentColor" stroke-width="2" stroke-dasharray="2 3"/>
+  <!-- Beta(40,20)-ish: tall, narrow -->
+  <path d="M40 190 C 200 190, 228 40, 258 38 C 288 36, 310 190, 370 190" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-width="2"/>
+
+  <g fill="currentColor" font-size="11">
+    <text x="92" y="128">2 cards seen</text>
+    <text x="176" y="70">11 cards</text>
+    <text x="272" y="52">60 cards</text>
+  </g>
+  <text x="40" y="232" fill="currentColor" font-size="11" fill-opacity="0.85">A wide curve can still draw a high number. That draw is the exploration.</text>
+</svg>

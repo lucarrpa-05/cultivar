@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 300" role="img" aria-label="Two staircases of different fineness climbing to the same diagonal of a square; both have total length two while the diagonal has length about 1.41" font-family="system-ui, sans-serif">
+  <g transform="translate(0,0)">
+    <rect x="60" y="40" width="190" height="190" fill="none" stroke="currentColor" stroke-opacity="0.3" stroke-width="1"/>
+    <path d="M60 230 L250 40" stroke="currentColor" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+    <path d="M60.0 230.0 H107.5 V182.5 H155.0 V135.0 H202.5 V87.5 H250.0 V40.0" stroke="currentColor" stroke-width="1.8" fill="none"/>
+    <text x="60" y="28" font-size="13.5" fill="currentColor">4 escalones · longitud 2</text>
+  </g>
+  <g transform="translate(270,0)">
+    <rect x="60" y="40" width="190" height="190" fill="none" stroke="currentColor" stroke-opacity="0.3" stroke-width="1"/>
+    <path d="M60 230 L250 40" stroke="currentColor" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+    <path d="M60.0 230.0 H71.9 V218.1 H83.8 V206.3 H95.6 V194.4 H107.5 V182.5 H119.4 V170.6 H131.3 V158.8 H143.1 V146.9 H155.0 V135.0 H166.9 V123.1 H178.8 V111.3 H190.6 V99.4 H202.5 V87.5 H214.4 V75.6 H226.3 V63.8 H238.1 V51.9 H250.0 V40.0" stroke="currentColor" stroke-width="1.8" fill="none"/>
+    <text x="60" y="28" font-size="13.5" fill="currentColor">16 escalones · longitud 2</text>
+  </g>
+  <text x="60" y="275" font-size="13.5" fill="currentColor">La diagonal (a trazos) mide 1,414. Ninguna escalera mide eso, por finos que sean los escalones.</text>
+</svg>

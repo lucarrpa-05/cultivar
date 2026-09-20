@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 330" role="img" aria-label="Left: a square grid whose balls grow like the square of the radius. Right: a branching tree whose balls double at every step." font-family="system-ui, sans-serif">
+  <g fill="currentColor" font-size="14" font-weight="600">
+    <text x="24" y="28">two generators that commute</text>
+    <text x="376" y="28">two generators that do not</text>
+  </g>
+
+  <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-opacity="0.75">
+    <path d="M40 70 H300 M40 110 H300 M40 150 H300 M40 190 H300 M40 230 H300"/>
+    <path d="M60 50 V250 M110 50 V250 M160 50 V250 M210 50 V250 M260 50 V250"/>
+  </g>
+  <g fill="currentColor"><circle cx="160" cy="150" r="5"/></g>
+
+  <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-opacity="0.8">
+    <path d="M500 150 H430 M500 150 H570 M500 150 V90 M500 150 V210"/>
+    <path d="M430 150 V112 M430 150 V188 M570 150 V112 M570 150 V188"/>
+    <path d="M500 90 H462 M500 90 H538 M500 210 H462 M500 210 H538"/>
+    <path d="M430 112 V88 M430 112 H406 M430 188 V212 M430 188 H406"/>
+    <path d="M570 112 V88 M570 112 H594 M570 188 V212 M570 188 H594"/>
+    <path d="M462 90 V66 M538 90 V66 M462 210 V234 M538 210 V234"/>
+  </g>
+  <g fill="currentColor"><circle cx="500" cy="150" r="5"/></g>
+
+  <g fill="currentColor" font-size="13" fill-opacity="0.8">
+    <text x="40" y="278">Balls around the dot grow like the square of the radius.</text>
+    <text x="406" y="278">Balls around the dot roughly double at every step.</text>
+  </g>
+  <g fill="currentColor" font-size="13">
+    <text x="24" y="314">Gromov: polynomial growth happens only for groups that are nilpotent-with-finite-index. Nothing in between.</text>
+  </g>
+</svg>

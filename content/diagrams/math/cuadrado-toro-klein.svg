@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" role="img" aria-label="Dos cuadrados con flechas de identificacion: toro y botella de Klein" font-family="system-ui, sans-serif">
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="70" y="80" width="190" height="170"/>
+    <rect x="380" y="80" width="190" height="170"/>
+  </g>
+
+  <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M158 72 L172 80 L158 88"/>
+    <path d="M158 242 L172 250 L158 258"/>
+    <path d="M62 173 L70 159 L78 173"/>
+    <path d="M62 183 L70 169 L78 183"/>
+    <path d="M252 173 L260 159 L268 173"/>
+    <path d="M252 183 L260 169 L268 183"/>
+
+    <path d="M468 72 L482 80 L468 88"/>
+    <path d="M482 242 L468 250 L482 258"/>
+    <path d="M372 173 L380 159 L388 173"/>
+    <path d="M372 183 L380 169 L388 183"/>
+    <path d="M562 173 L570 159 L578 173"/>
+    <path d="M562 183 L570 169 L578 183"/>
+  </g>
+
+  <g fill="currentColor" font-size="15">
+    <text x="70" y="40">Un cuadrado, dos parejas de lados, una instruccion de pegado.</text>
+    <text x="104" y="285">toro</text>
+    <text x="380" y="285">botella de Klein</text>
+  </g>
+  <g fill="currentColor" font-size="13" fill-opacity="0.8">
+    <text x="70" y="310">Las dos parejas en el mismo sentido.</text>
+    <text x="380" y="310">La pareja de arriba y abajo, al reves.</text>
+  </g>
+</svg>

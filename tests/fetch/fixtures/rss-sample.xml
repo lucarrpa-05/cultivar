@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Test Science Weekly</title>
+    <link>https://example.org/</link>
+    <description>A tiny feed that exercises the messy parts of RSS 2.0.</description>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Sep 2026 08:00:00 +0000</lastBuildDate>
+
+    <item>
+      <title>Neurons &amp; genes: a CRISPR map of the mouse brain</title>
+      <link>https://example.org/posts/crispr-brain-map</link>
+      <guid isPermaLink="true">https://example.org/posts/crispr-brain-map</guid>
+      <pubDate>Thu, 17 Sep 2026 14:30:00 +0000</pubDate>
+      <category>Biology</category>
+      <category>Neuroscience</category>
+      <dc:creator>A. Researcher</dc:creator>
+      <description><![CDATA[<img width="1024" height="768" src="https://cdn.example.org/brain.png?fit=1024%2C768&quality=80" srcset="https://cdn.example.org/brain.png?w=1200 1200w, https://cdn.example.org/brain.png?w=1024 1024w, https://cdn.example.org/brain.png?w=768 768w, https://cdn.example.org/brain.png?w=640 640w, https://cdn.example.org/brain.png?w=320 320w, https://cdn.example.org/brain-2x.png?w=2400 2400w, https://cdn.example.org/brain-3x.png?w=3600 3600w" class="attachment-rss-image-size" alt="" decoding="async" /><p>Researchers used <strong>CRISPR</strong> screens to tag every neuron in a developing mouse cortex&nbsp;&mdash; and found that gene regulation, not cell lineage, predicts where a cell ends up.</p><p>The work took six years.</p>]]></description>
+    </item>
+
+    <item>
+      <title>A very long dispatch about prime numbers</title>
+      <link>https://example.org/posts/prime-dispatch</link>
+      <dc:date>2026-09-16T09:00:00Z</dc:date>
+      <category>Mathematics</category>
+      <description>The Riemann hypothesis concerns the zeros of the zeta function, and every serious attempt to prove it has failed for more than a century. This dispatch walks through the history of the problem, the analytic tools that were invented along the way, the numerical evidence gathered by computers, the connection to the distribution of prime numbers, the Hilbert-Polya idea that the zeros are eigenvalues of some unknown operator, the random matrix statistics that Montgomery and Dyson noticed over tea, the function field analogue that Weil proved, and the reasons mathematicians still believe the conjecture is true despite the absence of any proof whatsoever, before ending with a short reading list.</description>
+    </item>
+
+    <item>
+      <title>Elecciones y polarizaci&#243;n: qu&#233; dicen los datos</title>
+      <link>https://example.org/posts/elecciones-datos</link>
+      <pubDate>Tue, 15 Sep 2026 11:00:00 GMT</pubDate>
+      <category>Pol&#237;tica</category>
+      <description>&lt;p&gt;Un estudio sobre la polarizaci&amp;oacute;n en redes sociales durante las &lt;em&gt;elecciones&lt;/em&gt; de 2026.&lt;/p&gt;</description>
+    </item>
+
+    <item>
+      <title>An item whose only link is its guid</title>
+      <guid isPermaLink="true">https://example.org/posts/guid-only</guid>
+      <pubDate>Mon, 14 Sep 2026 07:00:00 +0000</pubDate>
+      <content:encoded><![CDATA[<div>Sometimes the <a href="https://example.org">link element</a> is missing entirely.</div>]]></content:encoded>
+    </item>
+
+    <item>
+      <title>An item with no link at all</title>
+      <description>This one must be dropped when it is normalized.</description>
+      <pubDate>Sun, 13 Sep 2026 07:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

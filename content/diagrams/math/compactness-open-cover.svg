@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" role="img" aria-label="An open cover of the interval and a finite subcover" font-family="system-ui, sans-serif">
+  <g fill="none" stroke="currentColor" stroke-linecap="round">
+    <!-- the infinite family, thin and faint, accumulating at the right endpoint -->
+    <g stroke-width="1.4" stroke-opacity="0.45">
+      <path d="M50 126 Q100 88 150 126"/>
+      <path d="M120 126 Q175 84 230 126"/>
+      <path d="M205 126 Q262 88 320 126"/>
+      <path d="M295 126 Q357 84 420 126"/>
+      <path d="M390 126 Q447 90 505 126"/>
+      <path d="M465 126 Q512 96 560 126"/>
+      <path d="M510 126 Q545 102 580 126"/>
+      <path d="M540 126 Q562 106 585 126"/>
+      <path d="M556 126 Q571 110 587 126"/>
+      <path d="M566 126 Q576 114 588 126"/>
+      <path d="M573 126 Q580 117 589 126"/>
+    </g>
+
+    <!-- the interval [0,1] -->
+    <path d="M70 140 H570" stroke-width="3"/>
+    <path d="M70 130 V150" stroke-width="2"/>
+    <path d="M570 130 V150" stroke-width="2"/>
+
+    <!-- the finite subcover: four patches already do the job -->
+    <g stroke-width="3.4">
+      <path d="M55 154 Q135 200 215 154"/>
+      <path d="M185 154 Q272 204 360 154"/>
+      <path d="M330 154 Q415 204 500 154"/>
+      <path d="M470 154 Q545 198 590 154"/>
+    </g>
+  </g>
+
+  <g fill="currentColor" font-size="14">
+    <text x="70" y="44">Cover it with open patches — as many as you like, infinitely many.</text>
+    <text x="70" y="252">Four of them already cover it. That is compactness.</text>
+  </g>
+  <g fill="currentColor" font-size="13" fill-opacity="0.75">
+    <text x="70" y="170" text-anchor="middle">0</text>
+    <text x="570" y="170" text-anchor="middle">1</text>
+    <text x="596" y="118" font-size="16">⋯</text>
+  </g>
+</svg>

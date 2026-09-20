@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 330" role="img" aria-label="A grid of examples by features, with one column highlighted for batch norm and one row for layer norm" font-family="system-ui, sans-serif">
+  <g fill="currentColor" font-size="14">
+    <text x="24" y="26">Same grid of numbers. The only question is which way you average.</text>
+  </g>
+
+  <!-- ===== left grid: batch norm (a column) ===== -->
+  <g fill="currentColor" font-size="13" text-anchor="middle">
+    <text x="166" y="62">batch norm</text>
+  </g>
+  <!-- highlighted column -->
+  <g fill="currentColor" fill-opacity="0.16">
+    <rect x="130" y="76" width="36" height="150"/>
+  </g>
+  <g stroke="currentColor" fill="none" stroke-width="1.2" stroke-opacity="0.75">
+    <rect x="58" y="76" width="216" height="150"/>
+    <path d="M94 76 V226"/><path d="M130 76 V226"/><path d="M166 76 V226"/><path d="M202 76 V226"/><path d="M238 76 V226"/>
+    <path d="M58 106 H274"/><path d="M58 136 H274"/><path d="M58 166 H274"/><path d="M58 196 H274"/>
+  </g>
+  <g stroke="currentColor" fill="none" stroke-width="2.4" stroke-linecap="round">
+    <path d="M148 86 V 216"/><path d="M142 208 L148 220 L154 208"/>
+  </g>
+  <g fill="currentColor" font-size="12" text-anchor="middle">
+    <text x="166" y="248">one feature, averaged</text>
+    <text x="166" y="264">down the whole batch</text>
+  </g>
+
+  <!-- ===== right grid: layer norm (a row) ===== -->
+  <g fill="currentColor" font-size="13" text-anchor="middle">
+    <text x="494" y="62">layer norm</text>
+  </g>
+  <g fill="currentColor" fill-opacity="0.16">
+    <rect x="386" y="136" width="216" height="30"/>
+  </g>
+  <g stroke="currentColor" fill="none" stroke-width="1.2" stroke-opacity="0.75">
+    <rect x="386" y="76" width="216" height="150"/>
+    <path d="M422 76 V226"/><path d="M458 76 V226"/><path d="M494 76 V226"/><path d="M530 76 V226"/><path d="M566 76 V226"/>
+    <path d="M386 106 H602"/><path d="M386 136 H602"/><path d="M386 166 H602"/><path d="M386 196 H602"/>
+  </g>
+  <g stroke="currentColor" fill="none" stroke-width="2.4" stroke-linecap="round">
+    <path d="M396 151 H 592"/><path d="M584 145 L596 151 L584 157"/>
+  </g>
+  <g fill="currentColor" font-size="12" text-anchor="middle">
+    <text x="494" y="248">one example, averaged</text>
+    <text x="494" y="264">across all its features</text>
+  </g>
+
+  <!-- axis labels -->
+  <g fill="currentColor" font-size="12" fill-opacity="0.8">
+    <text x="58" y="290">rows = examples in the batch &#183; columns = features</text>
+  </g>
+  <g fill="currentColor" font-size="13">
+    <text x="24" y="316">Averaging down the batch ties examples together; averaging across features does not.</text>
+  </g>
+</svg>

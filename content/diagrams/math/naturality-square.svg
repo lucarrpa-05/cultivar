@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 320" role="img" aria-label="A commutative square: the top edge and the bottom edge are the components of a natural transformation, the two vertical edges are the images of one map under two functors, and both routes around the square agree." font-family="system-ui, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+
+  <g fill="currentColor" font-size="14">
+    <text x="40" y="34">"Natural" means this square closes, for every object and every map at once.</text>
+  </g>
+
+  <g fill="currentColor" font-size="17" text-anchor="middle">
+    <text x="150" y="105">F(A)</text>
+    <text x="450" y="105">G(A)</text>
+    <text x="150" y="255">F(B)</text>
+    <text x="450" y="255">G(B)</text>
+  </g>
+
+  <g fill="none" stroke="currentColor" stroke-width="1.8">
+    <path d="M196 99 H404" marker-end="url(#a)"/>
+    <path d="M196 249 H404" marker-end="url(#a)"/>
+    <path d="M150 122 V228" marker-end="url(#a)"/>
+    <path d="M450 122 V228" marker-end="url(#a)"/>
+  </g>
+
+  <g fill="currentColor" font-size="13" text-anchor="middle">
+    <text x="300" y="88">the component at A</text>
+    <text x="300" y="272">the component at B</text>
+  </g>
+  <g fill="currentColor" font-size="13">
+    <text x="60" y="180" text-anchor="end">F of f</text>
+    <text x="466" y="180">G of f</text>
+  </g>
+  <g fill="none" stroke="currentColor" stroke-width="1" stroke-opacity="0.5">
+    <path d="M64 176 H140"/>
+  </g>
+  <g fill="currentColor" font-size="13" fill-opacity="0.75">
+    <text x="40" y="308">Go right then down, or down then right: same arrow. No choices were made anywhere.</text>
+  </g>
+</svg>

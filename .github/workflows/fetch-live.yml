@@ -1,0 +1,80 @@
+name: Fetch live sources
+
+# 09:17 UTC = 04:17 in Bogotá, so the inbox is ready before the reader wakes up.
+# The commit only touches data/inbox/**, which deploy.yml ignores: no rebuild.
+on:
+  schedule:
+    - cron: '17 9 * * *'
+  workflow_dispatch:
+    inputs:
+      source:
+        description: 'Fetch a single source id (optional)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-live
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Fetch sources
+        # Exits 0 even when individual feeds fail; health.json tracks the streaks.
+        run: |
+          if [ -n "${{ github.event.inputs.source }}" ]; then
+            node scripts/fetch-live.mjs --verbose --source "${{ github.event.inputs.source }}"
+          else
+            node scripts/fetch-live.mjs --verbose
+          fi
+
+      - name: Commit the inbox if it changed
+        run: |
+          git config user.name "cultivar-bot"
+          git config user.email "cultivar-bot@users.noreply.github.com"
+          git add data/inbox
+          if git diff --cached --quiet; then
+            echo "inbox unchanged — nothing to commit"
+          else
+            git commit -m "inbox: fetch $(TZ=America/Bogota date +%F)"
+            git push
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          if [ -f data/inbox/report.json ]; then
+            node -e "
+              const r = require('./data/inbox/report.json');
+              const line = (s) => '| ' + s.join(' | ') + ' |';
+              const rows = [
+                line(['sources', r.sourcesOk + '/' + r.sourcesRun + ' ok']),
+                line(['queue', r.totals.queueFresh + ' fresh of ' + r.totals.queueTotal]),
+                line(['new today', String(r.totals.newToQueue)]),
+                line(['flagged', r.flagged.join(', ') || 'none']),
+              ];
+              console.log('## Inbox\n\n| | |\n|---|---|\n' + rows.join('\n'));
+              const bad = r.sources.filter((s) => s.error);
+              if (bad.length) {
+                console.log('\n### Failures\n');
+                for (const s of bad) console.log('- **' + s.id + '**: ' + s.error);
+              }
+            " >> "$GITHUB_STEP_SUMMARY"
+          fi

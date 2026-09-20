@@ -1,0 +1,53 @@
+{
+  "name": "cultivar",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A personal infinite feed of idea cards. Zero cost, installable PWA, gets better the longer it is used.",
+  "scripts": {
+    "dev": "vite",
+    "icons": "node scripts/make-icons.mjs",
+    "build": "npm run validate && node scripts/build-content.mjs --require-review && vite build",
+    "build:dev": "node scripts/build-content.mjs && vite build",
+    "preview": "vite preview",
+    "validate": "node scripts/validate-content.mjs",
+    "build:content": "node scripts/build-content.mjs",
+    "check-links": "node scripts/check-links.mjs",
+    "dedupe": "node scripts/dedupe.mjs",
+    "fetch-live": "node scripts/fetch-live.mjs",
+    "analyze": "tsx scripts/analyze-profile.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "recap": "tsx scripts/recap.ts",
+    "pull-data": "node scripts/pull-data.mjs",
+    "push-data": "node scripts/push-data.mjs",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "idb": "^8.0.0",
+    "katex": "^0.16.11",
+    "marked": "^14.1.0",
+    "preact": "^10.24.0",
+    "ts-fsrs": "^4.4.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@preact/preset-vite": "^2.9.0",
+    "@types/katex": "^0.16.7",
+    "@types/node": "^22.0.0",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "fake-indexeddb": "^6.2.5",
+    "fast-xml-parser": "^4.5.0",
+    "jsdom": "^25.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "vite": "^5.4.0",
+    "vite-plugin-pwa": "^0.20.5",
+    "vitest": "^2.1.0",
+    "yaml": "^2.5.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

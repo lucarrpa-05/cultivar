@@ -1,0 +1,121 @@
+{
+ "tfa": {
+  "titles": {
+   "canonical": "Ashton-under-Lyne",
+   "normalized": "Ashton-under-Lyne",
+   "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Ashton-under-Lyne</span></span>"
+  },
+  "extract": "Ashton-under-Lyne, also known as Ashton, was a market town in Tameside, Greater Manchester, United Kingdom. The population was 48,604 at the 2021 census. Historically a part of Lancashire, it is on the north bank of the River Tame, in the foothills of the Pennines, six miles east of Manchester.",
+  "content_urls": {
+   "desktop": {
+    "page": "https://en.wikipedia.org/wiki/Ashton-under-Lyne",
+    "revisions": "https://en.wikipedia.org/wiki/Ashton-under-Lyne?action=history",
+    "edit": "https://en.wikipedia.org/wiki/Ashton-under-Lyne?action=edit",
+    "talk": "https://en.wikipedia.org/wiki/Talk:Ashton-under-Lyne"
+   },
+   "mobile": {
+    "page": "https://en.wikipedia.org/wiki/Ashton-under-Lyne",
+    "revisions": "https://en.wikipedia.org/wiki/Special:History/Ashton-under-Lyne",
+    "edit": "https://en.wikipedia.org/wiki/Ashton-under-Lyne?action=edit",
+    "talk": "https://en.wikipedia.org/wiki/Talk:Ashton-under-Lyne"
+   }
+  },
+  "timestamp": "2026-09-20T00:55:56Z"
+ },
+ "mostread": {
+  "articles": [
+   {
+    "titles": {
+     "canonical": "Lizzie_Borden",
+     "normalized": "Lizzie Borden",
+     "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Lizzie Borden</span></span>"
+    },
+    "extract": "Lizzie Andrew Borden was an American woman who was tried and acquitted of the August 4, 1892, axe murders of her father and stepmother in Fall River, Massachusetts. No other individuals were charged with the murders.",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Lizzie_Borden",
+      "revisions": "https://en.wikipedia.org/wiki/Lizzie_Borden?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Lizzie_Borden?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Lizzie_Borden"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Lizzie_Borden",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Lizzie_Borden",
+      "edit": "https://en.wikipedia.org/wiki/Lizzie_Borden?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Lizzie_Borden"
+     }
+    },
+    "views": 896572
+   },
+   {
+    "titles": {
+     "canonical": "Duncan_Sheik",
+     "normalized": "Duncan Sheik",
+     "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Duncan Sheik</span></span>"
+    },
+    "extract": "Duncan Scott Sheik was an American singer-songwriter, composer, and actor. Sheik is known for his 1996 debut single \"Barely Breathing\", which earned him a Grammy Award nomination for Best Male Pop Vocal Performance. He composed music for motion pictures and Broadway musicals, winning the 2007 Tony Awards for Best Original Score and Best Orchestrations for his work on the musical Spring Awakening.",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Duncan_Sheik",
+      "revisions": "https://en.wikipedia.org/wiki/Duncan_Sheik?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Duncan_Sheik?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Duncan_Sheik"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Duncan_Sheik",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Duncan_Sheik",
+      "edit": "https://en.wikipedia.org/wiki/Duncan_Sheik?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Duncan_Sheik"
+     }
+    },
+    "views": 319023
+   },
+   {
+    "titles": {
+     "canonical": "Resident_Evil_(2026_film)",
+     "normalized": "Resident Evil (2026 film)",
+     "display": "<i>Resident Evil</i> (2026 film)"
+    },
+    "extract": "Resident Evil is a 2026 horror film directed by Zach Cregger and written by Cregger and Shay Hatten, based on the Resident Evil video game franchise by Capcom. It follows Bryan, a medical courier who must fight through an outbreak of infected monsters in Raccoon City. Zach Cherry, Kali Reis, and Paul Walter Hauser feature in supporting roles.",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Resident_Evil_(2026_film)",
+      "revisions": "https://en.wikipedia.org/wiki/Resident_Evil_(2026_film)?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Resident_Evil_(2026_film)?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Resident_Evil_(2026_film)"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Resident_Evil_(2026_film)",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Resident_Evil_(2026_film)",
+      "edit": "https://en.wikipedia.org/wiki/Resident_Evil_(2026_film)?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Resident_Evil_(2026_film)"
+     }
+    },
+    "views": 289025
+   },
+   {
+    "titles": {
+     "canonical": "Monster:_The_Lizzie_Borden_Story",
+     "normalized": "Monster: The Lizzie Borden Story",
+     "display": "<i>Monster: The Lizzie Borden Story</i>"
+    },
+    "extract": "Monster: The Lizzie Borden Story is the fourth season of the American biographical crime drama anthology television series Monster, created by Ian Brennan for Netflix. The season centers on murder suspect Lizzie Borden who was tried and acquitted of the 1892 axe murders of her father and stepmother in Fall River, Massachusetts. It also stars Vicky Krieps, Charlie Hunnam, Rebecca Hall, Jessica Barden, Joey Pollari, Billie Lourd and Sarah Paulson. It is the first installment of the anthology to focus on an alleged female perpetrator.",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Monster%3A_The_Lizzie_Borden_Story",
+      "revisions": "https://en.wikipedia.org/wiki/Monster%3A_The_Lizzie_Borden_Story?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Monster%3A_The_Lizzie_Borden_Story?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Monster%3A_The_Lizzie_Borden_Story"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Monster%3A_The_Lizzie_Borden_Story",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Monster%3A_The_Lizzie_Borden_Story",
+      "edit": "https://en.wikipedia.org/wiki/Monster%3A_The_Lizzie_Borden_Story?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Monster%3A_The_Lizzie_Borden_Story"
+     }
+    },
+    "views": 232203
+   }
+  ]
+ }
+}

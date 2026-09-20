@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" role="img" aria-label="Four panels: field lines leaving a charge, closed magnetic loops, a changing magnetic field encircled by an electric loop, and a current encircled by a magnetic loop" font-family="system-ui, sans-serif">
+  <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-opacity="0.45">
+    <rect x="20" y="44" width="310" height="160" rx="10"/>
+    <rect x="350" y="44" width="310" height="160" rx="10"/>
+    <rect x="20" y="232" width="310" height="160" rx="10"/>
+    <rect x="350" y="232" width="310" height="160" rx="10"/>
+  </g>
+
+  <!-- 1: Gauss for E -->
+  <g fill="none" stroke="currentColor" stroke-width="1.6">
+    <path d="M175 124 L115 124 M175 124 L235 124 M175 124 L175 84 M175 124 L175 164 M175 124 L133 82 M175 124 L217 82 M175 124 L133 166 M175 124 L217 166"/>
+    <path d="M115 124 l10 -4 m-10 4 l10 4 M235 124 l-10 -4 m10 4 l-10 4 M175 84 l-4 10 m4 -10 l4 10 M175 164 l-4 -10 m4 10 l4 -10"/>
+  </g>
+  <circle cx="175" cy="124" r="9" fill="currentColor"/>
+  <g fill="currentColor" font-size="13">
+    <text x="175" y="196" text-anchor="middle">electric field lines start on charge</text>
+  </g>
+
+  <!-- 2: Gauss for B -->
+  <g fill="none" stroke="currentColor" stroke-width="1.6">
+    <ellipse cx="505" cy="124" rx="34" ry="52"/>
+    <ellipse cx="505" cy="124" rx="62" ry="40"/>
+    <ellipse cx="505" cy="124" rx="90" ry="26"/>
+  </g>
+  <g fill="currentColor" font-size="13">
+    <text x="505" y="196" text-anchor="middle">magnetic lines close on themselves</text>
+  </g>
+
+  <!-- 3: Faraday -->
+  <g fill="none" stroke="currentColor" stroke-width="1.8">
+    <path d="M175 268 V352"/>
+    <path d="M175 268 l-6 12 m6 -12 l6 12"/>
+    <ellipse cx="175" cy="312" rx="72" ry="26"/>
+    <path d="M247 312 l-7 -6 m7 6 l-7 6"/>
+  </g>
+  <g fill="currentColor" font-size="13">
+    <text x="175" y="384" text-anchor="middle">a changing magnetic field loops an electric one</text>
+    <text x="186" y="276" font-size="12" fill-opacity="0.8">changing</text>
+  </g>
+
+  <!-- 4: Ampere-Maxwell -->
+  <g fill="none" stroke="currentColor" stroke-width="1.8">
+    <path d="M505 268 V352"/>
+    <path d="M505 268 l-6 12 m6 -12 l6 12"/>
+    <ellipse cx="505" cy="312" rx="72" ry="26"/>
+    <path d="M433 312 l7 -6 m-7 6 l7 6"/>
+  </g>
+  <g fill="currentColor" font-size="13">
+    <text x="505" y="384" text-anchor="middle">a current, or a changing electric field, loops a magnetic one</text>
+    <text x="516" y="276" font-size="12" fill-opacity="0.8">current</text>
+  </g>
+
+  <g fill="currentColor" font-size="15">
+    <text x="20" y="28">Four sentences. Everything electric and magnetic is in here.</text>
+  </g>
+</svg>

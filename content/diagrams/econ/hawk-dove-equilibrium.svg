@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" role="img" aria-label="Two straight lines showing hawk and dove fitness against the fraction of hawks, crossing at V over C, with arrows pushing the population back to the crossing" font-family="system-ui, sans-serif">
+  <g stroke="currentColor" fill="none">
+    <path d="M90 80 V250 H340" stroke-width="1.4"/>
+    <path d="M90.0 88.9 L340.0 245.5" stroke-width="2.4"/>
+    <path d="M90.0 133.7 L340.0 178.4" stroke-width="2.4" stroke-dasharray="6 4"/>
+    <path d="M190.0 151.6 V250" stroke-width="1.1" stroke-opacity="0.5" stroke-dasharray="3 3"/>
+    <path d="M120.0 274 H172.5" stroke-width="1.6" stroke-opacity="0.7"/>
+    <path d="M260.0 274 H207.5" stroke-width="1.6" stroke-opacity="0.7"/>
+  </g>
+  <g fill="currentColor" font-size="13">
+    <text x="352" y="245.5">hawks</text>
+    <text x="352" y="178.4">doves</text>
+    <text x="90" y="36">Fitness of each type as the population fills up with hawks.</text>
+  </g>
+  <g fill="currentColor" font-size="12" fill-opacity="0.8">
+    <text x="190.0" y="266" text-anchor="middle">V / C</text>
+    <text x="90" y="266" text-anchor="middle">0</text>
+    <text x="340" y="266" text-anchor="middle">all hawks</text>
+    <text x="115.0" y="292">hawks invade</text>
+    <text x="230.0" y="292">doves invade</text>
+  </g>
+  <g fill="currentColor" font-size="12" fill-opacity="0.75">
+    <text x="90" y="292">Whichever type is rarer does better, so the population is pushed back to V over C.</text>
+  </g>
+</svg>
