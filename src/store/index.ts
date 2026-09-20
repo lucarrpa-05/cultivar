@@ -75,6 +75,8 @@ export interface CultivarStore extends Store {
   appendEvents(events: Event[]): Promise<number>;
   /** `local.deviceId`, minted and persisted on first use. */
   deviceId(): Promise<string>;
+  /** Wipe events + snapshot only (token, settings and device id survive). */
+  clearEvents(): Promise<void>;
 }
 
 interface CultivarDB extends DBSchema {
@@ -437,6 +439,27 @@ export function createStore(opts: StoreOptions = {}): CultivarStore {
       // Union by id: importing the same backup twice adds nothing.
       const added = await appendEvents(raw as Event[]);
       return { events: added };
+    },
+
+    async clearEvents(): Promise<void> {
+      await useDb(
+        async (d) => {
+          const tx = d.transaction(['events', 'snapshots'], 'readwrite');
+          await Promise.all([tx.objectStore('events').clear(), tx.objectStore('snapshots').clear(), tx.done]);
+        },
+        () => {
+          mem.events.clear();
+          mem.snapshot = null;
+        },
+      );
+      if (ls) {
+        try {
+          ls.removeItem(LS_EVENTS);
+          ls.removeItem(LS_SNAPSHOT);
+        } catch {
+          /* ignore */
+        }
+      }
     },
 
     async clearAll(): Promise<void> {

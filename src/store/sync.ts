@@ -59,6 +59,8 @@ export interface CultivarSync extends Sync {
   pull(force?: boolean): Promise<{ merged: number }>;
   /** "Restore from repo": read every month file and import it. */
   restore(): Promise<{ events: number; error?: string }>;
+  /** Empty every synced month file and reset meta (the "mark everything unread" path). */
+  resetRemote(): Promise<{ months: number; error?: string }>;
   /** Recount pending events from the store (call at app open). */
   refresh(): Promise<SyncStatus>;
   /** Cheap counter bump after `store.appendEvent` — avoids a store round trip. */
@@ -474,6 +476,42 @@ export function createSync(opts: SyncOptions): CultivarSync {
         } catch (err) {
           error = describe(err);
           return { merged: 0 };
+        }
+      });
+    },
+
+    async resetRemote(): Promise<{ months: number; error?: string }> {
+      await ensureLoaded();
+      if (!cfg) return { months: 0, error: 'Sync is not configured.' };
+      const config = cfg;
+
+      return serialize(async () => {
+        try {
+          if (!deviceId) deviceId = (await store.getLocal<string>('deviceId')) ?? '';
+          const entries = await listDir(config, EVENTS_DIR);
+          const paths = entries
+            .filter((e) => e.type === 'file' && e.name.endsWith('.json'))
+            .map((e) => e.path || `${EVENTS_DIR}/${e.name}`)
+            .sort();
+          let months = 0;
+          for (const path of paths) {
+            const current = await getFile(config, path);
+            const empty = formatEventsJson([]);
+            if (current && current.content === empty) continue;
+            await putFile(config, path, empty, `reset: ${path} (reading history cleared)`, current?.sha);
+            months += 1;
+          }
+          const metaCurrent = await getFile(config, META_FILE);
+          const meta: SyncMeta = { lastPush: now(), device: deviceId, eventCount: 0, months: [] };
+          await putFile(config, META_FILE, metaJson(meta), 'reset: meta (reading history cleared)', metaCurrent?.sha);
+          lastPull = now();
+          await store.setLocal('lastPull', lastPull);
+          error = undefined;
+          return { months };
+        } catch (err) {
+          const message = describe(err);
+          error = message;
+          return { months: 0, error: message };
         }
       });
     },

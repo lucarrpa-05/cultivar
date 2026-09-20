@@ -450,9 +450,12 @@ function onView(state: EngineState, ctx: EngineContext, ev: Event): void {
   const expected = ctx.cards.expectedReadMs(card, !!info.rigorOpened);
 
   const otherAction = !!(info.liked || info.saved || info.skipped || info.tooHard || info.tooEasy || info.rigorOpened);
+  // The UI only sends a `view` when the reader explicitly marks the card read (or acts on it),
+  // so `confirmed: true` is a full read regardless of how fast they were.
+  const confirmed = ev.data?.confirmed === true;
   let r: number;
   let points = 0;
-  if (frac >= PARAMS.readFraction || dwell >= PARAMS.readDwellRatio * expected) {
+  if (confirmed || frac >= PARAMS.readFraction || dwell >= PARAMS.readDwellRatio * expected) {
     r = PARAMS.valence.viewRead;
     points = PARAMS.points.viewRead;
   } else if (dwell < PARAMS.fastPassMs && !otherAction) {

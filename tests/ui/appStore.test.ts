@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it } from 'vitest';
-import { app, endDwell, beginDwell, notify, record, replan, subscribe } from '@/app/state';
+import { app, endDwell, beginDwell, isRead, markRead, notify, record, replan, subscribe } from '@/app/state';
 import { blankState, createFallbackEngine } from '@/app/fallbackEngine';
 import { createMemoryStore } from '@/app/fallbackStore';
 import { deps, meta } from './fixtures';
@@ -41,17 +41,28 @@ describe('app store', () => {
     expect(app.engine!.state().saved).toContain(id);
   });
 
-  it('turns dwell into a view event with a read fraction', async () => {
+  it('does not count a passed card as read; the Read button does', async () => {
     replan();
     const id = app.feed[0].id;
     beginDwell(id);
     await new Promise((r) => setTimeout(r, 900));
     endDwell();
     await new Promise((r) => setTimeout(r, 30));
-    const events = await app.store!.listEvents();
-    const view = events.find((e) => e.type === 'view');
-    expect(view?.card).toBe(id);
-    expect(Number(view?.data?.dwellMs)).toBeGreaterThan(500);
+    let events = await app.store!.listEvents();
+    expect(events.find((e) => e.type === 'view' && e.card === id)).toBeUndefined();
+    expect(isRead(id)).toBe(false);
+
+    beginDwell(id);
+    await new Promise((r) => setTimeout(r, 600));
+    await markRead(id);
+    await new Promise((r) => setTimeout(r, 30));
+    events = await app.store!.listEvents();
+    const view = events.find((e) => e.type === 'view' && e.card === id);
+    expect(view?.data?.confirmed).toBe(true);
+    expect(Number(view?.data?.dwellMs)).toBeGreaterThan(300);
+    expect(isRead(id)).toBe(true);
+    // idempotent
+    expect(await markRead(id)).toBeNull();
   });
 
   it('notifies subscribers', async () => {

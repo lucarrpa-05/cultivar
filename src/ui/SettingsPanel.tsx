@@ -10,6 +10,7 @@ import {
   pullSync,
   pushSync,
   resetAll,
+  resetReadingHistory,
   saveSyncConfig,
   showToast,
   useApp,
@@ -329,12 +330,53 @@ function AboutPanel() {
 
 // ── danger zone ────────────────────────────────────────────────────────────
 
+function ResetReading() {
+  const [open, setOpen] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState<string | null>(null);
+
+  return (
+    <div class="card-panel">
+      <h3>Mark everything unread</h3>
+      {!open ? (
+        <button class="btn" onClick={() => setOpen(true)}>
+          Reset reading history
+        </button>
+      ) : (
+        <>
+          <p class="small muted">
+            Clears every read, like, quiz and streak on this phone and in your data repo, so you start fresh. Your
+            token and settings stay.
+          </p>
+          <div class="row" style={{ marginTop: '10px' }}>
+            <button
+              class="btn btn-danger"
+              disabled={busy}
+              onClick={() => {
+                setBusy(true);
+                void resetReadingHistory().then((r) => setMsg(r.message));
+              }}
+            >
+              {busy ? 'Resetting…' : 'Yes, mark everything unread'}
+            </button>
+            <button class="btn btn-ghost" disabled={busy} onClick={() => setOpen(false)}>
+              Cancel
+            </button>
+          </div>
+          {msg ? <p class="small muted">{msg}</p> : null}
+        </>
+      )}
+    </div>
+  );
+}
+
 function DangerZone() {
   const [typed, setTyped] = useState('');
   const [open, setOpen] = useState(false);
 
   return (
     <div class="card-panel">
+      <ResetReading />
       <h3>Danger zone</h3>
       {!open ? (
         <button class="btn btn-danger" onClick={() => setOpen(true)}>

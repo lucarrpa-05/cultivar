@@ -1,8 +1,16 @@
 /** The four thumb-zone actions plus the ⋯ sheet. Labels are real; gestures are extras. */
 import { useState } from 'preact/hooks';
 import type { CardId } from '@/types';
-import { openSheet, useApp } from '@/app/state';
-import { isLiked, isSaved, skipCard, toggleLike, toggleSave, tooEasy, tooHard } from './actions';
+import { isRead, openSheet, useApp } from '@/app/state';
+import { confirmRead, isLiked, isSaved, skipCard, toggleLike, toggleSave, tooEasy, tooHard } from './actions';
+
+function IconCheck() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M4 12.5l5 5L20 6.5" />
+    </svg>
+  );
+}
 import { useLongPress } from './hooks';
 import { IconBookmark, IconDots, IconHeart, IconPeak, IconSkip } from './icons';
 
@@ -14,11 +22,22 @@ interface Props {
 export function ActionRail({ cardId, host }: Props) {
   const liked = useApp(() => isLiked(cardId));
   const saved = useApp(() => isSaved(cardId));
+  const read = useApp(() => isRead(cardId));
   const [secondary, setSecondary] = useState(false);
   const long = useLongPress(() => setSecondary(true));
 
   return (
     <div class="rail">
+      <button
+        class={`rail-btn is-read${read ? ' is-on' : ''}`}
+        aria-label={read ? 'Read. Next card' : 'Mark as read and go to the next card'}
+        aria-pressed={read}
+        title={read ? 'Read' : 'Read'}
+        onClick={() => confirmRead(cardId)}
+      >
+        <IconCheck />
+      </button>
+
       {secondary ? (
         <button
           class="btn small"

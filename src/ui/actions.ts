@@ -4,6 +4,7 @@ import {
   app,
   closeSheet,
   goTo,
+  markRead,
   openSheet,
   reactWithUndo,
   record,
@@ -26,6 +27,7 @@ export function toggleLike(id: CardId, host?: HTMLElement | null, x?: number, y?
     void record('unlike', { card: id });
     return;
   }
+  void markRead(id);
   void record('like', { card: id });
   if (host && x !== undefined && y !== undefined) heartBurst(host, x, y);
 }
@@ -36,12 +38,19 @@ export function toggleSave(id: CardId, x?: number, y?: number): void {
     showToast('Removed from saved.');
     return;
   }
+  void markRead(id);
   void record('save', { card: id });
   if (x !== undefined && y !== undefined) bookmarkFly(x, y);
 }
 
 function advance(): void {
   goTo(app.cursor + 1);
+}
+
+/** The Read button: the only way a merely displayed card becomes "read". Then move on. */
+export function confirmRead(id: CardId): void {
+  void markRead(id);
+  advance();
 }
 
 export function skipCard(id: CardId): void {
@@ -61,14 +70,17 @@ export function tooEasy(id: CardId): void {
 }
 
 export function openRigor(id: CardId): void {
+  void markRead(id);
   void record('rigor_open', { card: id, quiet: true });
 }
 
 export function openSource(id: CardId, url: string): void {
+  void markRead(id);
   void record('source_open', { card: id, data: { url }, quiet: true });
 }
 
 export function askSeriesNext(id: CardId): void {
+  void markRead(id);
   void record('series_next', { card: id });
   advance();
 }
@@ -82,6 +94,7 @@ export function askQuestion(id: CardId, text: string): void {
 }
 
 export function gradeRecall(id: CardId, grade: 1 | 2 | 3 | 4, correct?: boolean): void {
+  void markRead(id);
   void record('recall', { card: id, data: correct === undefined ? { grade } : { grade, correct } });
 }
 

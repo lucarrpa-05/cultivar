@@ -214,14 +214,36 @@ export function dwellMs(card?: CardId): number {
 export function endDwell(): void {
   if (!dwell) return;
   const ms = Date.now() - dwell.start;
-  const { card, readFraction } = dwell;
   dwell = null;
   sessionActiveMs += Math.min(ms, 5 * 60 * 1000); // a card left open for an hour is not reading
-  sessionCards += 1;
   updateLiveMinutes();
-  if (ms >= 800) {
-    void record('view', { card, data: { dwellMs: ms, readFraction: Math.round(readFraction * 100) / 100 } });
-  }
+  // Passing a card is not reading it. Only markRead() (the Read button, or an
+  // action that implies reading: like, save, rigor, recall, next episode) records a `view`.
+}
+
+/** Cards confirmed read in this session (before the engine snapshot catches up). */
+const readThisSession = new Set<CardId>();
+
+export function isRead(card: CardId): boolean {
+  return readThisSession.has(card) || Boolean(app.engineState?.seen[card]);
+}
+
+/**
+ * Explicitly mark a card as read. Idempotent. Carries the dwell data so the
+ * engine still knows how long the reader spent; `confirmed: true` tells the
+ * fold this was a deliberate act, never a fast pass.
+ */
+export function markRead(card: CardId): Promise<Event | null> {
+  if (isRead(card)) return Promise.resolve(null);
+  readThisSession.add(card);
+  const onCard = dwell && dwell.card === card;
+  const ms = onCard ? Date.now() - dwell!.start : 0;
+  const readFraction = onCard ? Math.max(dwell!.readFraction, 0.6) : 1;
+  sessionCards += 1;
+  return record('view', {
+    card,
+    data: { dwellMs: ms, readFraction: Math.round(readFraction * 100) / 100, confirmed: true },
+  });
 }
 
 export function updateLiveMinutes(): void {
@@ -578,5 +600,32 @@ export async function resetAll(): Promise<void> {
     await app.store?.clearAll();
   } finally {
     location.reload();
+  }
+}
+
+/**
+ * Mark every card unread: wipe the event log and snapshot here AND empty the
+ * synced month files in the data repo, keeping the token, settings and device id.
+ */
+export async function resetReadingHistory(): Promise<{ ok: boolean; message: string }> {
+  const store = app.store as (typeof app.store & { clearEvents?: () => Promise<void> }) | undefined;
+  const sync = app.sync as
+    | (typeof app.sync & { resetRemote?: () => Promise<{ months: number; error?: string }> })
+    | undefined;
+  let message = 'Reading history cleared on this device.';
+  try {
+    if (sync?.resetRemote && app.syncConfig?.token) {
+      const r = await sync.resetRemote();
+      message = r.error
+        ? `Cleared here, but the repo could not be reset: ${r.error}`
+        : `Reading history cleared here and in the repo (${r.months} month file${r.months === 1 ? '' : 's'}).`;
+    }
+    if (store?.clearEvents) await store.clearEvents();
+    else await app.store?.clearAll();
+    readThisSession.clear();
+    setTimeout(() => location.reload(), 1200);
+    return { ok: true, message };
+  } catch (err) {
+    return { ok: false, message: `Could not reset: ${(err as Error).message}` };
   }
 }
