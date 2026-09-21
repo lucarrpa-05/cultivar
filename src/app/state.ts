@@ -160,7 +160,7 @@ let sessionCards = 0;
 let sessionOpen = false;
 let eventsSinceSnapshot = 0;
 
-let dwell: { card: CardId; start: number; readFraction: number } | null = null;
+let dwell: { card: CardId; start: number; readFraction: number; confirmed: boolean; acted: boolean } | null = null;
 
 export function currentSessionId(): string {
   return sessionId;
@@ -168,6 +168,7 @@ export function currentSessionId(): string {
 
 export function startSession(deviceId: string, lastEventT: number): void {
   const now = Date.now();
+  readThisSession.clear();
   sessionStart = now;
   sessionActiveMs = 0;
   sessionCards = 0;
@@ -199,7 +200,7 @@ export function resumeSession(deviceId: string): void {
 }
 
 export function beginDwell(card: CardId): void {
-  dwell = { card, start: Date.now(), readFraction: 0 };
+  dwell = { card, start: Date.now(), readFraction: 0, confirmed: false, acted: false };
 }
 
 export function reportReadFraction(card: CardId, fraction: number): void {
@@ -213,19 +214,23 @@ export function dwellMs(card?: CardId): number {
 
 export function endDwell(): void {
   if (!dwell) return;
-  const ms = Date.now() - dwell.start;
+  const { card, start, readFraction, confirmed, acted } = dwell;
+  const ms = Date.now() - start;
   dwell = null;
   sessionActiveMs += Math.min(ms, 5 * 60 * 1000); // a card left open for an hour is not reading
   updateLiveMinutes();
-  // Passing a card is not reading it. Only markRead() (the Read button, or an
-  // action that implies reading: like, save, rigor, recall, next episode) records a `view`.
+  // A pass advances the planner but never marks the card read. Explicit actions
+  // already supplied their own valence, so only an unactioned pass is negative.
+  if (!confirmed && !card.startsWith('milestone:') && !card.startsWith('wire:')) {
+    void record('pass', { card, data: { dwellMs: ms, readFraction, signaled: acted }, quiet: true });
+  }
 }
 
 /** Cards confirmed read in this session (before the engine snapshot catches up). */
 const readThisSession = new Set<CardId>();
 
 export function isRead(card: CardId): boolean {
-  return readThisSession.has(card) || Boolean(app.engineState?.seen[card]);
+  return readThisSession.has(card) || (app.engineState?.seen[card]?.views || 0) > 0;
 }
 
 /**
@@ -234,9 +239,12 @@ export function isRead(card: CardId): boolean {
  * fold this was a deliberate act, never a fast pass.
  */
 export function markRead(card: CardId): Promise<Event | null> {
-  if (isRead(card)) return Promise.resolve(null);
+  const served = app.feed.find((s) => s.id === card);
+  const repeatSlot = served?.slot === 'revisit' || served?.slot === 'recall';
+  if (readThisSession.has(card) || (isRead(card) && !repeatSlot)) return Promise.resolve(null);
   readThisSession.add(card);
   const onCard = dwell && dwell.card === card;
+  if (onCard) dwell!.confirmed = true;
   const ms = onCard ? Date.now() - dwell!.start : 0;
   const readFraction = onCard ? Math.max(dwell!.readFraction, 0.6) : 1;
   sessionCards += 1;
@@ -267,15 +275,23 @@ export interface RecordOpts {
   quiet?: boolean;
 }
 
+let lastEventTime = 0;
 export async function record(type: EventType, opts: RecordOpts = {}): Promise<Event> {
+  const served = opts.card
+    ? (app.feed[app.cursor]?.id === opts.card ? app.feed[app.cursor] : app.feed.find((s) => s.id === opts.card))
+    : undefined;
+  const data = opts.card ? { ...opts.data, ...(served ? { slot: served.slot } : {}) } : opts.data;
+  if (dwell && dwell.card === opts.card && type !== 'pass' && type !== 'view') dwell.acted = true;
+  const t = Math.max(Date.now(), lastEventTime + 1);
+  lastEventTime = t;
   const ev: Event = {
     id: newEventId(),
-    t: Date.now(),
+    t,
     type,
     s: sessionId,
     ...(opts.card ? { card: opts.card } : {}),
     ...(opts.topic ? { topic: opts.topic } : {}),
-    ...(opts.data ? { data: opts.data } : {}),
+    ...(data ? { data } : {}),
   };
   if (!ev.topic && ev.card) {
     const meta = cardMeta(ev.card);
@@ -394,9 +410,17 @@ export function goTo(index: number, smooth = true): void {
 
 /** Put a specific card next (related chips, random saved card, series jump). */
 export function jumpToCard(id: CardId, slot: ServedCard['slot'] = 'progress', why: string[] = []): void {
-  const at = app.cursor + 1;
+  if (app.feed[app.cursor]?.id === id) {
+    app.tab = 'feed';
+    void hydrateAround(app.cursor);
+    notify();
+    return;
+  }
+  const head = app.feed.slice(0, app.cursor + 1).filter((c) => c.id !== id);
+  const at = head.length;
   const served: ServedCard = { id, slot, why, score: 0 };
-  app.feed = [...app.feed.slice(0, at).filter((c) => c.id !== id), served, ...app.feed.slice(at).filter((c) => c.id !== id)];
+  app.feed = [...head, served, ...app.feed.slice(app.cursor + 1).filter((c) => c.id !== id)];
+  app.cursor = at - 1;
   app.tab = 'feed';
   notify();
   void hydrateAround(app.cursor).then(() => {

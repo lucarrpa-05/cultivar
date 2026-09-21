@@ -1,7 +1,8 @@
 /** You: streak, today, four charts, milestones, monthly recap, settings. */
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { useApp } from '@/app/state';
-import { cardMeta, loadRecap } from '@/content/loader';
+import { cardMeta } from '@/content/loader';
+import { getFile } from '@/store/github';
 import { dayKey, minutesLabel, monthKey, monthName } from '@/app/util';
 import { GoalRing } from './GoalRing';
 import { Markdown } from './Markdown';
@@ -125,16 +126,36 @@ export function YouScreen() {
 }
 
 function Recap({ events }: { events: { t: number; type: string; card?: string }[] }) {
-  const month = monthKey();
+  const currentMonth = monthKey();
+  const [year, monthNumber] = currentMonth.split('-').map(Number);
+  const recapMonth = monthNumber === 1 ? `${year - 1}-12` : `${year}-${String(monthNumber - 1).padStart(2, '0')}`;
+  const store = useApp((s) => s.store);
+  const syncConfig = useApp((s) => s.syncConfig);
   const [text, setText] = useState<string | null>(null);
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    void loadRecap(month).then((md) => {
-      setText(md);
-      setChecked(true);
-    });
-  }, [month]);
+    let cancelled = false;
+    setText(null);
+    setChecked(false);
+    void (async () => {
+      const key = `privateRecap:${recapMonth}`;
+      try {
+        const cached = await store?.getLocal<string>(key);
+        if (!cancelled && cached) setText(cached);
+      } catch { /* A local fallback is available below. */ }
+      if (!cancelled) setChecked(true);
+      if (!syncConfig?.token) return;
+      try {
+        const file = await getFile(syncConfig, `recaps/${recapMonth}.md`);
+        const markdown = file?.content?.trim();
+        if (!markdown || markdown.startsWith('<')) return;
+        if (!cancelled) setText(markdown);
+        await store?.setLocal(key, markdown);
+      } catch { /* Keep the cached recap when offline. */ }
+    })();
+    return () => { cancelled = true; };
+  }, [recapMonth, store, syncConfig]);
 
   const local = useMemo(() => {
     const since = Date.now() - 30 * 86_400_000;
@@ -156,7 +177,7 @@ function Recap({ events }: { events: { t: number; type: string; card?: string }[
 
   return (
     <div class="card-panel">
-      <h3>{monthName(month)}</h3>
+      <h3>{text ? monthName(recapMonth) : 'Last 30 days'}</h3>
       {text ? (
         <Markdown text={text} />
       ) : local.top.length ? (

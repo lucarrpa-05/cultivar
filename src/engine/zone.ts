@@ -15,6 +15,7 @@ import { PARAMS } from './params.ts';
 
 /** Push one valence-bearing event into the rolling window. */
 export function recordValence(state: EngineState, area: TopicId, r: number, t: number): void {
+  state.valenceCount = (state.valenceCount || 0) + 1;
   if (!state.valence) state.valence = [];
   state.valence.push({ t, area, r });
   const overflow = state.valence.length - PARAMS.zoneWindow;
@@ -40,6 +41,10 @@ export function endZone(state: EngineState): void {
  * zone is part of the deterministic state, not a planner-local guess.
  */
 export function updateZone(state: EngineState, area: TopicId, r: number, t: number): void {
+  if ((state.valenceCount || 0) < PARAMS.zoneMinValenceEvents) {
+    delete state.zone; // old snapshots may have inferred a zone from day-one feedback
+    return;
+  }
   const zone = state.zone;
   if (zone) {
     if (area && area === zone.area) {
@@ -85,6 +90,10 @@ export function updateZone(state: EngineState, area: TopicId, r: number, t: numb
 
 /** Time-based expiry, checked at each `session_start`. */
 export function expireZone(state: EngineState, now: number): void {
+  if ((state.valenceCount || 0) < PARAMS.zoneMinValenceEvents) {
+    delete state.zone;
+    return;
+  }
   const zone = state.zone;
   if (!zone) return;
   const last = lastInArea(state, zone.area) || zone.since;
@@ -94,7 +103,7 @@ export function expireZone(state: EngineState, now: number): void {
 /** `zoneBoost(c)` from §8, including the post-zone widening bonus for adjacent areas. */
 export function zoneBoost(state: EngineState, ctx: EngineContext, cardArea: TopicId): number {
   let v = 1;
-  const zone = state.zone;
+  const zone = (state.valenceCount || 0) >= PARAMS.zoneMinValenceEvents ? state.zone : undefined;
   if (zone) v = cardArea === zone.area ? 1 + zone.boost : PARAMS.zoneOutsideBoost;
   if ((state.widen || 0) > 0 && state.widenFrom && cardArea && cardArea !== state.widenFrom) {
     const near = ctx.graph.adjacentAreas(state.widenFrom);

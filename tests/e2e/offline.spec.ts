@@ -17,10 +17,22 @@ test.describe('installable and offline', () => {
     expect(manifest!.name).toBe('Cultivar');
     expect(manifest!.display).toBe('standalone');
     expect(manifest!.start_url).toBe('/cultivar/');
-    const icons = manifest!.icons as { sizes: string; purpose?: string }[];
+    const icons = manifest!.icons as { src: string; sizes: string; type?: string; purpose?: string }[];
     expect(icons.some((i) => i.sizes === '192x192')).toBe(true);
     expect(icons.some((i) => i.sizes === '512x512')).toBe(true);
     expect(icons.some((i) => (i.purpose ?? '').includes('maskable'))).toBe(true);
+
+    // Install prompts need actual image files, not just manifest declarations.
+    for (const icon of icons.filter((i) => i.type === 'image/png')) {
+      const url = await page.evaluate(({ src, manifestHref }) =>
+        new URL(src, new URL(manifestHref, location.href)).href,
+        { src: icon.src, manifestHref: href! },
+      );
+      const response = await page.request.get(url);
+      expect(response.ok(), `${icon.sizes} icon exists`).toBe(true);
+      expect(response.headers()['content-type']).toMatch(/image\/png/);
+      expect((await response.body()).length).toBeGreaterThan(100);
+    }
 
     // iOS bits the spec asks for.
     await expect(page.locator('meta[name="apple-mobile-web-app-capable"]')).toHaveAttribute('content', 'yes');
@@ -38,6 +50,8 @@ test.describe('installable and offline', () => {
     await page.waitForTimeout(1500);
     const before = await page.locator('.card-title').first().innerText();
     expect(before.length).toBeGreaterThan(0);
+    await page.getByRole('button', { name: 'Save', exact: true }).click();
+    await expect(page.getByRole('button', { name: 'Saved', exact: true })).toBeVisible();
 
     // Let the service worker finish precaching before pulling the plug.
     await expect
@@ -68,6 +82,10 @@ test.describe('installable and offline', () => {
     // The map and the saved list work offline too.
     await page.getByRole('tab', { name: 'Map' }).click();
     await expect(page.locator('.domain-tile')).toHaveCount(11);
+    await page.getByRole('tab', { name: 'Saved' }).click();
+    await expect(page.getByText(before, { exact: false }).first()).toBeVisible();
+    await page.getByRole('tab', { name: 'You' }).click();
+    await expect(page.locator('.streak-head')).toBeVisible();
 
     await context.setOffline(false);
   });

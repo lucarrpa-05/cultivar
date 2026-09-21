@@ -160,7 +160,7 @@ flag, because npm eats `--`-flags that follow the script name.)
 - `dedupe` writes `.data/reviews/dedupe-report.json` and always exits 0 → read it, and for each
   flagged pair either delete the weaker card or add the other to its `related:`.
 - `mark-distilled` closes the inbox loop from `refresh/distilled.json` + `refresh/dropped.json`.
-- `answer-questions` marks his questions answered and writes `public/content/questions.json`.
+- `answer-questions` marks his questions answered in the private data repo; the public compatibility file stays empty.
 
 Then, only if the brief's section 11 said a month boundary passed:
 

@@ -133,8 +133,6 @@ export const PARAMS = {
   focusBoost: 2.5,
   contextBoost: 1.8,
   answerBoost: 1.6,
-  callbackBoost: 1.6,
-  callbackLikedBoost: 1.3,
   exploreBonus: 0.25,
   randomJitter: 0.05,
 
@@ -167,7 +165,7 @@ export const PARAMS = {
   answerPerSession: 1,
   answerMinPosition: 2,
   answerMaxPosition: 4,
-  callbacksPerSession: 2,
+  callbacksPerSession: 1,
   callbackMinPosition: 2,
   milestonesPerSession: 2,
   closeFormats: ['callback', 'story', 'challenge', 'quote'] as string[],
@@ -201,6 +199,8 @@ export const PARAMS = {
 
   // ── §11 zone ───────────────────────────────────────────────────────────
   zoneWindow: 25,
+  /** Wait for enough independent feedback before inferring an obsession. */
+  zoneMinValenceEvents: 200,
   /** No zone before the window is this full — four early cards in one area are not an obsession. */
   zoneMinWindow: 16,
   zoneShare: 0.45,

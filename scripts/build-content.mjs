@@ -5,7 +5,7 @@
  *   public/content/taxonomy.json          copy of content/taxonomy.json
  *   public/content/index.json             { builtAt, count, cards: CardMeta[] }   (no bodies)
  *   public/content/cards/<domain>.json    Record<CardId, Card>                    (bodies + inlined SVG)
- *   public/content/questions.json         copy of .data/questions.json, or []
+ *   public/content/questions.json         empty compatibility file; questions stay private
  *
  * Validation runs first; any error fails the build.
  *
@@ -24,7 +24,6 @@ import { parseCardFile } from './lib/parse-card.mjs';
 import { validateContent, walkMarkdown } from './validate-content.mjs';
 
 const DEFAULT_OUT = path.join(REPO_ROOT, 'public', 'content');
-const QUESTIONS_SRC = path.join(REPO_ROOT, '.data', 'questions.json');
 
 /** CardMeta, in the order src/types.ts declares it. */
 function toMeta(card) {
@@ -153,23 +152,21 @@ export function buildContent(options = {}) {
       ]),
   );
 
-  // 6 ── questions ──────────────────────────────────────────────────────────
-  let questions = [];
-  let questionsFrom = null;
-  const questionsSrc = options.questionsFile || QUESTIONS_SRC;
-  if (fs.existsSync(questionsSrc)) {
-    try {
-      questions = JSON.parse(fs.readFileSync(questionsSrc, 'utf8'));
-      questionsFrom = path.relative(root, questionsSrc).split(path.sep).join('/');
-    } catch (err) {
-      throw new Error(`${questionsSrc} is not valid JSON: ${err.message}`);
-    }
-  }
+  // 6 ── private questions never enter the public Pages artifact ───────────
+  // The answer-card metadata is enough for the "You asked" badge. Raw question
+  // text, timestamps and reading state belong only in the private data repo.
+  const questions = [];
+  const questionsFrom = null;
 
   // 7 ── write ──────────────────────────────────────────────────────────────
   const written = [];
   if (options.write !== false) {
     fs.mkdirSync(outDir, { recursive: true });
+    // Older refresh runs wrote personal recaps here. Vite copies public/ verbatim,
+    // so remove any stale files before it can publish them again.
+    for (const name of fs.readdirSync(outDir)) {
+      if (/^recap-\d{4}-\d{2}\.md$/.test(name)) fs.rmSync(path.join(outDir, name));
+    }
     const cardsOut = path.join(outDir, 'cards');
     fs.rmSync(cardsOut, { recursive: true, force: true });
     fs.mkdirSync(cardsOut, { recursive: true });

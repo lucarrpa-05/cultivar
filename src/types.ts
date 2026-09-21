@@ -163,6 +163,7 @@ export interface ReaderQuestion {
 
 export type EventType =
   | 'view'          // card shown; data.dwellMs on leave; data.readFraction 0..1
+  | 'pass'          // left without confirming a read; advances the served slot
   | 'like' | 'unlike'
   | 'save' | 'unsave'
   | 'skip'          // explicit "not my taste"
@@ -178,6 +179,7 @@ export type EventType =
   | 'focus'         // data.topic: reader chose a topic to focus on in the Map (or null to clear)
   | 'settings'      // data.patch: Partial<Settings>
   | 'milestone'     // data.id
+  | 'migration'     // data.kind; durable one-time repair of legacy derived state
   | 'undo';         // data.of: event id
 
 export interface Event {
@@ -389,6 +391,8 @@ export interface EngineState {
   session?: SessionState;
   /** rolling window of the last 25 valence-bearing events (§11). */
   valence?: ValenceMark[];
+  /** Total valence events, used to keep early planner choices from creating a zone. */
+  valenceCount?: number;
   /** per-day activity, newest last, trimmed to 90 days (§14, §17). */
   days?: DayStat[];
   /** consecutive negative *cards* (skip / fast pass) — drives palate cleansers (§12). */

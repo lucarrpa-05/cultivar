@@ -95,6 +95,18 @@ test.describe('reader flows', () => {
     const cursor = await page.evaluate(() => (window as any).__cultivar.cursor as number);
     await goToIndex(page, cursor + at);
     await expect(page.locator(`.feed-section[data-i="${cursor + at}"] .chip`).filter({ hasText: 'Groundwork' })).toBeVisible();
+
+    const beforeCredit = await page.evaluate((topic) =>
+      (window as any).__cultivar.state.backfill.find((b: any) => b.topic === topic)?.served ?? 0,
+      backfillCard.topic,
+    );
+    await page.getByRole('button', { name: 'Mark as read and go to the next card' }).click();
+    const read = await expectPersistedEvent(page, 'view', served.id);
+    expect(read.data).toMatchObject({ confirmed: true, slot: 'backfill' });
+    await expect.poll(async () => page.evaluate((topic) =>
+      (window as any).__cultivar.state.backfill.find((b: any) => b.topic === topic)?.served ?? 0,
+      backfillCard.topic,
+    )).toBe(beforeCredit + 1);
   });
 
   test('(g) ⋯ asks a question and explains the card', async ({ page }) => {

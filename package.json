@@ -16,6 +16,7 @@
     "dedupe": "node scripts/dedupe.mjs",
     "fetch-live": "node scripts/fetch-live.mjs",
     "analyze": "tsx scripts/analyze-profile.ts",
+    "audit:feed": "node scripts/audit-feed.mjs",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "recap": "tsx scripts/recap.ts",

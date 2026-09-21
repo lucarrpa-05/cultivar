@@ -7,7 +7,11 @@
  */
 import { defineConfig, devices } from '@playwright/test';
 
-const PORT = 4173;
+// Allow parallel local previews without connecting to an unrelated, stale server.
+const PORT = Number(process.env.E2E_PORT ?? 4173);
+if (!Number.isInteger(PORT) || PORT < 1 || PORT > 65_535) {
+  throw new Error('E2E_PORT must be a valid TCP port');
+}
 const BASE = `http://localhost:${PORT}/cultivar/`;
 
 export default defineConfig({

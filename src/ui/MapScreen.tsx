@@ -4,7 +4,7 @@
  */
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { KnowledgeMapNode, TopicId } from '@/types';
-import { app, record, setMapDomain, setTab, useApp } from '@/app/state';
+import { app, record, setMapDomain, setTab, showToast, useApp } from '@/app/state';
 import { friendlyDate, startOfDay } from '@/app/util';
 import { cardMeta } from '@/content/loader';
 import { accentStyle, domainInfo, nodeInfo } from './domain';
@@ -421,6 +421,7 @@ function TopicSheet({ id, node, onClose }: { id: TopicId; node?: KnowledgeMapNod
   const level = node?.level ?? 0;
   const mastery = node?.mastery ?? topicState?.mastery ?? 0;
   const lastSeen = topicState?.lastServed;
+  const emptyTopic = (node?.cardsTotal ?? 0) === 0;
 
   const missing = (node?.prereqs ?? []).filter((p) => (app.engineState?.topics[p]?.mastery ?? 0) < 0.25);
 
@@ -455,13 +456,17 @@ function TopicSheet({ id, node, onClose }: { id: TopicId; node?: KnowledgeMapNod
         </div>
       ) : null}
 
+      {emptyTopic ? (
+        <p class="small muted" role="status">Nothing on {tax?.name?.toLowerCase() ?? 'this topic'} yet. More cards are coming.</p>
+      ) : null}
       <button
         class="btn btn-primary btn-block"
         style={{ marginTop: '16px' }}
         onClick={() => {
-          void record('focus', { topic: id, data: { topic: id } });
+          void record('focus', { topic: id, data: { topic: id, available: !emptyTopic } });
           onClose();
-          setTab('feed');
+          if (emptyTopic) showToast(`Nothing on ${tax?.name?.toLowerCase() ?? 'this topic'} yet.`);
+          else setTab('feed');
         }}
       >
         Explore this <IconRight />

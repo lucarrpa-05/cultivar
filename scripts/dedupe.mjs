@@ -27,7 +27,7 @@ import { loadTaxonomy, REPO_ROOT, CARDS_DIR } from './lib/taxonomy.mjs';
 import { parseCardFile } from './lib/parse-card.mjs';
 import { walkMarkdown, resolveTargets } from './validate-content.mjs';
 
-const DEFAULT_REPORT = path.join(REPO_ROOT, 'content', 'reviews', 'dedupe-report.json');
+const DEFAULT_REPORT = path.join(REPO_ROOT, '.data', 'reviews', 'dedupe-report.json');
 export const TITLE_JACCARD = 0.6;
 export const TAG_JACCARD = 0.75;
 

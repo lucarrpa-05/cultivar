@@ -140,18 +140,6 @@ export function warmAllShards(): void {
   idle(step);
 }
 
-/** Monthly recap markdown written by the refresh, e.g. content/recap-2026-09.md */
-export async function loadRecap(month: string): Promise<string | null> {
-  try {
-    const res = await fetch(contentUrl(`recap-${month}.md`), { credentials: 'omit' });
-    if (!res.ok) return null;
-    const text = await res.text();
-    return text.trim().startsWith('<') ? null : text;
-  } catch {
-    return null;
-  }
-}
-
 /** Test seam: drop every cache (also used by "reset all local data"). */
 export function resetContentCaches(): void {
   shards.clear();

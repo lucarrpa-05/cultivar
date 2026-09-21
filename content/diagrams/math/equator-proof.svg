@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 310" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="180" cy="100" r="64"/>
+  <line x1="116" y1="100" x2="244" y2="100" stroke-width="3"/>
+  <circle cx="116" cy="100" r="5" fill="currentColor"/>
+  <circle cx="244" cy="100" r="5" fill="currentColor"/>
+  <path d="M180 22 A78 78 0 0 1 180 178" stroke-dasharray="4 5"/>
+  <path d="M190 167 L180 178 L171 166"/>
+  <text x="84" y="90" fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="15">A</text>
+  <text x="255" y="90" fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="15">B</text>
+  <text x="108" y="181" fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="13">After half a turn, A and B swap.</text>
+  <line x1="42" y1="247" x2="321" y2="247" stroke-dasharray="5 5"/>
+  <path d="M47 209 C105 208 123 231 180 248 S260 285 314 283" stroke-width="3"/>
+  <circle cx="180" cy="248" r="4" fill="currentColor"/>
+  <text x="45" y="201" fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="13">A warmer</text>
+  <text x="258" y="302" fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="13">B warmer</text>
+  <text x="189" y="242" fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="13">same</text>
+</svg>

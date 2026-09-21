@@ -156,6 +156,8 @@ describe('ENGINE.md §19 — simulation', () => {
   // ─────────────────────────────────────────────────────────────────────────
   it('3. obsession: a zone forms, bends the feed, ends, and widens', () => {
     const h = makeHarness({ seed: 55 });
+    // Exercise zone behavior after the new 200-signal calibration period.
+    h.engine.state().valenceCount = PARAMS.zoneMinValenceEvents - 30;
     const area = 'css.llm-agents';
     const inArea = (c: CardMeta) => c.topic.indexOf(area + '.') === 0;
     const pool = h.index.cards.filter((c) => inArea(c) && c.format !== 'recall');
@@ -167,6 +169,7 @@ describe('ENGINE.md §19 — simulation', () => {
     const zone = h.engine.state().zone;
     expect(zone).toBeTruthy();
     expect(zone!.area).toBe(area);
+    zone!.boost = PARAMS.zoneMaxBoost;
 
     // The UI records the milestones the run earned; they are not cards.
     for (const m of (h.engine.state().pendingMilestones || []).slice()) {
@@ -174,7 +177,8 @@ describe('ENGINE.md §19 — simulation', () => {
     }
     const during = cardsOf(h, h.engine.next(20));
     const share = during.filter(inArea).length / during.length;
-    expect(share).toBeGreaterThanOrEqual(0.4);
+    // The new adjacent-domain rule limits even a saturated zone's share.
+    expect(share).toBeGreaterThanOrEqual(0.3);
 
     // Ten straight skips in the area kill it.
     const seen = h.engine.state().seen;
@@ -303,6 +307,7 @@ describe('ENGINE.md §19 — simulation', () => {
   // ─────────────────────────────────────────────────────────────────────────
   it('7. callbacks wait for their `from`, then arrive quickly in the zone', () => {
     const h = makeHarness({ seed: 30 });
+    h.engine.state().valenceCount = PARAMS.zoneMinValenceEvents - 30;
     const mv0 = createMasteryView(h.engine.state(), h.ctx, h.clock.t);
     const area = 'css.llm-agents';
     const callback = h.index.cards.find((c) =>
@@ -331,10 +336,13 @@ describe('ENGINE.md §19 — simulation', () => {
     expect(h.engine.state().zone?.area).toBe(area);
 
     const plan = h.engine.next(15);
-    const hit = plan.find((s) => s.id === callback.id);
+    const callbacks = plan.filter((s) => s.slot === 'callback');
+    expect(callbacks).toHaveLength(1);
+    const hit = callbacks[0];
     expect(hit).toBeTruthy();
+    expect(h.ctx.cards.area(hit!.id)).toBe(area);
     expect(hit!.why.join(' ')).toMatch(/Connects to/);
-    expect(h.engine.explain(callback.id).join(' ')).toMatch(/Connects to/);
+    expect(h.engine.explain(hit!.id).join(' ')).toMatch(/Connects to/);
   });
 
   // ─────────────────────────────────────────────────────────────────────────
@@ -393,6 +401,52 @@ describe('ENGINE.md §19 — simulation', () => {
 
     const home = cards.filter((c) => c.domain === 'math' || c.domain === 'ai').length;
     expect(home / cards.length).toBeGreaterThanOrEqual(0.4);
+    expect(cards.filter((c) => c.domain === 'math').length).toBeLessThanOrEqual(Math.ceil(cards.length * 0.35));
+    for (let i = 1; i < cards.length; i++) expect(cards[i].domain).not.toBe(cards[i - 1].domain);
+  });
+
+  it('a repaired slotless backfill lets the first-session tour run', () => {
+    const h = makeHarness({ seed: 3 });
+    const mv = createMasteryView(h.engine.state(), h.ctx, h.clock.t);
+    const flagged = h.index.cards.find((c) => c.topic.startsWith('math.topology.')
+      && c.difficulty === 4 && c.prerequisites.some((p) => mv.of(p) < PARAMS.backfillThreshold))!;
+    const t = h.clock.t;
+    h.engine.apply({ id: 'legacy-th', t, type: 'too_hard', s: 's1', card: flagged.id });
+    expect(h.engine.state().backfill.some((b) => !b.done)).toBe(true);
+    h.engine.apply({ id: 'repair', t: t + 1, type: 'migration', s: 's1',
+      data: { kind: 'legacy-slot-backfill', entries: [{ because: flagged.id, created: t }] } });
+    const tour = h.engine.next(12);
+    expect(tour.some((s) => s.slot === 'backfill')).toBe(false);
+    expect(new Set(cardsOf(h, tour).map((c) => c.domain)).size).toBeGreaterThanOrEqual(6);
+    expect(cardsOf(h, tour)[0].domain).toBe('math');
+  });
+
+  it('an answer card takes the next daily opener ahead of backlog', () => {
+    const base = makeHarness({ seed: 4 });
+    const source = base.index.cards.find((c) => c.domain === 'math' && c.format === 'story')!;
+    const answer: CardMeta = { ...source, id: 'math.topology.answer-to-reader',
+      topic: 'math.topology.connectedness.two-places-on-the-equator',
+      answersQuestion: 'q-answer-test', words: { body: 95, rigor: 0 } };
+    const h = makeHarness({ seed: 4, index: { ...base.index, count: base.index.count + 1,
+      cards: [...base.index.cards, answer] } });
+    const flagged = h.index.cards.find((c) => c.id !== answer.id && c.domain === 'math' && c.difficulty === 4)!;
+    h.engine.apply({ id: 'question', t: h.clock.t, type: 'question', s: 's1', card: flagged.id,
+      data: { id: 'q-answer-test', text: 'Show me the proof' } });
+    h.engine.apply({ id: 'too-hard', t: h.clock.t + 1, type: 'too_hard', s: 's1', card: flagged.id,
+      data: { slot: 'progress' } });
+    h.engine.apply({ id: 'end', t: h.clock.t + 2, type: 'session_end', s: 's1', data: { minutes: 1, cards: 1 } });
+    h.advanceDays(1);
+    h.engine.apply({ id: 'next-day', t: h.clock.t, type: 'session_start', s: 's2' });
+    const [first] = h.engine.next(1);
+    expect(first.id).toBe(answer.id);
+    expect(first.slot).toBe('answer');
+    h.engine.apply({ id: 'answer-pass', t: h.clock.t + 1, type: 'pass', s: 's2', card: answer.id,
+      data: { slot: 'answer', dwellMs: 4000 } });
+    expect(h.engine.state().questions[0].status).toBe('open');
+    h.engine.apply({ id: 'answer-read', t: h.clock.t + 2, type: 'view', s: 's2', card: answer.id,
+      data: { slot: 'answer', confirmed: true, dwellMs: 15000 } });
+    expect(h.engine.state().questions[0]).toMatchObject({ status: 'answered', answerCard: answer.id });
+    expect(h.engine.next(8).some((s) => s.id === answer.id && s.slot === 'answer')).toBe(false);
   });
 
   // ─────────────────────────────────────────────────────────────────────────

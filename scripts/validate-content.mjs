@@ -33,18 +33,29 @@ const addFormats = addFormatsModule.default || addFormatsModule;
 
 const SCHEMA_FILE = path.join(REPO_ROOT, 'schema', 'card.schema.json');
 
-/** SCHEMA §4.3 — body word limits by format. */
+/** New cards use the shorter day-one editorial limit. */
 export const BODY_WORDS = {
   fact: [25, 90],
   quote: [25, 90],
-  idea: [40, 190],
-  series: [40, 190],
-  callback: [40, 190],
-  story: [40, 190],
-  challenge: [40, 190],
-  news: [40, 190],
+  idea: [60, 120],
+  series: [60, 120],
+  callback: [60, 120],
+  story: [60, 120],
+  challenge: [60, 120],
+  news: [60, 120],
+  recall: [20, 120],
+};
+/** Launch cards were reviewed under the original contract. They stay valid while edited down. */
+export const LAUNCH_BODY_WORDS = {
+  ...Object.fromEntries(Object.keys(BODY_WORDS).map((format) => [format, [40, 190]])),
+  fact: [25, 90],
+  quote: [25, 90],
   recall: [20, 190],
 };
+const LAUNCH_REVIEW_CUTOFF = '2026-09-20';
+export function isLaunchCard(card) {
+  return typeof card.reviewed?.at === 'string' && card.reviewed.at < LAUNCH_REVIEW_CUTOFF;
+}
 export const RIGOR_WORDS = [40, 280];
 const RIGOR_REQUIRED_FORMATS = new Set(['idea', 'series', 'callback']);
 const RECALL_REQUIRED_FORMATS = new Set(['idea', 'series', 'callback', 'recall']);
@@ -105,7 +116,7 @@ function schemaValidator() {
 }
 
 /**
- * @param {{paths?: string[], requireReview?: boolean, strict?: boolean, root?: string, taxonomy?: object}} options
+ * @param {{paths?: string[], requireReview?: boolean, strict?: boolean, tightBody?: boolean, root?: string, taxonomy?: object}} options
  * @returns {{problems: object[], entries: object[], targets: object[], summary: object, errorCount: number, warningCount: number, ok: boolean}}
  */
 export function validateContent(options = {}) {
@@ -235,7 +246,7 @@ export function validateContent(options = {}) {
       if (card.title.length > 80) add(entry, 'error', 'title-length', `title is ${card.title.length} characters — the limit is 80. Cut it down to the claim.`);
       else if (card.title.length < 8) add(entry, 'error', 'title-length', `title is ${card.title.length} characters — that is not a hook (minimum 8)`);
     }
-    const limits = BODY_WORDS[card.format];
+    const limits = (isLaunchCard(card) && !options.tightBody ? LAUNCH_BODY_WORDS : BODY_WORDS)[card.format];
     if (limits && card.words) {
       const n = card.words.body;
       if (n < limits[0]) add(entry, 'error', 'body-words', `body is ${n} words — \`${card.format}\` cards need ${limits[0]}–${limits[1]}. Say more, or change the format.`);
@@ -578,6 +589,7 @@ export function summarize(cards) {
     withRigor: cards.filter((c) => c.hasRigor).length,
     withRecall: cards.filter((c) => c.hasRecall).length,
     withDiagram: cards.filter((c) => c.hasDiagram).length,
+    launchBodiesOver120: cards.filter((c) => isLaunchCard(c) && c.words?.body > 120).length,
   };
 }
 
@@ -599,16 +611,18 @@ export function printSummary(summary, log = console.log) {
   log(`  ${'review'.padEnd(11)} ${summary.reviewed} reviewed · ${summary.unreviewed} unreviewed`);
   log(`  ${'structure'.padEnd(11)} ${summary.withRigor} with rigor · ${summary.withRecall} with recall · ${summary.withDiagram} with diagram`);
   log(`  ${'links'.padEnd(11)} ${summary.callbacks} callback${summary.callbacks === 1 ? '' : 's'} · ${summary.series} series`);
+  if (summary.launchBodiesOver120) log(`  ${'length'.padEnd(11)} ${summary.launchBodiesOver120} launch bodies still over 120 words`);
   log('');
 }
 
 // ───────────────────────────── CLI ─────────────────────────────
 
 export function parseArgs(argv) {
-  const opts = { paths: [], requireReview: false, strict: false, json: false, quiet: false };
+  const opts = { paths: [], requireReview: false, strict: false, tightBody: false, json: false, quiet: false };
   for (const arg of argv) {
     if (arg === '--require-review') opts.requireReview = true;
     else if (arg === '--strict') opts.strict = true;
+    else if (arg === '--tight-body') opts.tightBody = true;
     else if (arg === '--json') opts.json = true;
     else if (arg === '--quiet' || arg === '-q') opts.quiet = true;
     else if (arg === '--help' || arg === '-h') opts.help = true;
@@ -621,7 +635,7 @@ export function parseArgs(argv) {
 function main(argv) {
   const opts = parseArgs(argv);
   if (opts.help) {
-    console.log('usage: node scripts/validate-content.mjs [paths…] [--require-review] [--strict] [--json] [--quiet]');
+    console.log('usage: node scripts/validate-content.mjs [paths…] [--require-review] [--strict] [--tight-body] [--json] [--quiet]');
     return 0;
   }
   if (opts.unknown) {

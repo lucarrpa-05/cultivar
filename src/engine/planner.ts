@@ -30,7 +30,7 @@ import {
   createTrail, energyBudget, entryOf, lastEntry, novelty, pushTrail, rhythm, trailIds, wireAllowed,
 } from './rhythm.ts';
 import {
-  likedTopicsOf, makeCandidate, openQuestionsOf, score, SCORE_BOUND, type Candidate, type PlanScope,
+  makeCandidate, openQuestionsOf, score, SCORE_BOUND, type Candidate, type PlanScope,
 } from './score.ts';
 import { serendipityEpsilon } from './zone.ts';
 
@@ -98,7 +98,7 @@ export function plan(state: EngineState, ctx: EngineContext, n: number): PlanRes
   const sampler = createSampler(state, ctx.graph, ctx.random);
   const trail = createTrail(state, ctx);
   const session = state.session || syntheticSession(state, now);
-  const inZone = !!state.zone;
+  const inZone = !!state.zone && (state.valenceCount || 0) >= PARAMS.zoneMinValenceEvents;
   const firstSession = session.first && session.ordinal <= 1;
 
   // Cards that may be served although they are in `seen` (§7).
@@ -120,12 +120,11 @@ export function plan(state: EngineState, ctx: EngineContext, n: number): PlanRes
     trail,
     inZone,
     budget: energyBudget(session.mode, inZone),
-    likedTopics: likedTopicsOf(state, ctx),
     openQuestions: openQuestionsOf(state),
     contextTag: state.context || '',
     spanishTarget: state.settings.spanishShare,
     homeBoost: firstSession ? PARAMS.coldStartHomeBoost : 1,
-    zoneArea: state.zone ? state.zone.area : '',
+    zoneArea: inZone && state.zone ? state.zone.area : '',
   };
 
   const excluded = trailIds(trail);
@@ -195,7 +194,10 @@ export function plan(state: EngineState, ctx: EngineContext, n: number): PlanRes
       continue; // milestones are not cards: they do not enter the trail
     }
     const meta = ctx.cards.byId(served.id);
-    if (meta) pushTrail(trail, entryOf(meta, ctx, served.slot));
+    if (meta) {
+      cursor.slots['domain:' + meta.domain] = (cursor.slots['domain:' + meta.domain] || 0) + 1;
+      pushTrail(trail, entryOf(meta, ctx, served.slot));
+    }
     else pushTrail(trail, { id: served.id, topic: '', area: '', domain: '', format: 'news', weight: 'light', language: 'en', tags: [], cost: 1, slot: served.slot });
   }
 
@@ -215,6 +217,16 @@ interface PickArgs {
 
 type Filter = (c: Candidate) => boolean;
 
+function domainAllowed(scope: PlanScope, cursor: PlanCursor, domain: string): boolean {
+  const last = lastEntry(scope.trail);
+  if (last && last.domain && last.domain === domain) return false;
+  if (domain === 'math' && cursor.index > 0) {
+    const nextMath = (cursor.slots['domain:math'] || 0) + 1;
+    if (nextMath > Math.max(1, Math.ceil(0.35 * (cursor.index + 1)))) return false;
+  }
+  return true;
+}
+
 /**
  * argmax of §8 over a slot's pool. `args.candidates` is sorted by the static
  * half of the score, so once `base × SCORE_BOUND` can no longer beat the best
@@ -229,7 +241,13 @@ function best(
   filter: Filter,
   thetaOverride?: number,
   ignoreRhythm?: boolean,
+  shortOnly = false,
 ): { cand: Candidate; score: number } | null {
+  if (!shortOnly && !ignoreRhythm && (slot === 'open' || slot === 'light' || slot === 'close'
+    || (slot === 'progress' && cursor.index < 20 && !scope.inZone))) {
+    const short = best(scope, args, cursor, slot, filter, thetaOverride, false, true);
+    if (short) return short;
+  }
   let top: Candidate | null = null;
   let topScore = 0;
   const list = args.candidates;
@@ -237,6 +255,9 @@ function best(
     const c = list[i];
     if (topScore > 0 && c.base * SCORE_BOUND <= topScore) break;
     if (args.used[c.card.id]) continue;
+    if (shortOnly && c.card.words.body >= 130) continue;
+    if (c.card.format === 'callback' && slot !== 'callback') continue;
+    if (!ignoreRhythm && !domainAllowed(scope, cursor, c.card.domain)) continue;
     if (!filter(c)) continue;
     const v = score(c, scope, slot, thetaOverride, ignoreRhythm);
     if (v > topScore) {
@@ -352,8 +373,7 @@ function pickOne(
       const hit = best(scope, args, cursor, 'progress', (c) =>
         domains.indexOf(c.card.domain) >= 0 && c.card.format !== 'recall');
       if (hit) {
-        const slot: SlotKind = hit.cand.card.format === 'callback' ? 'callback' : 'progress';
-        return serve(hit.cand, slot, hit.score, scope);
+        return serve(hit.cand, 'progress', hit.score, scope);
       }
     }
   }
@@ -390,7 +410,7 @@ function pickOne(
     const firstOfSession = (cursor.slots['recall'] || 0) === 0;
     const windowOk = firstOfSession
       ? (daily
-        ? cursor.index >= PARAMS.recallFirstMin - 1 && cursor.index <= PARAMS.recallFirstMax - 1
+        ? cursor.index >= PARAMS.recallFirstMin - 1
         : cursor.sinceRecall >= args.recallK)
       : cursor.sinceRecall >= args.recallK;
     if (windowOk && !afterHeavy) {
@@ -402,7 +422,7 @@ function pickOne(
   // 10 ── callbacks (§10.7).
   if ((cursor.slots['callback'] || 0) < PARAMS.callbacksPerSession
     && (!daily || cursor.index >= PARAMS.callbackMinPosition)) {
-    const zoneArea = state.zone ? state.zone.area : '';
+    const zoneArea = scope.inZone && state.zone ? state.zone.area : '';
     const focusArea = state.focus ? ctx.graph.area(state.focus) : '';
     const hit = best(scope, args, cursor, 'callback', (c) => {
       if (c.card.format !== 'callback' || !c.card.callback) return false;
@@ -492,6 +512,11 @@ function pickOpen(
   args: PickArgs,
   cursor: PlanCursor,
 ): ServedCard | null {
+  // A card written to answer the reader takes the next daily opener, including
+  // during the first-session tour or while groundwork is queued.
+  const answer = best(scope, args, cursor, 'answer', (c) =>
+    !!c.card.answersQuestion && !!scope.openQuestions[c.card.answersQuestion], undefined, true);
+  if (answer) return serve(answer.cand, 'answer', answer.score, scope);
   // §13: the first card of the first session ever is a math card, difficulty 3,
   // with a paradox / beautiful / connection angle.
   if (args.firstSession) {
@@ -551,6 +576,7 @@ function pickSeries(
     if (!target) continue;
     const cand = args.byId[target.id];
     if (!cand || args.used[target.id]) continue;
+    if (cand.card.format === 'callback' || !domainAllowed(scope, cursor, cand.card.domain)) continue;
     if (!prog.pending && cursor.mode !== 'binge' && prog.lastAt >= args.session.startedAt) {
       // Not tapped: the episode goes within 1–3 cards, not necessarily now.
       const spread = PARAMS.seriesWithinMax - PARAMS.seriesWithinMin + 1;
@@ -578,6 +604,7 @@ function pickRecall(
     if (s && s.last >= args.session.startedAt) continue;
     const meta = ctx.cards.byId(id);
     if (!meta) continue;
+    if (meta.format === 'callback' || !domainAllowed(scope, cursor, meta.domain)) continue;
     return {
       id,
       slot: 'recall',
@@ -593,7 +620,7 @@ function pickRecall(
     const over = overdueDays(state.fsrs[id], scope.now);
     if (over < 0) continue;
     const meta = ctx.cards.byId(id);
-    if (!meta || !meta.hasRecall) continue;
+    if (!meta || !meta.hasRecall || meta.format === 'callback' || !domainAllowed(scope, cursor, meta.domain)) continue;
     if (over > bestOver) {
       bestOver = over;
       bestId = id;
@@ -628,6 +655,7 @@ function pickWire(
   let pickScore = 0;
   for (const item of ctx.wire) {
     if (item.status !== 'fresh') continue;
+    if (!domainAllowed(scope, cursor, item.domain)) continue;
     const id = 'wire:' + item.id;
     if (args.used[id] || state.recent.indexOf(id) >= 0) continue;
     const dated = parseDate(item.published);
@@ -696,6 +724,7 @@ function pickSerendipity(
   for (const c of args.candidates) {
     if (args.used[c.card.id]) continue;
     if (c.card.domain !== domain) continue;
+    if (c.card.format === 'callback' || !domainAllowed(scope, cursor, c.card.domain)) continue;
     if (rhythm(scope.trail, c.card, ctx, 'serendipity', scope.budget, scope.inZone) === 0) continue;
     const value = scope.sampler.anglesOf(c.card.angles)
       * novelty(scope.trail, c.card, ctx, 'serendipity')
@@ -723,7 +752,9 @@ function pickDeepCut(
     cold[d] = !ts || (ts.lastEvent || 0) < cutoff;
   }
   const pool = args.candidates.filter((c) =>
-    cold[c.card.domain] && !args.used[c.card.id] && (c.card.hasRigor || c.card.format === 'story'));
+    cold[c.card.domain] && !args.used[c.card.id]
+    && c.card.format !== 'callback' && domainAllowed(scope, cursor, c.card.domain)
+    && (c.card.hasRigor || c.card.format === 'story'));
   if (!pool.length) return null;
   const choice = pool[Math.floor(ctx.random() * pool.length) % pool.length];
   if (rhythm(scope.trail, choice.card, ctx, 'serendipity', scope.budget, scope.inZone) === 0) return null;

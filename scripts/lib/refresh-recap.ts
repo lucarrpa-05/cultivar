@@ -1,8 +1,7 @@
 /**
  * The monthly recap: what he now understands that he did not a month ago.
- * Rendered in the You tab (public/content/recap-YYYY-MM.md) and kept in the data repo.
+ * Stored in the private data repo and fetched by the You tab through sync.
  */
-import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { CardMeta, EngineDeps, EngineState, Event, TopicId } from '../../src/types.ts';
 import { Nodes, type DataRepo } from './refresh-data.ts';
@@ -38,7 +37,7 @@ export function pendingRecapMonths(data: DataRepo, events: Event[], now: number)
   }
   return [...months]
     .sort()
-    .filter((m) => !data.recaps.includes(m) && !existsSync(at('public', 'content', `recap-${m}.md`)));
+    .filter((m) => !data.recaps.includes(m));
 }
 
 export function monthRange(month: string): { from: number; to: number } {
@@ -228,6 +227,6 @@ export async function recapFor(month: string, deps: EngineDeps, events: Event[],
   return buildRecap({ month, before: before.state, after: after.state, events, nodes, cards });
 }
 
-export function recapPaths(month: string, dataDir = at('.data')): { app: string; data: string } {
-  return { app: at('public', 'content', `recap-${month}.md`), data: join(dataDir, 'recaps', `${month}.md`) };
+export function recapPaths(month: string, dataDir = at('.data')): { data: string } {
+  return { data: join(dataDir, 'recaps', `${month}.md`) };
 }

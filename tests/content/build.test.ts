@@ -93,4 +93,22 @@ describe('build-content', () => {
     expect(index.count).toBe(report.cards);
     expect(index.cards.every((c: any) => c.reviewed)).toBe(true);
   });
+
+  it('never publishes private question text', () => {
+    const privateDir = fs.mkdtempSync(path.join(os.tmpdir(), 'cultivar-private-question-'));
+    tmpDirs.push(privateDir);
+    const privateFile = path.join(privateDir, 'questions.json');
+    fs.writeFileSync(privateFile, JSON.stringify([{ id: 'q-secret', text: 'PRIVATE QUESTION TEXT', status: 'answered' }]));
+    const { out } = build({ questionsFile: privateFile });
+    expect(readJson(path.join(out, 'questions.json'))).toEqual([]);
+    expect(fs.readFileSync(path.join(out, 'index.json'), 'utf8')).not.toContain('PRIVATE QUESTION TEXT');
+  });
+
+  it('removes stale private recap files from the public output', () => {
+    const out = fs.mkdtempSync(path.join(os.tmpdir(), 'cultivar-public-recap-'));
+    tmpDirs.push(out);
+    fs.writeFileSync(path.join(out, 'recap-2026-08.md'), 'PRIVATE READING HISTORY');
+    buildContent({ outDir: out, builtAt: BUILT_AT });
+    expect(fs.existsSync(path.join(out, 'recap-2026-08.md'))).toBe(false);
+  });
 });

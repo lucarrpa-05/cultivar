@@ -1,4 +1,6 @@
 import { describe, expect, it } from 'vitest';
+import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -29,6 +31,26 @@ describe('the corpus', () => {
     expect(summary.language.es).toBeGreaterThanOrEqual(1);
     expect(summary.spanishShare).toBeCloseTo(summary.language.es / summary.cards, 5);
     expect(summary.withDiagram).toBeGreaterThanOrEqual(1);
+  });
+
+  it('enforces the shorter body limit on new reviews while preserving launch cards', () => {
+    const launch = validateContent({}).targets.find((entry: any) =>
+      entry.card?.reviewed?.at === '2026-09-19' &&
+      entry.card?.format === 'idea' && entry.card.words.body > 120);
+    expect(launch).toBeTruthy();
+    const before = validateContent({ paths: [launch.abs] });
+    expect(before.problems.some((p: any) => p.rule === 'body-words')).toBe(false);
+
+    const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'cultivar-length-'));
+    try {
+      const copied = path.join(temp, 'card.md');
+      const source = fs.readFileSync(launch.abs, 'utf8');
+      fs.writeFileSync(copied, source.replace('at: 2026-09-19', 'at: 2026-09-20'));
+      const after = validateContent({ paths: [copied] });
+      expect(after.problems.some((p: any) => p.rule === 'body-words' && p.severity === 'error')).toBe(true);
+    } finally {
+      fs.rmSync(temp, { recursive: true, force: true });
+    }
   });
 
   it('fails every card when --require-review is on and nothing is reviewed', () => {

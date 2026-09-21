@@ -42,6 +42,14 @@ test.describe('the feed', () => {
 
     // And the plan is a real plan, not one card.
     expect((await plan(page)).length).toBeGreaterThan(3);
+
+    // A deliberate read must preserve the planner's slot in the durable log.
+    // Without this, the fold silently treats every card as `progress` and
+    // groundwork, recall and session pacing cannot complete correctly.
+    await page.getByRole('button', { name: 'Mark as read and go to the next card' }).click();
+    const read = await expectPersistedEvent(page, 'view', served!.id);
+    expect(read.data).toMatchObject({ confirmed: true, slot: served!.slot });
+    await expect.poll(async () => page.evaluate(() => (window as any).__cultivar.state.session.slots.open)).toBe(1);
   });
 
   test('(c) the rigor gate opens after dwell and renders KaTeX', async ({ page }) => {
@@ -159,6 +167,22 @@ test.describe('the feed', () => {
 
     await expect(page.getByRole('button', { name: 'Saved', exact: true })).toBeVisible({ timeout: 10_000 });
     await expectPersistedEvent(page, 'save', served!.id);
+
+    // A short drag snaps back; a full drag left skips and moves to the next card.
+    const at = await page.evaluate(() => (window as any).__cultivar.cursor as number);
+    await page.mouse.move(cx, cy);
+    await page.mouse.down();
+    await page.mouse.move(cx - width * 0.2, cy, { steps: 8 });
+    await page.mouse.up();
+    expect(await page.evaluate(() => (window as any).__cultivar.cursor)).toBe(at);
+    expect((await rawIdbEvents(page)).some((e) => e.type === 'skip' && e.card === served!.id)).toBe(false);
+
+    await page.mouse.move(cx, cy);
+    await page.mouse.down();
+    await page.mouse.move(cx - width * 0.55, cy, { steps: 12 });
+    await page.mouse.up();
+    await expect.poll(async () => page.evaluate(() => (window as any).__cultivar.cursor)).toBeGreaterThan(at);
+    await expectPersistedEvent(page, 'skip', served!.id);
   });
 
   test('(k) the update pill never blocks the feed', async ({ page }) => {

@@ -6,8 +6,8 @@
  *   node scripts/answer-questions.mjs --dry-run
  *   node scripts/answer-questions.mjs --cards <dir> --out <file>   (tests)
  *
- * Writes .data/questions.json (status: answered, answerCard) and copies the list
- * to public/content/questions.json, which the app fetches for the "You asked" badge.
+ * Writes .data/questions.json (status: answered, answerCard). The public
+ * compatibility file is always empty: question text is private learning data.
  */
 import { join } from 'node:path';
 import { arg, at, flag, frontMatter, isDir, readJson, readText, say, walk, warn, writeJson } from './lib/refresh-io.mjs';
@@ -62,7 +62,7 @@ function main() {
 
   if (isDir(dataDir)) writeJson(questionsFile, list);
   else warn('No .data/ — writing the app copy only (run `npm run pull-data` to keep the data repo in sync).');
-  writeJson(outFile, list);
+  writeJson(outFile, []);
 
   say(`questions: ${answered} newly answered, ${open} still open (${list.length} total).`);
   if (unknown) warn(`${unknown} answered question id(s) were not in questions.json — check the id in the card's front matter.`);

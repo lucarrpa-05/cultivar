@@ -33,6 +33,7 @@ import {
   notify,
   pullSync,
   pushSync,
+  record,
   replan,
   resumeSession,
   startSession,
@@ -159,6 +160,7 @@ export async function boot(): Promise<void> {
   const engineMod = await pick<EngineModule>(engineMods, '/src/engine/index.ts', 'engine');
   app.engine = buildEngine(engineMod, deps, snapshot?.state, allEvents, snapshot?.state?.eventCount);
   app.engineState = app.engine.state();
+  await repairLegacyBackfill(allEvents);
 
   // 5. ready ---------------------------------------------------------------
   app.boot = 'ready';
@@ -274,7 +276,21 @@ async function onMerged(events: Event[]): Promise<void> {
   allEvents = all;
   app.engine = buildEngine(mod, deps, undefined, all, undefined);
   app.engineState = app.engine.state();
+  await repairLegacyBackfill(all);
   replan();
+}
+
+/** The first UI version omitted the served slot. Close only zero-served
+ * groundwork spawned by those historical too-hard events, then sync the repair
+ * as an ordinary event so every replay reaches the same state. */
+async function repairLegacyBackfill(events: Event[]): Promise<void> {
+  const open = app.engineState?.backfill.filter((b) => !b.done && b.served === 0) ?? [];
+  if (!open.length) return;
+  const legacy = events
+    .filter((e) => e.type === 'too_hard' && e.card && !e.data?.slot)
+    .map((e) => ({ because: e.card as string, created: e.t }));
+  const entries = legacy.filter((e) => open.some((b) => b.because === e.because && b.created === e.created));
+  if (entries.length) await record('migration', { data: { kind: 'legacy-slot-backfill', entries } });
 }
 
 // ── lifecycle ──────────────────────────────────────────────────────────────

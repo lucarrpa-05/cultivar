@@ -4,8 +4,8 @@
  *   npm run recap                 every finished month that has no recap yet
  *   npm run recap -- --month 2026-09
  *
- * Writes public/content/recap-YYYY-MM.md (shipped with the app) and
- * .data/recaps/YYYY-MM.md (kept in the private data repo).
+ * Writes .data/recaps/YYYY-MM.md in the private data repo. The You tab
+ * fetches it through the reader's configured private sync and caches it locally.
  */
 import { join } from 'node:path';
 import type { EngineDeps } from '../src/types.ts';
@@ -42,11 +42,11 @@ async function main(): Promise<void> {
   for (const month of months) {
     const markdown = await recapFor(month, deps, data.events, nodes);
     const paths = recapPaths(month, dataDir);
-    writeText(paths.app, markdown);
-    say(`recap ${month}: ${paths.app.replace(at('.') + '\\', '').replace(/\\/g, '/')}`);
     if (isDir(dataDir)) {
       writeText(paths.data, markdown);
-      say(`           ${join('.data', 'recaps', `${month}.md`).replace(/\\/g, '/')} (push with: npm run push-data)`);
+      say(`recap ${month}: ${join('.data', 'recaps', `${month}.md`).replace(/\\/g, '/')} (push with: npm run push-data)`);
+    } else {
+      say('No private data repo — recap was not written.');
     }
   }
 }

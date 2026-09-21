@@ -5,6 +5,7 @@
 
 import { describe, expect, it } from 'vitest';
 import { PARAMS } from '../../src/engine/params.ts';
+import { createMasteryView } from '../../src/engine/mastery.ts';
 import { initialState, replay } from '../../src/engine/index.ts';
 import type { CardMeta, EngineState, Event } from '../../src/types.ts';
 import { makeHarness, type Harness } from './fixtures/harness.ts';
@@ -66,6 +67,57 @@ describe('fold — one test per event type (§3)', () => {
     expect(st.seen[card.id].views).toBe(1);
     expect(st.metrics.cardsSeen).toBe(1);
     expect(st.recent).toEqual([card.id]);
+  });
+
+  it('pass: an unconfirmed card advances its slot and teaches disinterest without a read', () => {
+    const h = makeHarness({ seed: 2 });
+    const card = pick(h, (c) => c.domain === 'bio' && c.format !== 'callback');
+    const before = { ...arm(h.engine.state(), card.topic) };
+    h.engine.apply(ev('session_start', h.clock.t));
+    h.engine.apply(ev('pass', h.clock.t + 100, card.id,
+      { slot: 'serendipity', dwellMs: 1200, readFraction: 0.1 }));
+    const st = h.engine.state();
+    expect(st.seen[card.id]).toBeUndefined();
+    expect(st.metrics.cardsSeen).toBe(0);
+    expect(st.session?.index).toBe(1);
+    expect(st.session?.slots.serendipity).toBe(1);
+    expect(arm(st, card.topic).a - before.a).toBeCloseTo(PARAMS.valence.viewFast);
+    expect(st.surprise.bio.n).toBe(1);
+  });
+
+  it('migration repairs only the original slotless backfill, even when repeated in a replay', () => {
+    const h = makeHarness({ seed: 6 });
+    const mv = createMasteryView(h.engine.state(), h.ctx, h.clock.t);
+    const flagged = pick(h, (c) => c.topic.startsWith('math.topology.')
+      && c.difficulty === 4 && c.prerequisites.some((p) => mv.of(p) < PARAMS.backfillThreshold));
+    const t = h.clock.t;
+    const repairData = { kind: 'legacy-slot-backfill', entries: [{ because: flagged.id, created: t }] };
+    const events: Event[] = [
+      ev('too_hard', t, flagged.id),
+      ev('migration', t + 1, undefined, repairData),
+      ev('migration', t + 2, undefined, repairData),
+      ev('too_hard', t + 3, flagged.id, { slot: 'progress' }),
+    ];
+    const state = replay(h.deps, events);
+    const old = state.backfill.filter((b) => b.because === flagged.id && b.created === t);
+    const fresh = state.backfill.filter((b) => b.because === flagged.id && b.created === t + 3);
+    expect(old.length).toBeGreaterThan(0);
+    expect(old.every((b) => b.done)).toBe(true);
+    expect(fresh.length).toBeGreaterThan(0);
+    expect(fresh.every((b) => !b.done)).toBe(true);
+    expect(replay(h.deps, events).backfill).toEqual(state.backfill);
+  });
+
+  it.each(['like', 'save', 'recall'] as const)('%s on an answer card closes its question', (action) => {
+    const base = makeHarness({ seed: 5 });
+    const answer: CardMeta = { ...base.index.cards[0], id: 'math.answer-test',
+      answersQuestion: 'q-test', hasRecall: true };
+    const h = makeHarness({ seed: 5, index: { ...base.index, count: base.index.count + 1,
+      cards: [...base.index.cards, answer] } });
+    h.engine.apply(ev('question', h.clock.t, undefined, { id: 'q-test', text: 'Explain it' }));
+    h.engine.apply(ev(action, h.clock.t + 1, answer.id,
+      action === 'recall' ? { grade: 3, correct: true } : undefined));
+    expect(h.engine.state().questions[0]).toMatchObject({ status: 'answered', answerCard: answer.id });
   });
 
   it('view: hierarchy gets 0.5× on the area and 0.25× on the domain', () => {
@@ -243,6 +295,9 @@ describe('fold — one test per event type (§3)', () => {
   it('focus and settings write straight through', () => {
     const h = makeHarness({ seed: 2 });
     h.engine.apply({ id: 'f1', t: h.clock.t, type: 'focus', s: 'u1', topic: 'math.topology' });
+    expect(h.engine.state().focus).toBe('math.topology');
+    h.engine.apply({ id: 'empty-focus', t: h.clock.t + 1, type: 'focus', s: 'u1',
+      topic: 'niche.games.puzzles', data: { available: false } });
     expect(h.engine.state().focus).toBe('math.topology');
     h.engine.apply({ id: 'f2', t: h.clock.t + 1, type: 'focus', s: 'u1' });
     expect(h.engine.state().focus).toBeUndefined();

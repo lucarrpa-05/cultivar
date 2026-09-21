@@ -116,6 +116,12 @@ export function createFallbackEngine(deps: EngineDeps, initial?: EngineState): E
     const t = meta?.topic ?? ev.topic;
 
     switch (ev.type) {
+      case 'pass':
+        if (ev.card) {
+          state.recent = [ev.card, ...state.recent.filter((id) => id !== ev.card)].slice(0, 40);
+          if (t && ev.data?.signaled !== true) topic(t).negatives++;
+        }
+        break;
       case 'view': {
         if (!ev.card) break;
         const info = seenInfo(ev.card);
@@ -183,7 +189,7 @@ export function createFallbackEngine(deps: EngineDeps, initial?: EngineState): E
         });
         break;
       case 'focus':
-        state.focus = (ev.data?.topic as TopicId | undefined) ?? undefined;
+        if (ev.data?.available !== false) state.focus = (ev.data?.topic as TopicId | undefined) ?? undefined;
         break;
       case 'settings':
         Object.assign(state.settings, (ev.data?.patch ?? {}) as Partial<Settings>);
@@ -218,6 +224,18 @@ export function createFallbackEngine(deps: EngineDeps, initial?: EngineState): E
       case 'undo':
       default:
         break;
+    }
+    if (meta?.answersQuestion && (
+      (ev.type === 'view' && ev.data?.confirmed === true)
+      || ev.type === 'like' || ev.type === 'save'
+      || (ev.type === 'recall' && Number(ev.data?.grade ?? 0) > 0)
+    )) {
+      for (const q of state.questions) {
+        if (q.id === meta.answersQuestion) {
+          q.status = 'answered';
+          q.answerCard = meta.id;
+        }
+      }
     }
   }
 

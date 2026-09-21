@@ -145,6 +145,7 @@ function applyValence(state: EngineState, ctx: EngineContext, card: CardMeta, r:
       }
     }
   } else {
+    state.valenceCount = Math.max(0, (state.valenceCount || 0) - 1);
     const marks = state.valence || [];
     for (let i = marks.length - 1; i >= 0; i--) {
       if (marks[i].t === t && marks[i].r === r) {
@@ -263,14 +264,15 @@ function undoTooHard(state: EngineState, ctx: EngineContext, card: CardMeta): vo
 }
 
 /** Credit a backfill item when one of its cards is served and lands (§9.3). */
-function creditBackfill(state: EngineState, ctx: EngineContext, card: CardMeta, r: number): void {
+function creditBackfill(state: EngineState, ctx: EngineContext, card: CardMeta, r: number, now: number): void {
   const chain = ctx.graph.ancestors(card.topic);
+  const mv = createMasteryView(state, ctx, now);
   for (const b of state.backfill) {
     if (b.done) continue;
     if (chain.indexOf(b.topic) < 0) continue;
     b.served += 1;
     if (r >= PARAMS.zonePositiveValence) b.positives = (b.positives || 0) + 1;
-    if (b.served >= PARAMS.backfillServeTarget) b.done = true;
+    if (b.served >= PARAMS.backfillServeTarget || mv.of(b.topic) >= PARAMS.backfillThreshold) b.done = true;
   }
 }
 
@@ -363,7 +365,7 @@ function ensureSession(state: EngineState, ctx: EngineContext, ev: Event): Sessi
 // ── the dispatcher ──────────────────────────────────────────────────────────
 
 const ACTIONABLE: Record<string, true> = {
-  view: true, like: true, unlike: true, save: true, unsave: true, skip: true,
+  view: true, pass: true, like: true, unlike: true, save: true, unsave: true, skip: true,
   too_hard: true, too_easy: true, rigor_open: true, source_open: true,
   series_next: true, recall: true, question: true, wire: true,
 };
@@ -383,6 +385,7 @@ export function foldEvent(state: EngineState, ev: Event, ctx: EngineContext): En
 
   switch (ev.type) {
     case 'view': onView(state, ctx, ev); break;
+    case 'pass': onPass(state, ctx, ev); break;
     case 'like': onLike(state, ctx, ev, 1); break;
     case 'unlike': onLike(state, ctx, ev, -1); break;
     case 'save': onSave(state, ctx, ev, 1); break;
@@ -411,6 +414,15 @@ export function foldEvent(state: EngineState, ev: Event, ctx: EngineContext): En
         state.session.slots['m:' + id] = 1;
         // §10.10: after the goal-reached card, the session becomes a binge.
         if (id === 'goal-reached') state.session.mode = 'binge';
+      }
+      break;
+    }
+    case 'migration': {
+      if (str(ev.data, 'kind', '') !== 'legacy-slot-backfill') break;
+      const entries = Array.isArray(ev.data?.entries) ? ev.data.entries : [];
+      for (const b of state.backfill) {
+        if (!b.done && b.served === 0 && entries.some((x) =>
+          x && typeof x === 'object' && x.because === b.because && x.created === b.created)) b.done = true;
       }
       break;
     }
@@ -470,6 +482,7 @@ function onView(state: EngineState, ctx: EngineContext, ev: Event): void {
   if (r > (info.best || 0)) info.best = r;
 
   applyValence(state, ctx, card, r, ev.t, slot, 1);
+  if (confirmed) resolveQuestion(state, card);
   applyPoints(state, ctx, card, points, ev.t);
   touch(state, ctx, card.topic, ev.t);
 
@@ -495,23 +508,8 @@ function onView(state: EngineState, ctx: EngineContext, ev: Event): void {
   }
 
   pushRecent(state, card.id);
+  advanceSession(state, slot, card.domain, dwell);
   const session = state.session;
-  if (session) {
-    session.index += 1;
-    session.cards += 1;
-    session.slots[slot] = (session.slots[slot] || 0) + 1;
-    session.lastSlot = slot;
-    session.sinceRecall = slot === 'recall' ? 0 : session.sinceRecall + 1;
-    session.sinceWire = slot === 'wire' || slot === 'news' ? 0 : session.sinceWire + 1;
-    if (session.cleanser > 0 && slot === 'light') session.cleanser -= 1;
-    // The serendipity slot that follows the forced cleansers has now been paid.
-    if (slot === 'serendipity') session.cleanserSerendipity = false;
-    // Live active-reading minutes, so the `close` slot can fire mid-session
-    // (§10.10). `session_end` is still the authoritative number for the streak.
-    session.minutes += dwell / 60000;
-    const goal = state.settings.goalMinutes || PARAMS.goalMinutes;
-    if (state.streak.todayMinutes + session.minutes >= goal) session.goalReached = true;
-  }
 
   if (card.series) {
     const prog = state.series[card.series.id] || { lastIndex: 0, lastAt: 0, paused: false, finished: false };
@@ -526,7 +524,7 @@ function onView(state: EngineState, ctx: EngineContext, ev: Event): void {
   }
 
   if (slot === 'backfill') {
-    creditBackfill(state, ctx, card, r);
+    creditBackfill(state, ctx, card, r, ev.t);
     if (session) {
       session.backfillAt = session.index + PARAMS.backfillEveryMin
         + (hashString(card.id + ev.t) % (PARAMS.backfillEveryMax - PARAMS.backfillEveryMin + 1));
@@ -536,6 +534,45 @@ function onView(state: EngineState, ctx: EngineContext, ev: Event): void {
   const reread = state.reread || [];
   const ri = reread.indexOf(card.id);
   if (ri >= 0) reread.splice(ri, 1);
+}
+
+function advanceSession(state: EngineState, slot: string, domain: string, dwell: number): void {
+  const session = state.session;
+  if (!session) return;
+  session.index += 1;
+  session.cards += 1;
+  session.slots[slot] = (session.slots[slot] || 0) + 1;
+  session.slots['domain:' + domain] = (session.slots['domain:' + domain] || 0) + 1;
+  session.lastSlot = slot;
+  session.sinceRecall = slot === 'recall' ? 0 : session.sinceRecall + 1;
+  session.sinceWire = slot === 'wire' || slot === 'news' ? 0 : session.sinceWire + 1;
+  if (session.cleanser > 0 && slot === 'light') session.cleanser -= 1;
+  if (slot === 'serendipity') session.cleanserSerendipity = false;
+  session.minutes += dwell / 60000;
+  const goal = state.settings.goalMinutes || PARAMS.goalMinutes;
+  if (state.streak.todayMinutes + session.minutes >= goal) session.goalReached = true;
+}
+
+/** Leaving without a confirmed read still consumes a served slot and teaches
+ * the bandit. It does not create a `seen` entry or award mastery. */
+function onPass(state: EngineState, ctx: EngineContext, ev: Event): void {
+  const card = cardOf(ctx, ev);
+  if (!card) return;
+  const slot = str(ev.data, 'slot', 'progress');
+  const dwell = num(ev.data, 'dwellMs', 0);
+  if (!bool(ev.data, 'signaled')) {
+    const r = dwell < PARAMS.fastPassMs ? PARAMS.valence.viewFast : PARAMS.valence.viewPartial;
+    applyValence(state, ctx, card, r, ev.t, slot, 1);
+  }
+  pushRecent(state, card.id);
+  advanceSession(state, slot, card.domain, dwell);
+  if (slot === 'backfill') {
+    creditBackfill(state, ctx, card, 0, ev.t);
+    if (state.session) {
+      state.session.backfillAt = state.session.index + PARAMS.backfillEveryMin
+        + (hashString(card.id + ev.t) % (PARAMS.backfillEveryMax - PARAMS.backfillEveryMin + 1));
+    }
+  }
 }
 
 function pushRecent(state: EngineState, id: string): void {
@@ -559,6 +596,7 @@ function onLike(state: EngineState, ctx: EngineContext, ev: Event, sign: 1 | -1)
     state.metrics.likes += 1;
     today(state, ev.t).likes += 1;
     resolveRevisit(state, card.id, PARAMS.valence.like, ev.t);
+    resolveQuestion(state, card);
   } else {
     // "reverses like (r 0.3, −1 point)": undo the like, then record the weaker signal.
     applyValence(state, ctx, card, PARAMS.valence.like, ev.t, '', -1);
@@ -583,6 +621,7 @@ function onSave(state: EngineState, ctx: EngineContext, ev: Event, sign: 1 | -1)
     info.best = Math.max(info.best || 0, PARAMS.valence.save);
     if (state.saved.indexOf(card.id) < 0) state.saved.push(card.id);
     state.metrics.saves += 1;
+    resolveQuestion(state, card);
   } else {
     const i = state.saved.indexOf(card.id);
     if (i >= 0) state.saved.splice(i, 1);
@@ -730,7 +769,17 @@ function onRecall(state: EngineState, ctx: EngineContext, ev: Event): void {
   }
   const info = seenOf(state, card.id, ev.t);
   info.best = Math.max(info.best || 0, PARAMS.valence.recall);
+  resolveQuestion(state, card);
   touch(state, ctx, card.topic, ev.t);
+}
+
+function resolveQuestion(state: EngineState, card: CardMeta): void {
+  if (!card.answersQuestion) return;
+  for (const q of state.questions) {
+    if (q.id !== card.answersQuestion) continue;
+    q.status = 'answered';
+    q.answerCard = card.id;
+  }
 }
 
 function onQuestion(state: EngineState, ctx: EngineContext, ev: Event): void {
@@ -781,6 +830,7 @@ function onWire(state: EngineState, ctx: EngineContext, ev: Event): void {
 }
 
 function onFocus(state: EngineState, ev: Event): void {
+  if (ev.data?.available === false) return;
   const topic = ev.topic || str(ev.data, 'topic', '');
   if (topic) state.focus = topic;
   else delete state.focus;

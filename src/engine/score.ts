@@ -42,7 +42,6 @@ export interface PlanScope {
   trail: Trail;
   inZone: boolean;
   budget: number;
-  likedTopics: Record<string, true>;
   openQuestions: Record<string, true>;
   contextTag: string;
   spanishTarget: number;
@@ -69,20 +68,6 @@ function recency(card: CardMeta, now: number): number {
   const ageDays = Math.max(0, (now - dated) / DAY_MS);
   const half = card.format === 'news' ? PARAMS.newsHalfLifeDays : PARAMS.wireHalfLifeDays;
   return Math.exp(-ageDays / half);
-}
-
-/** Topics with at least one liked card — for the callback "from was liked" bonus. */
-export function likedTopicsOf(state: EngineState, ctx: EngineContext): Record<string, true> {
-  const out: Record<string, true> = {};
-  for (const id of Object.keys(state.seen)) {
-    const s = state.seen[id];
-    if (!s.liked && !s.saved) continue;
-    const c = ctx.cards.byId(id);
-    if (!c) continue;
-    out[c.topic] = true;
-    if (c.topics) for (const t of c.topics) out[t] = true;
-  }
-  return out;
 }
 
 export function openQuestionsOf(state: EngineState): Record<string, true> {
@@ -121,12 +106,7 @@ export function makeCandidate(card: CardMeta, scope: PlanScope): Candidate {
       base *= 1 + (PARAMS.answerBoost - 1) * 0.25;
     }
   }
-  let callbackHit = false;
-  if (card.format === 'callback' && card.callback) {
-    base *= PARAMS.callbackBoost;
-    callbackHit = true;
-    if (scope.likedTopics[card.callback.from]) base *= PARAMS.callbackLikedBoost;
-  }
+  const callbackHit = card.format === 'callback' && !!card.callback;
   const ts = state.topics[card.topic];
   const seenT = ts ? ts.seen : 0;
   base *= 1 + PARAMS.exploreBonus / Math.sqrt(1 + seenT);
