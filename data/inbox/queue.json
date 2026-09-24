@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-24T14:13:33.920Z",
+  "updatedAt": "2026-09-24T21:39:48.828Z",
   "items": [
     {
       "id": "547101ca5ae6",
@@ -2608,7 +2608,7 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "ai",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "ai.frontier.labs"
     },
     {
@@ -3433,8 +3433,9 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "css",
       "lang": "en",
-      "status": "fresh",
-      "topicHint": "css.llm-agents"
+      "status": "distilled",
+      "topicHint": "css.llm-agents",
+      "distilledCard": "css.llm-agents.multi-agent-systems.stepping-stones-tip-ai-populations"
     },
     {
       "id": "ed71f01305a3",
@@ -3448,8 +3449,9 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "css",
       "lang": "en",
-      "status": "fresh",
-      "topicHint": "css.llm-agents"
+      "status": "distilled",
+      "topicHint": "css.llm-agents",
+      "distilledCard": "css.llm-agents.memory-planning.cut-memory-at-the-seams"
     },
     {
       "id": "2f604fbb40d2",
@@ -3463,7 +3465,7 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "css",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "css.llm-agents"
     },
     {
@@ -3538,8 +3540,9 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "math",
       "lang": "en",
-      "status": "fresh",
-      "topicHint": "math.history"
+      "status": "distilled",
+      "topicHint": "math.history",
+      "distilledCard": "math.number-theory.transcendence.a-rabbis-pi-beats-22-over-7"
     },
     {
       "id": "f2718f974ca9",
@@ -3553,8 +3556,9 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "math",
       "lang": "en",
-      "status": "fresh",
-      "topicHint": "math.history"
+      "status": "distilled",
+      "topicHint": "math.history",
+      "distilledCard": "math.logic.proof-theory.heine-borel-costs-less-than-bolzano-weierstrass"
     },
     {
       "id": "decc90f5b873",
@@ -3568,7 +3572,7 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "math",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "math.history"
     },
     {
@@ -3583,7 +3587,7 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "math",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "math.history"
     },
     {
@@ -4603,7 +4607,7 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "ai",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "ai.frontier.labs"
     },
     {
@@ -4663,8 +4667,9 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "math",
       "lang": "en",
-      "status": "fresh",
-      "topicHint": "math.analysis"
+      "status": "distilled",
+      "topicHint": "math.analysis",
+      "distilledCard": "math.history.computers-and-proof.mathematicians-form-agmai"
     },
     {
       "id": "2f2a0a129d6a",
@@ -4723,7 +4728,7 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "ai",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "ai.frontier.labs"
     },
     {
@@ -4828,7 +4833,7 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "ai",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "ai.frontier.labs"
     },
     {
@@ -4918,8 +4923,9 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "ai",
       "lang": "en",
-      "status": "fresh",
-      "topicHint": "ai.theory"
+      "status": "distilled",
+      "topicHint": "ai.theory",
+      "distilledCard": "ai.theory.grokking.a-clock-for-grokking"
     },
     {
       "id": "b602a025272d",
@@ -5023,7 +5029,7 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "math",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "math.open-problems"
     },
     {
@@ -5143,8 +5149,9 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "ai",
       "lang": "en",
-      "status": "fresh",
-      "topicHint": "ai.theory"
+      "status": "distilled",
+      "topicHint": "ai.theory",
+      "distilledCard": "ai.theory.benign-overfitting.diffusion-models-overfit-malignly"
     },
     {
       "id": "6b5ea01de528",
@@ -5353,7 +5360,7 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "ai",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "ai.frontier.labs"
     },
     {
@@ -5848,8 +5855,9 @@
       "fetched": "2026-09-22T14:03:13.777Z",
       "domain": "css",
       "lang": "en",
-      "status": "fresh",
-      "topicHint": "css.llm-agents"
+      "status": "distilled",
+      "topicHint": "css.llm-agents",
+      "distilledCard": "css.opinion-dynamics.degroot.same-spectrum-opposite-verdict"
     },
     {
       "id": "8a5f671e384f",
@@ -5893,7 +5901,7 @@
       "fetched": "2026-09-22T14:03:13.777Z",
       "domain": "css",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "css.llm-agents"
     },
     {
@@ -5908,7 +5916,7 @@
       "fetched": "2026-09-22T14:03:13.777Z",
       "domain": "css",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "css.llm-agents"
     },
     {
@@ -5938,7 +5946,7 @@
       "fetched": "2026-09-22T14:03:13.777Z",
       "domain": "css",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "css.llm-agents"
     },
     {
@@ -6913,7 +6921,7 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "ai",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "ai.theory"
     },
     {
@@ -6958,7 +6966,7 @@
       "fetched": "2026-09-23T14:15:11.693Z",
       "domain": "ai",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "ai.frontier.labs"
     },
     {
@@ -7633,7 +7641,7 @@
       "fetched": "2026-09-22T14:03:13.777Z",
       "domain": "ai",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "ai.theory"
     },
     {
@@ -8188,7 +8196,7 @@
       "fetched": "2026-09-22T14:03:13.777Z",
       "domain": "css",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "css.llm-agents"
     },
     {
@@ -8773,7 +8781,7 @@
       "fetched": "2026-09-22T14:03:13.777Z",
       "domain": "css",
       "lang": "en",
-      "status": "fresh",
+      "status": "dropped",
       "topicHint": "css.llm-agents"
     },
     {

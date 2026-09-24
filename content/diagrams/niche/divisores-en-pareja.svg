@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 270" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+  <path d="M30 97 A150 72 0 0 1 330 97"/>
+  <path d="M67.5 97 A112.5 58 0 0 1 292.5 97"/>
+  <path d="M105 97 A75 44 0 0 1 255 97"/>
+  <path d="M142.5 97 A37.5 30 0 0 1 217.5 97"/>
+  <path d="M174 97 C158 70 202 70 186 97" stroke-width="3"/>
+  <circle cx="180" cy="107" r="12" fill="currentColor" fill-opacity="0.15"/>
+  <g fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle">
+    <text x="30" y="112">1</text>
+    <text x="67.5" y="112">2</text>
+    <text x="105" y="112">3</text>
+    <text x="142.5" y="112">4</text>
+    <text x="180" y="112" font-weight="700">6</text>
+    <text x="217.5" y="112">9</text>
+    <text x="255" y="112">12</text>
+    <text x="292.5" y="112">18</text>
+    <text x="330" y="112">36</text>
+  </g>
+  <text x="180" y="140" fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="13" text-anchor="middle">36: nueve toques, el 6 va solo → abierto</text>
+  <path d="M55 217 A125 56 0 0 1 305 217"/>
+  <path d="M105 217 A75 38 0 0 1 255 217"/>
+  <path d="M155 217 A25 18 0 0 1 205 217"/>
+  <g fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle">
+    <text x="55" y="232">1</text>
+    <text x="105" y="232">2</text>
+    <text x="155" y="232">3</text>
+    <text x="205" y="232">4</text>
+    <text x="255" y="232">6</text>
+    <text x="305" y="232">12</text>
+  </g>
+  <text x="180" y="260" fill="currentColor" stroke="none" font-family="system-ui, sans-serif" font-size="13" text-anchor="middle">12: seis toques, todos en pareja → cerrado</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" role="img" aria-label="Distance of a 52-card deck from perfectly random after one to ten riffle shuffles: flat at the maximum for four shuffles, then falling steeply, to 0.334 at seven." font-family="system-ui, sans-serif">
+<g fill="currentColor" font-size="13"><text x="80" y="30">How far a 52-card deck is from perfectly random, after k riffle shuffles</text></g>
+<g fill="none" stroke="currentColor" stroke-opacity="0.3" stroke-width="1"><path d="M80 270 H610"/><path d="M80 270 V52"/></g>
+<g fill="none" stroke="currentColor" stroke-opacity="0.28" stroke-width="1" stroke-dasharray="4 5"><path d="M80 165 H610"/></g>
+<g fill="none" stroke="currentColor" stroke-width="2.4"><path d="M80 60 L137.8 60 L195.6 60 L253.3 60 L311.1 76 L368.9 141.1 L426.7 199.9 L484.4 234.9 L542.2 252.2 L600 261"/></g>
+<g fill="currentColor">
+<circle cx="80" cy="60" r="4"/><circle cx="137.8" cy="60" r="4"/><circle cx="195.6" cy="60" r="4"/><circle cx="253.3" cy="60" r="4"/><circle cx="311.1" cy="76" r="4"/><circle cx="368.9" cy="141.1" r="4"/><circle cx="426.7" cy="199.9" r="6"/><circle cx="484.4" cy="234.9" r="4"/><circle cx="542.2" cy="252.2" r="4"/><circle cx="600" cy="261" r="4"/>
+</g>
+<g fill="currentColor" font-size="12" fill-opacity="0.75" text-anchor="middle">
+<text x="80" y="288">1</text><text x="137.8" y="288">2</text><text x="195.6" y="288">3</text><text x="253.3" y="288">4</text><text x="311.1" y="288">5</text><text x="368.9" y="288">6</text><text x="426.7" y="288">7</text><text x="484.4" y="288">8</text><text x="542.2" y="288">9</text><text x="600" y="288">10</text>
+</g>
+<g fill="currentColor" font-size="12" fill-opacity="0.75" text-anchor="end">
+<text x="70" y="274">0</text><text x="70" y="169">half</text><text x="70" y="64">1</text>
+</g>
+<g fill="currentColor" font-size="13">
+<text x="440" y="192">7 riffles: 0.334</text>
+<text x="325" y="72" fill-opacity="0.8" font-size="12">5 riffles: 0.924</text>
+<text x="96" y="84" fill-opacity="0.8" font-size="12">as far from random as a deck can be</text>
+<text x="80" y="312" font-size="12" fill-opacity="0.8">Number of riffle shuffles: flat, then a cliff, then halving with every riffle.</text>
+</g>
+</svg>

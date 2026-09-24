@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 310" role="img" aria-label="Left: two points with balls of radius half their distance that do not overlap. Right: a point with nested balls of radius one, one half, one third and one quarter, and an irregular neighbourhood that contains one of the balls." font-family="system-ui, sans-serif">
+<g fill="currentColor" font-size="14">
+<text x="40" y="30">Gift one: room between any two points</text>
+<text x="360" y="30">Gift two: a countable ladder at every point</text>
+</g>
+<g fill="currentColor" fill-opacity="0.08" stroke="currentColor" stroke-width="1.6" stroke-dasharray="5 4">
+<circle cx="110" cy="160" r="70"/>
+<circle cx="250" cy="160" r="70"/>
+</g>
+<g fill="currentColor">
+<circle cx="110" cy="160" r="4"/>
+<circle cx="250" cy="160" r="4"/>
+<circle cx="480" cy="165" r="4"/>
+</g>
+<g fill="none" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.7"><path d="M110 160 H250"/></g>
+<g fill="currentColor" font-size="13" text-anchor="middle">
+<text x="110" y="185">x</text>
+<text x="250" y="185">y</text>
+<text x="145" y="152">d/2</text>
+<text x="215" y="152">d/2</text>
+<text x="180" y="262">x and y are d apart; each radius is d/2,</text>
+<text x="180" y="280">so no point lies in both</text>
+</g>
+<g fill="none" stroke="currentColor" stroke-width="1.4">
+<circle cx="480" cy="165" r="100" stroke-opacity="0.35"/>
+<circle cx="480" cy="165" r="50" stroke-opacity="0.55"/>
+<circle cx="480" cy="165" r="33.3" stroke-opacity="0.75"/>
+<circle cx="480" cy="165" r="25"/>
+</g>
+<path d="M512 147.68 Q500 130.36 478.75 128.2 Q457.5 126.03 448.25 145.52 Q439 165 448.5 184.06 Q458 203.11 478.75 200.94 Q499.5 198.77 511.75 181.89 Q524 165 512 147.68 Z" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-width="2"/>
+<g fill="currentColor" font-size="12" fill-opacity="0.8">
+<text x="585" y="120">radius 1</text>
+<text x="535" y="116">1/2</text>
+</g>
+<g fill="currentColor" font-size="13" text-anchor="middle">
+<text x="480" y="284">rungs of radius 1, 1/2, 1/3, 1/4: the shaded</text><text x="480" y="302">neighbourhood already contains the 1/3 rung</text>
+</g>
+</svg>
