@@ -16,6 +16,9 @@ import { Markdown } from './Markdown';
 import { Diagram } from './Diagram';
 import { RecallCard } from './RecallCard';
 import { WireCard, MilestoneCard } from './SpecialCards';
+import { TodayCard } from './TodayCard';
+import { SeriesBar } from './SeriesBar';
+import { ChallengeSolution, gateMs } from './Challenge';
 import { askSeriesNext, openRigor, openSource, showWhy as showWhySheet } from './actions';
 import { useTick } from './hooks';
 import { IconDown, IconRight } from './icons';
@@ -28,6 +31,9 @@ interface Props {
 }
 
 export function CardView({ served, card, active, cardRef }: Props) {
+  if (served.id.startsWith('today:')) {
+    return <TodayCard served={served} active={active} cardRef={cardRef} />;
+  }
   if (served.slot === 'milestone' || served.id.startsWith('milestone:')) {
     return <MilestoneCard served={served} cardRef={cardRef} />;
   }
@@ -61,8 +67,8 @@ export function CardShell({ card, served, active, cardRef }: ShellProps) {
   const [atEnd, setAtEnd] = useState(false);
   const [nudge, setNudge] = useState(false);
 
-  const gateMs = useMemo(() => Math.max(6000, 0.4 * ((card.words?.body ?? 120) / 3.3) * 1000), [card.id]);
-  const locked = !atEnd && dwellMs(card.id) < gateMs;
+  const rigorGateMs = useMemo(() => gateMs(card.words?.body, 0.4, 6000), [card.id]);
+  const locked = !atEnd && dwellMs(card.id) < rigorGateMs;
   useTick(600, active && card.hasRigor && locked && !rigorOpen);
 
   useEffect(() => {
@@ -89,7 +95,7 @@ export function CardShell({ card, served, active, cardRef }: ShellProps) {
     setRigorOpen((v) => !v);
   };
 
-  const body = <FormatBody card={card} />;
+  const body = <FormatBody card={card} active={active} atEnd={atEnd} />;
 
   return (
     <article class={`card is-${card.format}`} ref={cardRef} style={accentStyle(card.domain)}>
@@ -124,12 +130,17 @@ export function CardShell({ card, served, active, cardRef }: ShellProps) {
             </div>
           ) : null}
 
-          {card.series && card.seriesNext ? (
-            <p style={{ marginTop: '22px' }}>
-              <button class="btn" onClick={() => askSeriesNext(card.id)}>
-                Next episode <IconRight />
-              </button>
-            </p>
+          {card.series ? (
+            <div class="series-block">
+              {card.seriesNext ? (
+                <p style={{ margin: '22px 0 12px' }}>
+                  <button class="btn" onClick={() => askSeriesNext(card.id)}>
+                    Next episode <IconRight />
+                  </button>
+                </p>
+              ) : null}
+              <SeriesBar card={card} />
+            </div>
           ) : null}
 
           <Sources card={card} />
@@ -140,7 +151,7 @@ export function CardShell({ card, served, active, cardRef }: ShellProps) {
   );
 }
 
-function FormatBody({ card }: { card: Card }) {
+function FormatBody({ card, active, atEnd }: { card: Card; active: boolean; atEnd: boolean }) {
   if (card.format === 'quote') {
     const attrib = card.sources?.[0];
     return (
@@ -169,10 +180,15 @@ function FormatBody({ card }: { card: Card }) {
     );
   }
   if (card.format === 'challenge') {
+    const hasSolution = card.recall?.type === 'reveal' && Boolean(card.recall.answer);
     return (
       <div>
         <Markdown text={card.body} lang={card.language} />
-        <p class="small dim">Sit with it. No answer needed.</p>
+        {hasSolution ? (
+          <ChallengeSolution card={card} active={active} atEnd={atEnd} />
+        ) : (
+          <p class="small dim">Sit with it. No answer needed.</p>
+        )}
       </div>
     );
   }
@@ -292,5 +308,6 @@ export function nextTitle(index: number): string | null {
   const served = app.feed[index];
   if (!served) return null;
   if (served.id.startsWith('milestone:')) return 'A small milestone';
+  if (served.id.startsWith('today:')) return 'Today';
   return cardMeta(served.id)?.title ?? app.cards[served.id]?.title ?? null;
 }

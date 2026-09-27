@@ -68,3 +68,25 @@ export function confetti(host: HTMLElement, count = 18): void {
   host.append(wrap);
   setTimeout(() => wrap.remove(), 2600);
 }
+
+export type HapticKind = 'tap' | 'like' | 'save' | 'skip' | 'hard' | 'success';
+
+const HAPTICS: Record<HapticKind, number | number[]> = {
+  tap: 8,
+  like: 12,
+  save: 12,
+  skip: 6,
+  hard: [8, 40, 8],
+  success: [10, 30, 10],
+};
+
+/** A tiny buzz on phones that support it; silent with reduced motion or no vibration API. */
+export function haptic(kind: HapticKind): void {
+  try {
+    if (settings().reduceMotion) return;
+    if (typeof navigator === 'undefined' || typeof navigator.vibrate !== 'function') return;
+    navigator.vibrate(HAPTICS[kind]);
+  } catch {
+    /* some browsers throw without a user gesture; a missing buzz is fine */
+  }
+}

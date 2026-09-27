@@ -61,6 +61,10 @@ export function engaged(state: EngineState, id: CardId): boolean {
 export function seriesGate(card: CardMeta, state: EngineState, ctx: EngineContext, now: number): boolean {
   const ref = card.series;
   if (!ref) return true;
+  // A series the reader put down ("save for later" or a skip) stays closed to
+  // the ordinary slots for the pause window; `seriesReentries` reopens it.
+  const prog = state.series[ref.id];
+  if (prog && prog.paused && !prog.finished && now - prog.lastAt < PARAMS.seriesPauseDays * DAY_MS) return false;
   if (ref.index <= 1) return true;
   const episodes = ctx.cards.series(ref.id);
   let prev: CardMeta | null = null;

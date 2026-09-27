@@ -3,7 +3,7 @@ import { useEffect } from 'preact/hooks';
 import { app, jumpToCard, useApp } from '@/app/state';
 import { Feed } from './Feed';
 import { MapScreen } from './MapScreen';
-import { SavedScreen } from './SavedScreen';
+import { LibraryScreen } from './LibraryScreen';
 import { YouScreen } from './YouScreen';
 import { TabBar } from './TabBar';
 import { Toast } from './Toast';
@@ -31,7 +31,7 @@ export function App() {
       <main class="screen">
         {tab === 'feed' ? <Feed /> : null}
         {tab === 'map' ? <MapScreen /> : null}
-        {tab === 'saved' ? <SavedScreen /> : null}
+        {tab === 'saved' ? <LibraryScreen /> : null}
         {tab === 'you' ? <YouScreen /> : null}
       </main>
       <TabBar />

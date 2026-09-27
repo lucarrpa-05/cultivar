@@ -41,6 +41,7 @@ import {
 } from './state';
 import { blankState, createFallbackEngine } from './fallbackEngine';
 import { createMemoryStore } from './fallbackStore';
+import { maybeInjectToday } from './today';
 import { newDeviceId } from './util';
 
 type Glob = Record<string, () => Promise<unknown>>;
@@ -85,6 +86,9 @@ let allEvents: Event[] = [];
 let deps: EngineDeps | null = null;
 
 export async function boot(): Promise<void> {
+  // A `#card=` link: the shell clears the hash on its first render, so read it now.
+  const deepLink = typeof location !== 'undefined' && /card=/.test(location.hash);
+
   // 1. store ---------------------------------------------------------------
   const storeMod = await pick<StoreModule>(storeMods, '/src/store/index.ts', 'store');
   let store: Store;
@@ -167,6 +171,9 @@ export async function boot(): Promise<void> {
   applyTheme();
   startSession(deviceId, allEvents.length ? allEvents[allEvents.length - 1].t : 0);
   replan();
+  // The daily opener goes in before dwell starts, so dwell begins on the card
+  // actually at index 0.
+  await maybeInjectToday(Date.now(), deepLink).catch(() => false);
   const first = app.feed[0];
   if (first) beginDwell(first.id);
   notify();

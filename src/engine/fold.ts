@@ -622,6 +622,19 @@ function onSave(state: EngineState, ctx: EngineContext, ev: Event, sign: 1 | -1)
     if (state.saved.indexOf(card.id) < 0) state.saved.push(card.id);
     state.metrics.saves += 1;
     resolveQuestion(state, card);
+    // "Save the series for later": pause the follow-up nudges for a week
+    // (`seriesPauseDays`); the re-entry in readiness picks it back up after.
+    if (card.series && ev.data && ev.data.later === true) {
+      const prev = state.series[card.series.id];
+      state.series[card.series.id] = {
+        ...(prev || { finished: false }),
+        lastIndex: Math.max(prev ? prev.lastIndex : 0, card.series.index),
+        lastAt: ev.t,
+        paused: true,
+        warm: false,
+        pending: false,
+      };
+    }
   } else {
     const i = state.saved.indexOf(card.id);
     if (i >= 0) state.saved.splice(i, 1);

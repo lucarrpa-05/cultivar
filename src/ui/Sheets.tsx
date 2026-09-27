@@ -7,6 +7,36 @@ import { cardMeta } from '@/content/loader';
 import { topicName } from './domain';
 import { askQuestion, copyLink, reportError, tooEasy } from './actions';
 import { IconFlag, IconLink, IconPeak, IconQuestion, IconSpark } from './icons';
+import { copyCardText, shareCard } from './share';
+
+const shareIconProps = {
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  'stroke-width': 1.7,
+  'stroke-linecap': 'round',
+  'stroke-linejoin': 'round',
+  'aria-hidden': 'true',
+} as const;
+
+/** Share arrow: a tray with an arrow leaving it. */
+const IconShare = () => (
+  <svg {...shareIconProps}>
+    <path d="M12 15V4" />
+    <path d="M8 8l4-4 4 4" />
+    <path d="M6 12H5a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-1" />
+  </svg>
+);
+
+/** Text lines. */
+const IconText = () => (
+  <svg {...shareIconProps}>
+    <path d="M5 6h14" />
+    <path d="M5 10h14" />
+    <path d="M5 14h14" />
+    <path d="M5 18h9" />
+  </svg>
+);
 
 export function Sheet({
   title,
@@ -63,6 +93,12 @@ function MoreSheet({ card }: { card: CardId }) {
       </button>
       <button class="sheet-item" onClick={() => openSheet({ kind: 'why', card })}>
         <IconSpark /> Why this card?
+      </button>
+      <button class="sheet-item" aria-label="Share as image" onClick={() => void shareCard(card)}>
+        <IconShare /> Share as image
+      </button>
+      <button class="sheet-item" aria-label="Copy as text" onClick={() => void copyCardText(card)}>
+        <IconText /> Copy as text
       </button>
       <button class="sheet-item" onClick={() => void copyLink(card)}>
         <IconLink /> Copy link

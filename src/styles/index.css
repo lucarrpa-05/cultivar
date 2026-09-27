@@ -1,4 +1,8 @@
 /* Cultivar — hand-written CSS. Dark first, light via [data-theme]. Phone first. */
+@import "./puzzle.css";
+@import "./library.css";
+@import "./today.css";
+@import "./share.css";
 
 /* ───────────────────────── tokens ───────────────────────── */
 :root {
@@ -309,6 +313,8 @@ a:hover { text-decoration: underline; }
   font-size: 14.5px;
   font-weight: 560;
 }
+.rigor-btn { white-space: nowrap; }
+.rigor-btn svg, .btn svg { width: 18px; height: 18px; flex: 0 0 auto; }
 .rigor-btn.is-locked { color: var(--fg-dim); }
 .rigor-btn:not(.is-locked) { color: var(--fg); border-color: color-mix(in srgb, var(--accent-domain, var(--accent)) 45%, var(--line)); }
 .rigor-hint { font-size: 12.5px; color: var(--fg-dim); margin-top: 8px; }

@@ -1,0 +1,80 @@
+/* today — feature styles. Tokens live in index.css. */
+
+/* A soft accent wash, like the recall card, but warmer at the top. */
+.card.is-today .card-body {
+  background:
+    radial-gradient(120% 60% at 50% 0%, color-mix(in srgb, var(--accent) 11%, transparent), transparent 70%),
+    color-mix(in srgb, var(--accent) 4%, var(--bg));
+}
+
+.today .card-title { margin-bottom: 2px; }
+.today-date { margin: 0 0 6px; font-size: calc(var(--fs-body) - 1px); }
+.today-streak {
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-weight: 560;
+  color: var(--accent);
+}
+[data-theme='light'] .today-streak { color: color-mix(in srgb, var(--accent) 80%, var(--fg)); }
+
+.today-items {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.today-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg-raise);
+  border-left: 3px solid var(--accent-domain, var(--accent));
+}
+.today-item.has-domain {
+  background: color-mix(in srgb, var(--accent-domain, var(--accent)) 6%, var(--bg-raise));
+}
+
+.today-item-text { flex: 1 1 auto; min-width: 0; }
+.today-item-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.today-item-line {
+  margin: 2px 0 0;
+  line-height: 1.35;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.today-item-btn {
+  flex: 0 0 auto;
+  padding: 8px 13px;
+  font-size: 13.5px;
+  white-space: nowrap;
+}
+.today-item.has-domain .today-item-btn {
+  border-color: color-mix(in srgb, var(--accent-domain, var(--accent)) 45%, var(--line));
+}
+
+.today-quiet { margin: 0 0 14px; }
+
+.today-foot { margin: 0 0 16px; }
+.today-foot p { margin: 0 0 3px; }
+
+.today-start { margin-top: 2px; }
+
+/* Very narrow phones: stack the button under the text so nothing squeezes. */
+@media (max-width: 340px) {
+  .today-item { flex-direction: column; align-items: stretch; }
+  .today-item-btn { align-self: flex-start; }
+}

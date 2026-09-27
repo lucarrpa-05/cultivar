@@ -6,7 +6,7 @@ import { expect, type Page } from '@playwright/test';
 import type { CardId, Event, ServedCard } from '../../src/types';
 
 /** The debug surface installed by `src/app/debug.ts` when `?debug=1` is present. */
-export const DEBUG_URL = './?debug=1';
+export const DEBUG_URL = './?debug=1&notoday=1';
 
 export async function openApp(page: Page, url: string = DEBUG_URL): Promise<void> {
   await page.goto(url);

@@ -4,7 +4,7 @@
  */
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { ServedCard } from '@/types';
-import { app, onCardVisible, setTab, settings, useApp } from '@/app/state';
+import { app, isSynthetic, onCardVisible, setTab, settings, useApp } from '@/app/state';
 import { cardMeta } from '@/content/loader';
 import { CardView } from './CardView';
 import { ActionRail } from './ActionRail';
@@ -120,8 +120,10 @@ function FeedSection({ served, index, active, mounted }: SectionProps) {
   const card = useApp((s) => s.cards[served.id]);
   const [dragging, setDragging] = useState(false);
 
+  const synthetic = isSynthetic(served.id);
+
   useSwipe(cardEl, {
-    enabled: active && !served.id.startsWith('milestone:'),
+    enabled: active && !synthetic,
     onLeft: () => skipCard(served.id),
     onRight: () => toggleSave(served.id),
     onProgress: (dx, ratio) => {
@@ -134,7 +136,7 @@ function FeedSection({ served, index, active, mounted }: SectionProps) {
   useDoubleTap(
     cardEl,
     (x, y) => toggleLike(served.id, cardEl, x, y),
-    active && !served.id.startsWith('milestone:'),
+    active && !synthetic,
   );
 
   const peek = nextCardTitle(index + 1);
@@ -159,7 +161,7 @@ function FeedSection({ served, index, active, mounted }: SectionProps) {
           <div class="drag-hint right" ref={hintRight} aria-hidden="true">
             <IconBookmark />
           </div>
-          <ActionRail cardId={served.id} host={cardEl} />
+          {synthetic ? null : <ActionRail cardId={served.id} host={cardEl} />}
           {peek && !dragging ? (
             <div class="next-peek" aria-hidden="true">
               <IconDown style={{ width: '15px', height: '15px', flex: '0 0 auto' }} />
@@ -176,5 +178,6 @@ function nextCardTitle(index: number): string | null {
   const served = app.feed[index];
   if (!served) return null;
   if (served.id.startsWith('milestone:')) return 'A small milestone';
+  if (served.id.startsWith('today:')) return 'Today';
   return cardMeta(served.id)?.title ?? app.cards[served.id]?.title ?? null;
 }

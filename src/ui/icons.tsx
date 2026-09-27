@@ -151,3 +151,26 @@ export const IconShuffle = (p: P) => (
     <path d="M17.5 3.5 20 6l-2.5 2.5M17.5 15.5 20 18l-2.5 2.5" />
   </svg>
 );
+
+export const IconLibrary = (p: P) => (
+  <svg {...base(p)}>
+    <rect x="4" y="4" width="4" height="16" rx="1" />
+    <rect x="9.5" y="4" width="4" height="16" rx="1" />
+    <path d="m14.6 5.6 3.6-1 3.3 14.4-3.6 1z" />
+  </svg>
+);
+
+export const IconDice = (p: P) => (
+  <svg {...base(p)}>
+    <rect x="4" y="4" width="16" height="16" rx="3.5" />
+    <circle cx="8.6" cy="8.6" r="1.1" fill="currentColor" stroke="none" />
+    <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none" />
+    <circle cx="15.4" cy="15.4" r="1.1" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+export const IconLeft = (p: P) => (
+  <svg {...base(p)}>
+    <path d="m14 7-5 5 5 5" />
+  </svg>
+);

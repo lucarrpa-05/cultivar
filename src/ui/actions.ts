@@ -12,7 +12,7 @@ import {
 } from '@/app/state';
 import { cardMeta } from '@/content/loader';
 import { topicName } from './domain';
-import { bookmarkFly, heartBurst } from './anim';
+import { bookmarkFly, haptic, heartBurst } from './anim';
 
 export function isLiked(id: CardId): boolean {
   return Boolean(app.engineState?.seen[id]?.liked);
@@ -29,6 +29,7 @@ export function toggleLike(id: CardId, host?: HTMLElement | null, x?: number, y?
   }
   void markRead(id);
   void record('like', { card: id });
+  haptic('like');
   if (host && x !== undefined && y !== undefined) heartBurst(host, x, y);
 }
 
@@ -40,6 +41,7 @@ export function toggleSave(id: CardId, x?: number, y?: number): void {
   }
   void markRead(id);
   void record('save', { card: id });
+  haptic('save');
   if (x !== undefined && y !== undefined) bookmarkFly(x, y);
 }
 
@@ -55,11 +57,13 @@ export function confirmRead(id: CardId): void {
 
 export function skipCard(id: CardId): void {
   void reactWithUndo('skip', id, 'Noted. Less like that.');
+  haptic('skip');
   advance();
 }
 
 export function tooHard(id: CardId): void {
   void reactWithUndo('too_hard', id, "Noted. I'll bring the groundwork first.");
+  haptic('hard');
   advance();
 }
 
@@ -93,9 +97,17 @@ export function askQuestion(id: CardId, text: string): void {
   showToast('Saved. Your next refresh will answer it as a card.');
 }
 
-export function gradeRecall(id: CardId, grade: 1 | 2 | 3 | 4, correct?: boolean): void {
+/** `extra` is merged into the event data (e.g. `{ solution: true }` for a puzzle self-grade). */
+export function gradeRecall(
+  id: CardId,
+  grade: 1 | 2 | 3 | 4,
+  correct?: boolean,
+  extra?: Record<string, unknown>,
+): void {
   void markRead(id);
-  void record('recall', { card: id, data: correct === undefined ? { grade } : { grade, correct } });
+  const data: Record<string, unknown> = { ...extra, grade };
+  if (correct !== undefined) data.correct = correct;
+  void record('recall', { card: id, data });
 }
 
 export function wireAction(wireId: string, action: 'view' | 'like' | 'skip' | 'open', card?: CardId): void {

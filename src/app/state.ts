@@ -64,6 +64,11 @@ export interface AppState {
   cursor: number;
   cards: Record<CardId, Card | null>;
   exhausted: boolean;
+  /**
+   * Cards the reader asked for explicitly (a shelf run, a series resume). They
+   * go ahead of the engine's plan and survive every re-plan until served.
+   */
+  queue: ServedCard[];
 
   sheet: Sheet;
   toast: ToastMsg | null;
@@ -95,6 +100,7 @@ export const app: AppState = {
   cursor: 0,
   cards: {},
   exhausted: false,
+  queue: [],
   sheet: null,
   toast: null,
   mapDomain: null,
@@ -104,6 +110,16 @@ export const app: AppState = {
   liveMinutes: 0,
   scrollToIndex: null,
 };
+
+// ── synthetic cards ────────────────────────────────────────────────────────
+
+/**
+ * Feed entries that are not library cards: milestones and the daily opener.
+ * They never load a body, never emit `pass`, and take no gestures.
+ */
+export function isSynthetic(id: CardId): boolean {
+  return id.startsWith('milestone:') || id.startsWith('today:');
+}
 
 // ── reactivity ─────────────────────────────────────────────────────────────
 
@@ -221,7 +237,7 @@ export function endDwell(): void {
   updateLiveMinutes();
   // A pass advances the planner but never marks the card read. Explicit actions
   // already supplied their own valence, so only an unactioned pass is negative.
-  if (!confirmed && !card.startsWith('milestone:') && !card.startsWith('wire:')) {
+  if (!confirmed && !isSynthetic(card) && !card.startsWith('wire:')) {
     void record('pass', { card, data: { dwellMs: ms, readFraction, signaled: acted }, quiet: true });
   }
 }
@@ -347,9 +363,13 @@ export function replan(): void {
   const keepTo = Math.max(app.cursor, pendingIndex ?? -1);
   const head = app.feed.slice(0, keepTo + 1);
   const headIds = new Set(head.map((c) => c.id));
-  const tail = plan.filter((p) => !headIds.has(p.id));
-  app.feed = [...head, ...tail];
-  app.exhausted = tail.length === 0;
+  // Anything the reader queued that has already been reached is done with.
+  app.queue = app.queue.filter((q) => !headIds.has(q.id));
+  const queued = app.queue.filter((q, i, arr) => arr.findIndex((o) => o.id === q.id) === i);
+  const queuedIds = new Set(queued.map((q) => q.id));
+  const tail = plan.filter((p) => !headIds.has(p.id) && !queuedIds.has(p.id));
+  app.feed = [...head, ...queued, ...tail];
+  app.exhausted = tail.length === 0 && queued.length === 0;
   maybeInjectGoalMilestone();
   void hydrateAround(app.cursor);
   notify();
@@ -365,7 +385,7 @@ export async function hydrateAround(index: number): Promise<void> {
   await Promise.all(
     wanted.map(async (s) => {
       if (s.id in app.cards) return;
-      if (s.id.startsWith('milestone:') || s.slot === 'milestone' || s.slot === 'wire' || s.wire) return;
+      if (isSynthetic(s.id) || s.slot === 'milestone' || s.slot === 'wire' || s.wire) return;
       let pending = loadingCards.get(s.id);
       if (!pending) {
         pending = loadCard(s.id);
@@ -422,10 +442,57 @@ export function jumpToCard(id: CardId, slot: ServedCard['slot'] = 'progress', wh
   app.feed = [...head, served, ...app.feed.slice(app.cursor + 1).filter((c) => c.id !== id)];
   app.cursor = at - 1;
   app.tab = 'feed';
+  // Head of the queue too, so a re-plan that lands while the body is still
+  // loading (a session start, a sync merge) cannot drop it before the scroll.
+  app.queue = [served, ...app.queue.filter((q) => q.id !== id)];
+  pendingIndex = at;
   notify();
   void hydrateAround(app.cursor).then(() => {
     requestAnimationFrame(() => goTo(at));
   });
+}
+
+/**
+ * Queue cards the reader asked for (a shelf run, "resume this series"). They
+ * are placed right after the current card, in order, ahead of the engine's
+ * plan, and they survive re-plans. Cards already read or already queued are
+ * dropped. With `go`, the feed scrolls to the first of them.
+ */
+export function enqueue(ids: CardId[], slot: ServedCard['slot'] = 'progress', why: string[] = [], go = true): number {
+  const current = app.feed[app.cursor]?.id;
+  const have = new Set([...app.queue.map((q) => q.id), ...(current ? [current] : [])]);
+  const fresh: ServedCard[] = [];
+  for (const id of ids) {
+    if (have.has(id) || !cardMeta(id)) continue;
+    have.add(id);
+    fresh.push({ id, slot, why, score: 0 });
+  }
+  if (!fresh.length) return 0;
+  // "Read these now" goes ahead of anything queued earlier; a quiet enqueue waits its turn.
+  app.queue = go ? [...fresh, ...app.queue] : [...app.queue, ...fresh];
+  const head = app.feed.slice(0, app.cursor + 1);
+  const headIds = new Set(head.map((c) => c.id));
+  const queued = app.queue.filter((q) => !headIds.has(q.id));
+  const queuedIds = new Set(queued.map((q) => q.id));
+  const rest = app.feed.slice(app.cursor + 1).filter((c) => !queuedIds.has(c.id));
+  app.feed = [...head, ...queued, ...rest];
+  app.exhausted = false;
+  app.tab = 'feed';
+  notify();
+  const at = app.cursor + 1;
+  void hydrateAround(app.cursor).then(() => {
+    if (go) requestAnimationFrame(() => goTo(at));
+  });
+  return fresh.length;
+}
+
+/** Drop every queued card that has not been reached yet. */
+export function clearQueue(): void {
+  if (!app.queue.length) return;
+  const pending = new Set(app.queue.map((q) => q.id));
+  app.queue = [];
+  app.feed = app.feed.filter((c, i) => i <= app.cursor || !pending.has(c.id));
+  replan();
 }
 
 function maybeInjectGoalMilestone(): void {

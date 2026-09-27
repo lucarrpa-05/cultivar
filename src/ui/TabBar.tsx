@@ -2,12 +2,12 @@
 import type { Tab } from '@/app/state';
 import { setTab, useApp } from '@/app/state';
 import { GoalRing } from './GoalRing';
-import { IconFeed, IconMap, IconSaved, IconYou } from './icons';
+import { IconFeed, IconLibrary, IconMap, IconYou } from './icons';
 
 const TABS: { id: Tab; label: string; Icon: (p: Record<string, unknown>) => preact.JSX.Element }[] = [
   { id: 'feed', label: 'Feed', Icon: IconFeed },
   { id: 'map', label: 'Map', Icon: IconMap },
-  { id: 'saved', label: 'Saved', Icon: IconSaved },
+  { id: 'saved', label: 'Library', Icon: IconLibrary },
   { id: 'you', label: 'You', Icon: IconYou },
 ];
 
