@@ -1,46 +1,46 @@
 {
-  "generatedAt": "2026-10-28T16:05:30.530Z",
-  "date": "2026-10-28",
-  "durationMs": 14109,
+  "generatedAt": "2026-10-29T16:08:55.429Z",
+  "date": "2026-10-29",
+  "durationMs": 31550,
   "sourcesRun": 64,
-  "sourcesOk": 60,
-  "sourcesFailed": 4,
+  "sourcesOk": 62,
+  "sourcesFailed": 2,
   "totals": {
-    "fetched": 4955,
-    "kept": 365,
-    "uniqueAfterDedupe": 360,
-    "tooOldToQueue": 23,
-    "newToQueue": 244,
-    "alreadyKnown": 93,
+    "fetched": 4290,
+    "kept": 374,
+    "uniqueAfterDedupe": 365,
+    "tooOldToQueue": 26,
+    "newToQueue": 192,
+    "alreadyKnown": 147,
     "queueTotal": 625,
     "queueFresh": 600,
     "expired": 0,
     "archiveExpired": 0,
-    "cappedOff": 244
+    "cappedOff": 192
   },
   "byDomain": {
-    "ai": 159,
+    "ai": 151,
     "css": 90,
-    "econ": 60,
     "hist": 58,
-    "bio": 55,
-    "niche": 46,
-    "physics": 39,
-    "phil": 31,
-    "poli": 28,
-    "math": 21,
-    "sports": 13
+    "bio": 57,
+    "econ": 51,
+    "niche": 50,
+    "physics": 45,
+    "phil": 33,
+    "poli": 29,
+    "math": 20,
+    "sports": 16
   },
   "byKind": {
-    "paper": 274,
-    "news": 159,
+    "paper": 256,
+    "news": 175,
     "blog": 104,
     "onthisday": 49,
-    "wiki": 14
+    "wiki": 16
   },
   "byLang": {
-    "en": 539,
-    "es": 61
+    "en": 542,
+    "es": 58
   },
   "flagged": [
     "import-ai",
@@ -54,7 +54,7 @@
       "url": "https://3quarksdaily.com/feed",
       "fetched": 20,
       "kept": 5,
-      "ms": 477,
+      "ms": 486,
       "error": null
     },
     {
@@ -64,7 +64,7 @@
       "url": "https://aeon.co/feed.rss",
       "fetched": 20,
       "kept": 6,
-      "ms": 182,
+      "ms": 202,
       "error": null
     },
     {
@@ -74,7 +74,7 @@
       "url": "https://www.alignmentforum.org/feed.xml",
       "fetched": 10,
       "kept": 6,
-      "ms": 252,
+      "ms": 309,
       "error": null
     },
     {
@@ -84,7 +84,7 @@
       "url": "https://mathvoices.ams.org/featurecolumn/feed/",
       "fetched": 10,
       "kept": 4,
-      "ms": 611,
+      "ms": 721,
       "error": null
     },
     {
@@ -92,9 +92,9 @@
       "name": "Anthropic news",
       "kind": "rss",
       "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_news.xml",
-      "fetched": 285,
+      "fetched": 286,
       "kept": 8,
-      "ms": 60,
+      "ms": 91,
       "error": null
     },
     {
@@ -104,7 +104,7 @@
       "url": "https://feeds.aps.org/rss/recent/physics.xml",
       "fetched": 100,
       "kept": 6,
-      "ms": 516,
+      "ms": 639,
       "error": null
     },
     {
@@ -114,7 +114,7 @@
       "url": "https://feeds.arstechnica.com/arstechnica/science",
       "fetched": 20,
       "kept": 6,
-      "ms": 84,
+      "ms": 143,
       "error": null
     },
     {
@@ -122,30 +122,33 @@
       "name": "arXiv cs.CL",
       "kind": "rss",
       "url": "https://rss.arxiv.org/rss/cs.CL",
-      "fetched": 176,
+      "fetched": 10,
       "kept": 10,
-      "ms": 765,
-      "error": null
+      "ms": 3056,
+      "error": null,
+      "note": "arXiv RSS empty (weekend) — used the API query"
     },
     {
       "id": "arxiv-cs-lg",
       "name": "arXiv cs.LG",
       "kind": "rss",
       "url": "https://rss.arxiv.org/rss/cs.LG",
-      "fetched": 437,
+      "fetched": 12,
       "kept": 12,
-      "ms": 415,
-      "error": null
+      "ms": 3500,
+      "error": null,
+      "note": "arXiv RSS empty (weekend) — used the API query"
     },
     {
       "id": "arxiv-cs-ma",
       "name": "arXiv cs.MA (multi-agent)",
       "kind": "rss",
       "url": "https://rss.arxiv.org/rss/cs.MA",
-      "fetched": 33,
+      "fetched": 10,
       "kept": 8,
-      "ms": 810,
-      "error": null
+      "ms": 3061,
+      "error": null,
+      "note": "arXiv RSS empty (weekend) — used the API query"
     },
     {
       "id": "arxiv-cs-si",
@@ -154,58 +157,64 @@
       "url": "https://rss.arxiv.org/rss/cs.SI",
       "fetched": 10,
       "kept": 8,
-      "ms": 813,
-      "error": null
+      "ms": 3061,
+      "error": null,
+      "note": "arXiv RSS empty (weekend) — used the API query"
     },
     {
       "id": "arxiv-econ-em",
       "name": "arXiv econ.EM (econometrics)",
       "kind": "rss",
       "url": "https://rss.arxiv.org/rss/econ.EM",
-      "fetched": 21,
+      "fetched": 10,
       "kept": 6,
-      "ms": 813,
-      "error": null
+      "ms": 3195,
+      "error": null,
+      "note": "arXiv RSS empty (weekend) — used the API query"
     },
     {
       "id": "arxiv-econ-gn",
       "name": "arXiv econ.GN (general economics)",
       "kind": "rss",
       "url": "https://rss.arxiv.org/rss/econ.GN",
-      "fetched": 9,
+      "fetched": 10,
       "kept": 6,
-      "ms": 818,
-      "error": null
+      "ms": 3061,
+      "error": null,
+      "note": "arXiv RSS empty (weekend) — used the API query"
     },
     {
       "id": "arxiv-math-ho",
       "name": "arXiv math.HO (history & overview)",
       "kind": "rss",
       "url": "https://rss.arxiv.org/rss/math.HO",
-      "fetched": 7,
+      "fetched": 10,
       "kept": 6,
-      "ms": 810,
-      "error": null
+      "ms": 3197,
+      "error": null,
+      "note": "arXiv RSS empty (weekend) — used the API query"
     },
     {
       "id": "arxiv-physics-soc",
       "name": "arXiv physics.soc-ph",
       "kind": "rss",
       "url": "https://rss.arxiv.org/rss/physics.soc-ph",
-      "fetched": 11,
+      "fetched": 10,
       "kept": 8,
-      "ms": 816,
-      "error": null
+      "ms": 3053,
+      "error": null,
+      "note": "arXiv RSS empty (weekend) — used the API query"
     },
     {
       "id": "arxiv-q-bio-pe",
       "name": "arXiv q-bio.PE (populations & evolution)",
       "kind": "rss",
       "url": "https://rss.arxiv.org/rss/q-bio.PE",
-      "fetched": 7,
+      "fetched": 10,
       "kept": 5,
-      "ms": 813,
-      "error": null
+      "ms": 3206,
+      "error": null,
+      "note": "arXiv RSS empty (weekend) — used the API query"
     },
     {
       "id": "arxiv-q-elections",
@@ -214,7 +223,7 @@
       "url": "https://export.arxiv.org/api/query?search_query=(all:election+OR+all:polarization+OR+all:%22opinion+dynamics%22)+AND+(all:simulation+OR+all:%22agent-based%22)&sortBy=submittedDate&sortOrder=descending&max_results=8",
       "fetched": 8,
       "kept": 8,
-      "ms": 3388,
+      "ms": 3428,
       "error": null
     },
     {
@@ -224,7 +233,7 @@
       "url": "https://export.arxiv.org/api/query?search_query=all:%22double+descent%22+OR+all:%22benign+overfitting%22+OR+all:%22lottery+ticket%22+OR+all:grokking&sortBy=submittedDate&sortOrder=descending&max_results=10",
       "fetched": 10,
       "kept": 10,
-      "ms": 3365,
+      "ms": 3406,
       "error": null
     },
     {
@@ -234,7 +243,7 @@
       "url": "https://export.arxiv.org/api/query?search_query=all:%22large+language+model%22+AND+(all:%22agent-based%22+OR+all:%22social+simulation%22+OR+all:%22generative+agents%22)&sortBy=submittedDate&sortOrder=descending&max_results=10",
       "fetched": 10,
       "kept": 10,
-      "ms": 3469,
+      "ms": 3637,
       "error": null
     },
     {
@@ -244,7 +253,7 @@
       "url": "https://export.arxiv.org/api/query?search_query=all:%22scaling+laws%22+OR+all:%22mechanistic+interpretability%22+OR+all:%22sparse+autoencoders%22&sortBy=submittedDate&sortOrder=descending&max_results=8",
       "fetched": 8,
       "kept": 8,
-      "ms": 3419,
+      "ms": 3465,
       "error": null
     },
     {
@@ -254,7 +263,7 @@
       "url": "https://export.arxiv.org/api/query?search_query=all:football+AND+(all:%22expected+goals%22+OR+all:soccer)&sortBy=submittedDate&sortOrder=descending&max_results=8",
       "fetched": 8,
       "kept": 8,
-      "ms": 444,
+      "ms": 496,
       "error": null
     },
     {
@@ -262,10 +271,11 @@
       "name": "arXiv stat.ML",
       "kind": "rss",
       "url": "https://rss.arxiv.org/rss/stat.ML",
-      "fetched": 72,
+      "fetched": 10,
       "kept": 10,
-      "ms": 806,
-      "error": null
+      "ms": 3133,
+      "error": null,
+      "note": "arXiv RSS empty (weekend) — used the API query"
     },
     {
       "id": "atlas-obscura",
@@ -284,7 +294,7 @@
       "url": "https://www.bbc.com/mundo/index.xml",
       "fetched": 34,
       "kept": 4,
-      "ms": 331,
+      "ms": 804,
       "error": null
     },
     {
@@ -292,10 +302,10 @@
       "name": "Behavioral Scientist",
       "kind": "rss",
       "url": "https://behavioralscientist.org/feed/",
-      "fetched": 0,
-      "kept": 0,
-      "ms": 170,
-      "error": "HTTP 403 Forbidden"
+      "fetched": 10,
+      "kept": 5,
+      "ms": 340,
+      "error": null
     },
     {
       "id": "conversable-economist",
@@ -304,7 +314,7 @@
       "url": "https://conversableeconomist.com/feed/",
       "fetched": 10,
       "kept": 4,
-      "ms": 131,
+      "ms": 120,
       "error": null
     },
     {
@@ -314,7 +324,7 @@
       "url": "https://dailynous.com/feed/",
       "fetched": 10,
       "kept": 4,
-      "ms": 810,
+      "ms": 715,
       "error": null
     },
     {
@@ -324,7 +334,7 @@
       "url": "https://www.damninteresting.com/feed/",
       "fetched": 10,
       "kept": 3,
-      "ms": 246,
+      "ms": 262,
       "error": null
     },
     {
@@ -334,7 +344,7 @@
       "url": "https://deepmind.google/blog/rss.xml",
       "fetched": 100,
       "kept": 8,
-      "ms": 404,
+      "ms": 208,
       "error": null
     },
     {
@@ -344,7 +354,7 @@
       "url": "https://elifesciences.org/rss/recent.xml",
       "fetched": 100,
       "kept": 6,
-      "ms": 347,
+      "ms": 560,
       "error": null
     },
     {
@@ -354,7 +364,7 @@
       "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/ciencia/portada",
       "fetched": 40,
       "kept": 5,
-      "ms": 110,
+      "ms": 200,
       "error": null
     },
     {
@@ -364,7 +374,7 @@
       "url": "https://epochai.substack.com/feed",
       "fetched": 0,
       "kept": 0,
-      "ms": 77,
+      "ms": 127,
       "error": "HTTP 403 Forbidden"
     },
     {
@@ -374,7 +384,7 @@
       "url": "https://www.futilitycloset.com/feed/",
       "fetched": 10,
       "kept": 5,
-      "ms": 1787,
+      "ms": 1049,
       "error": null
     },
     {
@@ -384,7 +394,7 @@
       "url": "https://research.google/blog/rss/",
       "fetched": 100,
       "kept": 6,
-      "ms": 347,
+      "ms": 321,
       "error": null
     },
     {
@@ -392,9 +402,9 @@
       "name": "Hugging Face blog",
       "kind": "rss",
       "url": "https://huggingface.co/blog/feed.xml",
-      "fetched": 891,
+      "fetched": 894,
       "kept": 6,
-      "ms": 128,
+      "ms": 219,
       "error": null
     },
     {
@@ -404,7 +414,7 @@
       "url": "https://www.historytoday.com/feed/rss.xml",
       "fetched": 10,
       "kept": 5,
-      "ms": 520,
+      "ms": 455,
       "error": null
     },
     {
@@ -414,7 +424,7 @@
       "url": "https://hn.algolia.com/api/v1/search_by_date?tags=story&query=LLM&numericFilters=points%3E100&hitsPerPage=20",
       "fetched": 20,
       "kept": 6,
-      "ms": 403,
+      "ms": 366,
       "error": null
     },
     {
@@ -424,7 +434,7 @@
       "url": "https://importai.substack.com/feed",
       "fetched": 0,
       "kept": 0,
-      "ms": 55,
+      "ms": 167,
       "error": "HTTP 403 Forbidden"
     },
     {
@@ -434,7 +444,7 @@
       "url": "https://www.interconnects.ai/feed",
       "fetched": 20,
       "kept": 4,
-      "ms": 122,
+      "ms": 220,
       "error": null
     },
     {
@@ -444,7 +454,7 @@
       "url": "https://feeds.kottke.org/main",
       "fetched": 60,
       "kept": 4,
-      "ms": 172,
+      "ms": 246,
       "error": null
     },
     {
@@ -454,7 +464,7 @@
       "url": "https://www.lasillavacia.com/rss",
       "fetched": 10,
       "kept": 4,
-      "ms": 217,
+      "ms": 286,
       "error": null
     },
     {
@@ -464,7 +474,7 @@
       "url": "https://marginalrevolution.com/feed",
       "fetched": 15,
       "kept": 6,
-      "ms": 224,
+      "ms": 211,
       "error": null
     },
     {
@@ -474,7 +484,7 @@
       "url": "https://golem.ph.utexas.edu/category/atom10.xml",
       "fetched": 15,
       "kept": 4,
-      "ms": 230,
+      "ms": 371,
       "error": null
     },
     {
@@ -484,7 +494,7 @@
       "url": "https://www.nature.com/nathumbehav.rss",
       "fetched": 8,
       "kept": 8,
-      "ms": 745,
+      "ms": 809,
       "error": null
     },
     {
@@ -494,7 +504,7 @@
       "url": "https://www.nature.com/nature.rss",
       "fetched": 75,
       "kept": 10,
-      "ms": 342,
+      "ms": 518,
       "error": null
     },
     {
@@ -504,7 +514,7 @@
       "url": "https://nautil.us/feed/",
       "fetched": 10,
       "kept": 4,
-      "ms": 201,
+      "ms": 260,
       "error": null
     },
     {
@@ -514,7 +524,7 @@
       "url": "https://back.nber.org/rss/new.xml",
       "fetched": 35,
       "kept": 10,
-      "ms": 379,
+      "ms": 566,
       "error": null
     },
     {
@@ -522,9 +532,9 @@
       "name": "OpenAI news",
       "kind": "rss",
       "url": "https://openai.com/news/rss.xml",
-      "fetched": 1333,
+      "fetched": 1334,
       "kept": 8,
-      "ms": 152,
+      "ms": 221,
       "error": null
     },
     {
@@ -534,7 +544,7 @@
       "url": "https://phys.org/rss-feed/",
       "fetched": 30,
       "kept": 8,
-      "ms": 623,
+      "ms": 555,
       "error": null
     },
     {
@@ -544,7 +554,7 @@
       "url": "https://physicsworld.com/feed/",
       "fetched": 160,
       "kept": 6,
-      "ms": 1034,
+      "ms": 1023,
       "error": null
     },
     {
@@ -554,7 +564,7 @@
       "url": "https://publicdomainreview.org/rss.xml",
       "fetched": 100,
       "kept": 4,
-      "ms": 638,
+      "ms": 849,
       "error": null
     },
     {
@@ -564,7 +574,7 @@
       "url": "https://api.quantamagazine.org/feed/",
       "fetched": 5,
       "kept": 5,
-      "ms": 596,
+      "ms": 609,
       "error": null
     },
     {
@@ -572,10 +582,10 @@
       "name": "Razón Pública (Colombia)",
       "kind": "rss",
       "url": "https://razonpublica.com/feed/",
-      "fetched": 0,
-      "kept": 0,
-      "ms": 319,
-      "error": "not a rss feed (got an HTML page)"
+      "fetched": 10,
+      "kept": 4,
+      "ms": 452,
+      "error": null
     },
     {
       "id": "sep-new",
@@ -584,7 +594,7 @@
       "url": "https://plato.stanford.edu/rss/sep.xml",
       "fetched": 15,
       "kept": 5,
-      "ms": 189,
+      "ms": 159,
       "error": null
     },
     {
@@ -594,7 +604,7 @@
       "url": "https://simonwillison.net/atom/everything/",
       "fetched": 30,
       "kept": 6,
-      "ms": 130,
+      "ms": 210,
       "error": null
     },
     {
@@ -604,7 +614,7 @@
       "url": "https://www.agenciasinc.es/feed/Ciencia",
       "fetched": 150,
       "kept": 6,
-      "ms": 1662,
+      "ms": 2211,
       "error": null
     },
     {
@@ -614,7 +624,7 @@
       "url": "https://soccermatics.medium.com/feed",
       "fetched": 10,
       "kept": 4,
-      "ms": 221,
+      "ms": 323,
       "error": null
     },
     {
@@ -624,7 +634,7 @@
       "url": "https://terrytao.wordpress.com/feed/",
       "fetched": 10,
       "kept": 4,
-      "ms": 139,
+      "ms": 290,
       "error": null
     },
     {
@@ -634,7 +644,7 @@
       "url": "https://theanalyst.com/feed",
       "fetched": 70,
       "kept": 4,
-      "ms": 172,
+      "ms": 289,
       "error": null
     },
     {
@@ -644,7 +654,7 @@
       "url": "https://thegradient.pub/rss/",
       "fetched": 15,
       "kept": 4,
-      "ms": 753,
+      "ms": 872,
       "error": null
     },
     {
@@ -654,7 +664,7 @@
       "url": "https://api.wikimedia.org/feed/v1/wikipedia/en/featured/{YYYY}/{MM}/{DD}",
       "fetched": 3,
       "kept": 3,
-      "ms": 1033,
+      "ms": 3481,
       "error": null
     },
     {
@@ -662,9 +672,9 @@
       "name": "Wikipedia: on this day",
       "kind": "wiki-onthisday",
       "url": "https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/events/{MM}/{DD}",
-      "fetched": 49,
+      "fetched": 44,
       "kept": 6,
-      "ms": 2103,
+      "ms": 3290,
       "error": null
     },
     {
@@ -672,9 +682,9 @@
       "name": "Wikipedia: tal día como hoy",
       "kind": "wiki-onthisday",
       "url": "https://api.wikimedia.org/feed/v1/wikipedia/es/onthisday/events/{MM}/{DD}",
-      "fetched": 47,
+      "fetched": 43,
       "kept": 4,
-      "ms": 2723,
+      "ms": 6978,
       "error": null
     },
     {
@@ -684,7 +694,7 @@
       "url": "https://www.xataka.com/feedburner.xml",
       "fetched": 26,
       "kept": 3,
-      "ms": 245,
+      "ms": 265,
       "error": null
     }
   ]
