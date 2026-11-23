@@ -1,13 +1,15 @@
 {
-  "updatedAt": "2026-11-22T17:10:31.395Z",
+  "updatedAt": "2026-11-23T21:27:36.328Z",
   "flagged": [
+    "import-ai",
+    "epoch-ai",
     "n-category-cafe",
     "the-analyst"
   ],
   "sources": {
     "nature-news": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 10,
       "lastError": null,
       "lastErrorAt": "2026-11-20T17:50:12.201Z",
@@ -15,7 +17,7 @@
     },
     "phys-org": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 8,
       "lastError": null,
       "lastErrorAt": null,
@@ -23,7 +25,7 @@
     },
     "arxiv-stat-ap-football": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 8,
       "lastError": null,
       "lastErrorAt": "2026-11-11T17:09:49.389Z",
@@ -31,7 +33,7 @@
     },
     "quanta": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 5,
       "lastError": null,
       "lastErrorAt": null,
@@ -39,7 +41,7 @@
     },
     "aps-physics": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
@@ -47,7 +49,7 @@
     },
     "ars-science": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
@@ -55,7 +57,7 @@
     },
     "nature-human-behaviour": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 8,
       "lastError": null,
       "lastErrorAt": "2026-10-31T15:20:54.762Z",
@@ -63,7 +65,7 @@
     },
     "openai-news": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 8,
       "lastError": null,
       "lastErrorAt": null,
@@ -71,7 +73,7 @@
     },
     "anthropic-news": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 8,
       "lastError": null,
       "lastErrorAt": null,
@@ -79,7 +81,7 @@
     },
     "elife": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
@@ -87,23 +89,23 @@
     },
     "hf-blog": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
       "flagged": false
     },
     "import-ai": {
-      "consecutiveFailures": 2,
+      "consecutiveFailures": 3,
       "lastOk": "2026-11-20T17:50:12.201Z",
       "lastKept": 4,
       "lastError": "HTTP 403 Forbidden",
-      "lastErrorAt": "2026-11-22T17:10:31.395Z",
-      "flagged": false
+      "lastErrorAt": "2026-11-23T21:27:36.328Z",
+      "flagged": true
     },
     "google-research": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
@@ -111,7 +113,7 @@
     },
     "interconnects": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 4,
       "lastError": null,
       "lastErrorAt": null,
@@ -119,7 +121,7 @@
     },
     "deepmind-blog": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 8,
       "lastError": null,
       "lastErrorAt": null,
@@ -127,7 +129,7 @@
     },
     "simon-willison": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
@@ -135,23 +137,23 @@
     },
     "physics-world": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
       "flagged": false
     },
     "epoch-ai": {
-      "consecutiveFailures": 2,
+      "consecutiveFailures": 3,
       "lastOk": "2026-11-20T17:50:12.201Z",
       "lastKept": 4,
       "lastError": "HTTP 403 Forbidden",
-      "lastErrorAt": "2026-11-22T17:10:31.395Z",
-      "flagged": false
+      "lastErrorAt": "2026-11-23T21:27:36.328Z",
+      "flagged": true
     },
     "terry-tao": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 4,
       "lastError": null,
       "lastErrorAt": null,
@@ -159,23 +161,23 @@
     },
     "hn-ai": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
       "flagged": false
     },
     "n-category-cafe": {
-      "consecutiveFailures": 16,
+      "consecutiveFailures": 17,
       "lastOk": "2026-11-06T16:46:55.308Z",
       "lastKept": 4,
       "lastError": "fetch failed (UND_ERR_CONNECT_TIMEOUT)",
-      "lastErrorAt": "2026-11-22T17:10:31.395Z",
+      "lastErrorAt": "2026-11-23T21:27:36.328Z",
       "flagged": true
     },
     "ams-feature": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 4,
       "lastError": null,
       "lastErrorAt": null,
@@ -183,7 +185,7 @@
     },
     "the-gradient": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 4,
       "lastError": null,
       "lastErrorAt": null,
@@ -191,7 +193,7 @@
     },
     "alignment-forum": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
@@ -199,7 +201,7 @@
     },
     "nber": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 10,
       "lastError": null,
       "lastErrorAt": "2026-11-04T17:16:21.147Z",
@@ -207,7 +209,7 @@
     },
     "soccermatics": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 4,
       "lastError": null,
       "lastErrorAt": null,
@@ -215,7 +217,7 @@
     },
     "behavioral-scientist": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 5,
       "lastError": null,
       "lastErrorAt": "2026-10-28T16:05:30.530Z",
@@ -223,7 +225,7 @@
     },
     "arxiv-cs-lg": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 12,
       "lastError": null,
       "lastErrorAt": null,
@@ -231,23 +233,23 @@
     },
     "conversable-economist": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 4,
       "lastError": null,
       "lastErrorAt": null,
       "flagged": false
     },
     "the-analyst": {
-      "consecutiveFailures": 18,
+      "consecutiveFailures": 19,
       "lastOk": "2026-11-04T17:16:21.147Z",
       "lastKept": 4,
       "lastError": "HTTP 403 Forbidden",
-      "lastErrorAt": "2026-11-22T17:10:31.395Z",
+      "lastErrorAt": "2026-11-23T21:27:36.328Z",
       "flagged": true
     },
     "daily-nous": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 4,
       "lastError": null,
       "lastErrorAt": "2026-09-23T14:15:11.693Z",
@@ -255,7 +257,7 @@
     },
     "aeon": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
@@ -263,7 +265,7 @@
     },
     "marginal-revolution": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
@@ -271,7 +273,7 @@
     },
     "arxiv-q-generative-agents": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 10,
       "lastError": null,
       "lastErrorAt": "2026-11-11T17:09:49.389Z",
@@ -279,7 +281,7 @@
     },
     "sep-new": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 5,
       "lastError": null,
       "lastErrorAt": null,
@@ -287,7 +289,7 @@
     },
     "3-quarks": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 5,
       "lastError": null,
       "lastErrorAt": null,
@@ -295,7 +297,7 @@
     },
     "wiki-onthisday-en": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
@@ -303,7 +305,7 @@
     },
     "history-today": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 5,
       "lastError": null,
       "lastErrorAt": null,
@@ -311,7 +313,7 @@
     },
     "public-domain-review": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 4,
       "lastError": null,
       "lastErrorAt": null,
@@ -319,7 +321,7 @@
     },
     "atlas-obscura": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 5,
       "lastError": null,
       "lastErrorAt": null,
@@ -327,7 +329,7 @@
     },
     "futility-closet": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 5,
       "lastError": null,
       "lastErrorAt": null,
@@ -335,7 +337,7 @@
     },
     "nautilus": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 4,
       "lastError": null,
       "lastErrorAt": null,
@@ -343,7 +345,7 @@
     },
     "damn-interesting": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 3,
       "lastError": null,
       "lastErrorAt": "2026-10-21T14:30:08.269Z",
@@ -351,7 +353,7 @@
     },
     "kottke": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 4,
       "lastError": null,
       "lastErrorAt": "2026-11-21T16:48:24.643Z",
@@ -359,7 +361,7 @@
     },
     "elpais-ciencia": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 5,
       "lastError": null,
       "lastErrorAt": null,
@@ -367,7 +369,7 @@
     },
     "bbc-mundo": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 4,
       "lastError": null,
       "lastErrorAt": null,
@@ -375,7 +377,7 @@
     },
     "arxiv-cs-cl": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 10,
       "lastError": null,
       "lastErrorAt": null,
@@ -383,7 +385,7 @@
     },
     "la-silla-vacia": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 4,
       "lastError": null,
       "lastErrorAt": null,
@@ -391,7 +393,7 @@
     },
     "wiki-onthisday-es": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 4,
       "lastError": null,
       "lastErrorAt": null,
@@ -399,7 +401,7 @@
     },
     "xataka": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 3,
       "lastError": null,
       "lastErrorAt": null,
@@ -407,7 +409,7 @@
     },
     "arxiv-q-generalization": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 10,
       "lastError": null,
       "lastErrorAt": "2026-11-11T17:09:49.389Z",
@@ -415,7 +417,7 @@
     },
     "razon-publica": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 4,
       "lastError": null,
       "lastErrorAt": "2026-11-20T17:50:12.201Z",
@@ -423,7 +425,7 @@
     },
     "sinc": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
@@ -431,7 +433,7 @@
     },
     "wiki-featured-en": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 3,
       "lastError": null,
       "lastErrorAt": null,
@@ -439,7 +441,7 @@
     },
     "arxiv-stat-ml": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 10,
       "lastError": null,
       "lastErrorAt": null,
@@ -447,7 +449,7 @@
     },
     "arxiv-q-scaling": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 8,
       "lastError": null,
       "lastErrorAt": null,
@@ -455,7 +457,7 @@
     },
     "arxiv-q-elections": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 8,
       "lastError": null,
       "lastErrorAt": null,
@@ -463,7 +465,7 @@
     },
     "arxiv-cs-ma": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 8,
       "lastError": null,
       "lastErrorAt": null,
@@ -471,15 +473,15 @@
     },
     "arxiv-cs-si": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
-      "lastKept": 8,
+      "lastOk": "2026-11-23T21:27:36.328Z",
+      "lastKept": 4,
       "lastError": null,
       "lastErrorAt": null,
       "flagged": false
     },
     "arxiv-physics-soc": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 8,
       "lastError": null,
       "lastErrorAt": null,
@@ -487,7 +489,7 @@
     },
     "arxiv-econ-em": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
@@ -495,7 +497,7 @@
     },
     "arxiv-econ-gn": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 6,
       "lastError": null,
       "lastErrorAt": null,
@@ -503,15 +505,15 @@
     },
     "arxiv-math-ho": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
-      "lastKept": 6,
+      "lastOk": "2026-11-23T21:27:36.328Z",
+      "lastKept": 2,
       "lastError": null,
       "lastErrorAt": "2026-11-11T17:09:49.389Z",
       "flagged": false
     },
     "arxiv-q-bio-pe": {
       "consecutiveFailures": 0,
-      "lastOk": "2026-11-22T17:10:31.395Z",
+      "lastOk": "2026-11-23T21:27:36.328Z",
       "lastKept": 5,
       "lastError": null,
       "lastErrorAt": null,
